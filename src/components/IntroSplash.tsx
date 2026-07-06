@@ -3,18 +3,9 @@ import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "caetus_intro_seen_v1";
 
-const NOUNS = [
-  "mais tempo.",
-  "mais clientes.",
-  "mais presença.",
-  "mais resultados.",
-];
+const NOUNS = ["mais tempo.", "mais clientes.", "mais presença.", "mais resultados."];
 
-const VERBS = [
-  "Automatizando.",
-  "Organizando.",
-  "Crescendo.",
-];
+const VERBS = ["Automatizando.", "Organizando.", "Crescendo."];
 
 type Phase = "logo" | "nouns" | "verbs" | "final" | "done";
 
@@ -79,11 +70,7 @@ export function IntroSplash({ onFinish }: IntroSplashProps) {
   const skip = () => setPhase("done");
 
   const currentWord =
-    phase === "nouns"
-      ? NOUNS[wordIdx]
-      : phase === "verbs"
-        ? VERBS[wordIdx]
-        : null;
+    phase === "nouns" ? NOUNS[wordIdx] : phase === "verbs" ? VERBS[wordIdx] : null;
 
   const showBackdrop = phase === "nouns" || phase === "verbs";
 
@@ -107,10 +94,12 @@ export function IntroSplash({ onFinish }: IntroSplashProps) {
         transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
         className="relative z-10 flex items-center gap-2"
       >
-        <img src="/caetus-logo.png" alt="Caetus Systems" className="h-9 w-9 rounded-lg object-contain" />
-        <span className="text-lg font-semibold tracking-tight text-foreground">
-          Caetus Systems
-        </span>
+        <img
+          src="/caetus-logo.png"
+          alt="Caetus Systems"
+          className="h-9 w-9 rounded-lg object-contain"
+        />
+        <span className="text-lg font-semibold tracking-tight text-foreground">Caetus Systems</span>
       </motion.div>
 
       {/* Word slot */}
@@ -187,27 +176,18 @@ function AmbientScene({ active }: { active: boolean }) {
           backgroundImage:
             "linear-gradient(to right, color-mix(in oklab, var(--primary) 8%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--primary) 8%, transparent) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
-          maskImage:
-            "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          maskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
         }}
       />
 
       {/* Floating minimal cards */}
-      <FloatingCard
-        className="left-[8%] top-[18%] hidden sm:block"
-        delay={0.2}
-        width={180}
-      >
+      <FloatingCard className="left-[8%] top-[18%] hidden sm:block" delay={0.2} width={180}>
         <div className="h-1.5 w-10 rounded-full bg-primary/60" />
         <div className="mt-2 h-1 w-24 rounded-full bg-muted" />
         <div className="mt-1.5 h-1 w-16 rounded-full bg-muted" />
       </FloatingCard>
 
-      <FloatingCard
-        className="right-[10%] top-[22%] hidden sm:block"
-        delay={0.5}
-        width={160}
-      >
+      <FloatingCard className="right-[10%] top-[22%] hidden sm:block" delay={0.5} width={160}>
         <div className="flex items-center justify-between">
           <div className="h-2 w-8 rounded-full bg-muted" />
           <div className="h-2 w-2 rounded-full bg-[var(--brand-green,theme(colors.emerald.500))]" />
@@ -229,11 +209,7 @@ function AmbientScene({ active }: { active: boolean }) {
         </div>
       </FloatingCard>
 
-      <FloatingCard
-        className="bottom-[20%] left-[12%] hidden md:block"
-        delay={0.8}
-        width={200}
-      >
+      <FloatingCard className="bottom-[20%] left-[12%] hidden md:block" delay={0.8} width={200}>
         <div className="h-1.5 w-14 rounded-full bg-primary/60" />
         <div className="mt-3 space-y-1.5">
           <div className="h-1 w-full rounded-full bg-muted" />
@@ -242,11 +218,7 @@ function AmbientScene({ active }: { active: boolean }) {
         </div>
       </FloatingCard>
 
-      <FloatingCard
-        className="bottom-[24%] right-[12%] hidden md:block"
-        delay={1.1}
-        width={150}
-      >
+      <FloatingCard className="bottom-[24%] right-[12%] hidden md:block" delay={1.1} width={150}>
         <div className="flex items-center gap-2">
           <div className="h-6 w-6 rounded-full bg-primary/15" />
           <div className="space-y-1">

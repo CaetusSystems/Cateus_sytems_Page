@@ -57,16 +57,14 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { IntroSplash, useIntroSplash } from "@/components/IntroSplash";
 
-
-const WHATSAPP_NUMBER = "5511999999999";
-const WHATSAPP_DISPLAY = "(11) 99999-9999";
-const WHATSAPP_MESSAGE =
-  "Olá! Vim pelo site da Caetus Systems e gostaria de conversar.";
+const WHATSAPP_NUMBER = "5531972131824";
+const WHATSAPP_DISPLAY = "(31) 97213-1824";
+const WHATSAPP_MESSAGE = "Olá! Vim pelo site da Caetus Systems e gostaria de conversar.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   WHATSAPP_MESSAGE,
 )}`;
 // Configure only this URL to point to a different Instagram profile.
-const INSTAGRAM_URL = "https://www.instagram.com/caetus.systems";
+const INSTAGRAM_URL = "https://www.instagram.com/Caetus_Systems";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -89,8 +87,6 @@ function WhatsAppFloatingButton() {
     </a>
   );
 }
-
-
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -149,7 +145,9 @@ function Index() {
 
   return (
     <div ref={rootRef} className="min-h-screen bg-background text-foreground antialiased">
-      <AnimatePresence>{ready && show && <IntroSplash key="intro" onFinish={finish} />}</AnimatePresence>
+      <AnimatePresence>
+        {ready && show && <IntroSplash key="intro" onFinish={finish} />}
+      </AnimatePresence>
       <Nav />
       <main>
         <Hero />
@@ -166,7 +164,6 @@ function Index() {
         <ForWho />
         <About />
         <HowItWorks />
-        <AIQuestions />
         <FAQ />
         <CTA />
       </main>
@@ -176,37 +173,59 @@ function Index() {
   );
 }
 
-
 function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <a href="#top" className="flex items-center gap-2">
-          <img src="/caetus-logo.png" alt="Caetus Systems" className="h-7 w-7 rounded-md object-contain" />
+          <img
+            src="/caetus-logo.png"
+            alt="Caetus Systems"
+            className="h-7 w-7 rounded-md object-contain"
+          />
           <span className="text-sm font-semibold tracking-tight">
             Caetus <span className="text-muted-foreground font-normal">Systems</span>
           </span>
         </a>
         <nav className="hidden items-center gap-8 md:flex">
-          <a href="#operacao" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#operacao"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
             Operação Digital
           </a>
-          <a href="#para-quem" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#para-quem"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
             Para quem é
           </a>
-          <a href="#whatsapp" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#whatsapp"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
             WhatsApp
           </a>
-          <a href="#antes-depois" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#antes-depois"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
             Antes e depois
           </a>
-          <a href="#quem-somos" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#quem-somos"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
             Quem somos
           </a>
-
         </nav>
         <Button asChild size="sm" className="rounded-full gap-2">
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Conversar no WhatsApp"
+          >
             <WhatsAppIcon className="h-4 w-4" />
             {WHATSAPP_DISPLAY}
           </a>
@@ -247,9 +266,9 @@ function Hero() {
             Você cuida do seu negócio. A gente cuida do digital.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-balance text-base text-muted-foreground md:text-lg">
-            Da primeira conversa à evolução contínua, assumimos a operação
-            digital da sua empresa para que você possa crescer sem precisar
-            montar uma equipe de tecnologia, marketing e automação.
+            Da primeira conversa à evolução contínua, assumimos a operação digital da sua empresa
+            para que você possa crescer sem precisar montar uma equipe de tecnologia, marketing e
+            automação.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -360,7 +379,12 @@ function MockDashboard() {
   const tempoStr = `${horas}h ${minutos.toString().padStart(2, "0")}min`;
 
   const stats = [
-    { label: "Clientes atendidos", value: clientes.toString(), sub: "sem depender de você", pulse: false },
+    {
+      label: "Clientes atendidos",
+      value: clientes.toString(),
+      sub: "sem depender de você",
+      pulse: false,
+    },
     { label: "Tempo que você recuperou", value: tempoStr, sub: "só esta semana", pulse: false },
     { label: "Você sempre no ar", value: "24/7", sub: "todos os canais ativos", pulse: true },
   ];
@@ -380,7 +404,10 @@ function MockDashboard() {
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {stats.map((s) => (
-            <div key={s.label} className="rounded-lg border border-border bg-background p-4 text-left">
+            <div
+              key={s.label}
+              className="rounded-lg border border-border bg-background p-4 text-left"
+            >
               <p className="text-xs text-muted-foreground">{s.label}</p>
               <div className="mt-1 flex items-center gap-2">
                 <div className="relative h-8 overflow-hidden">
@@ -440,14 +467,46 @@ type Pain = {
 };
 
 const PAINS: Pain[] = [
-  { icon: Search, title: "Não me encontram", phrase: "Quando procuram pelo meu serviço, meu concorrente aparece antes." },
-  { icon: MessageCircle, title: "Mensagens acumuladas", phrase: "Perco vendas porque demoro para responder no WhatsApp." },
-  { icon: UserRound, title: "Faço tudo sozinho", phrase: "O negócio inteiro depende de mim, o tempo todo." },
-  { icon: Wallet, title: "Fornecedores soltos", phrase: "Pago vários lugares diferentes e nada funciona junto." },
-  { icon: Instagram, title: "Redes abandonadas", phrase: "Esqueço de postar e minha empresa parece parada." },
-  { icon: Users, title: "Enquanto atendo, perco", phrase: "Atendo um cliente e, no meio, outros ficam sem resposta." },
-  { icon: Repeat, title: "Tarefas repetitivas", phrase: "Gasto horas em coisas que poderiam acontecer sozinhas." },
-  { icon: TrendingUp, title: "Poderia vender mais", phrase: "Sei que dá pra crescer, mas falta tempo para cuidar do digital." },
+  {
+    icon: Search,
+    title: "Não me encontram",
+    phrase: "Quando procuram pelo meu serviço, meu concorrente aparece antes.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Mensagens acumuladas",
+    phrase: "Perco vendas porque demoro para responder no WhatsApp.",
+  },
+  {
+    icon: UserRound,
+    title: "Faço tudo sozinho",
+    phrase: "O negócio inteiro depende de mim, o tempo todo.",
+  },
+  {
+    icon: Wallet,
+    title: "Fornecedores soltos",
+    phrase: "Pago vários lugares diferentes e nada funciona junto.",
+  },
+  {
+    icon: Instagram,
+    title: "Redes abandonadas",
+    phrase: "Esqueço de postar e minha empresa parece parada.",
+  },
+  {
+    icon: Users,
+    title: "Enquanto atendo, perco",
+    phrase: "Atendo um cliente e, no meio, outros ficam sem resposta.",
+  },
+  {
+    icon: Repeat,
+    title: "Tarefas repetitivas",
+    phrase: "Gasto horas em coisas que poderiam acontecer sozinhas.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Poderia vender mais",
+    phrase: "Sei que dá pra crescer, mas falta tempo para cuidar do digital.",
+  },
 ];
 
 function Problem() {
@@ -676,8 +735,6 @@ function Problem() {
   );
 }
 
-
-
 function CostOfInaction() {
   const costs = [
     "Cada mensagem sua sem resposta é um cliente que compra do concorrente.",
@@ -698,8 +755,7 @@ function CostOfInaction() {
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             A pergunta não é só{" "}
-            <span className="text-foreground">"quanto isso vai me custar?"</span>
-            . É também{" "}
+            <span className="text-foreground">"quanto isso vai me custar?"</span>. É também{" "}
             <span className="text-foreground">"quanto eu já estou perdendo por não ter?"</span>
           </p>
         </div>
@@ -773,9 +829,8 @@ function Operation() {
             Não é um serviço. É a sua Operação Digital.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Presença, atendimento, operação e gestão trabalhando juntos — como
-            um ambiente digital vivo, que continua funcionando automaticamente
-            todos os dias.
+            Presença, atendimento, operação e gestão trabalhando juntos — como um ambiente digital
+            vivo, que continua funcionando automaticamente todos os dias.
           </p>
         </div>
 
@@ -785,12 +840,8 @@ function Operation() {
               key={b.title}
               className="rounded-2xl border border-border bg-card p-8 transition-colors hover:border-primary/30"
             >
-              <p className="text-xs font-medium uppercase tracking-wider text-primary">
-                {b.title}
-              </p>
-              <h3 className="mt-2 text-2xl font-semibold tracking-tight">
-                {b.subtitle}
-              </h3>
+              <p className="text-xs font-medium uppercase tracking-wider text-primary">{b.title}</p>
+              <h3 className="mt-2 text-2xl font-semibold tracking-tight">{b.subtitle}</h3>
               <ul className="mt-6 space-y-3">
                 {b.items.map((i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-foreground/80">
@@ -803,10 +854,9 @@ function Operation() {
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground">
-          Tudo faz parte da mesma estrutura. A Caetus monta, mantém e evolui
-          essa rotina digital continuamente — no ritmo da sua empresa.
+          Tudo faz parte da mesma estrutura. A Caetus monta, mantém e evolui essa rotina digital
+          continuamente — no ritmo da sua empresa.
         </p>
-
       </div>
     </section>
   );
@@ -833,17 +883,16 @@ function Meanwhile() {
               Enquanto você cuida do seu negócio...
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
-              A Caetus segue trabalhando por trás. Assistentes inteligentes e
-              automações continuam ativos enquanto sua empresa está atendendo,
-              produzindo ou descansando — sua rotina digital não para mesmo
-              quando ninguém está olhando.
+              A Caetus segue trabalhando por trás. Assistentes inteligentes e automações continuam
+              ativos enquanto sua empresa está atendendo, produzindo ou descansando — sua rotina
+              digital não para mesmo quando ninguém está olhando.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
               <span className="font-medium text-foreground/80">Referência ilustrativa:</span>{" "}
               pequenas empresas costumam recuperar entre{" "}
-              <span className="font-medium text-foreground/80">5 e 15 horas por semana</span>{" "}
-              ao automatizar tarefas repetitivas do dia a dia — tempo que
-              volta para o negócio, a família ou o descanso.
+              <span className="font-medium text-foreground/80">5 e 15 horas por semana</span> ao
+              automatizar tarefas repetitivas do dia a dia — tempo que volta para o negócio, a
+              família ou o descanso.
             </p>
 
             <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-green/10 px-3 py-1 text-xs text-brand-green">
@@ -893,15 +942,13 @@ function Economy() {
           </h2>
           <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">
             <p>
-              Quando pensamos em um site profissional, redes sociais ativas,
-              Google Business, WhatsApp inteligente, automações, manutenção e
-              suporte, parece que seria necessário contratar vários
-              profissionais diferentes.
+              Quando pensamos em um site profissional, redes sociais ativas, Google Business,
+              WhatsApp inteligente, automações, manutenção e suporte, parece que seria necessário
+              contratar vários profissionais diferentes.
             </p>
             <p>
-              A Caetus reúne tudo isso em uma única operação, com uma
-              mensalidade previsível, pensada para caber na realidade de
-              pequenas empresas.
+              A Caetus reúne tudo isso em uma única operação, com uma mensalidade previsível,
+              pensada para caber na realidade de pequenas empresas.
             </p>
           </div>
         </div>
@@ -912,10 +959,9 @@ function Economy() {
               Um time inteiro. Uma contratação só.
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
-              Você para de somar boletos, reuniões e cobranças com vários
-              fornecedores. Sua estrutura digital inteira passa a viver em um
-              lugar só — com quem cuida, quem responde e quem evolui você a
-              longo prazo.
+              Você para de somar boletos, reuniões e cobranças com vários fornecedores. Sua
+              estrutura digital inteira passa a viver em um lugar só — com quem cuida, quem responde
+              e quem evolui você a longo prazo.
             </p>
 
             <div className="mt-8 rounded-xl border border-border bg-card p-6">
@@ -942,19 +988,36 @@ function Economy() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold">Caetus Systems</p>
-                  <p className="text-xs text-muted-foreground">Seu ecossistema digital, num lugar só</p>
+                  <p className="text-xs text-muted-foreground">
+                    Seu ecossistema digital, num lugar só
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4">
             {[
-              { icon: Wallet, title: "Custo previsível para você", desc: "Uma mensalidade no lugar de várias contas espalhadas." },
-              { icon: TrendingUp, title: "Você vende mais", desc: "Você é encontrado, seu cliente é respondido, a oportunidade vira venda." },
-              { icon: HeartHandshake, title: "Você deixa de ser o gargalo", desc: "Seu negócio deixa de girar exclusivamente em torno da sua agenda." },
-              { icon: ShieldCheck, title: "Você fica tranquilo", desc: "Alguém cuidando dessa parte continuamente — inclusive quando você não pode." },
+              {
+                icon: Wallet,
+                title: "Custo previsível para você",
+                desc: "Uma mensalidade no lugar de várias contas espalhadas.",
+              },
+              {
+                icon: TrendingUp,
+                title: "Você vende mais",
+                desc: "Você é encontrado, seu cliente é respondido, a oportunidade vira venda.",
+              },
+              {
+                icon: HeartHandshake,
+                title: "Você deixa de ser o gargalo",
+                desc: "Seu negócio deixa de girar exclusivamente em torno da sua agenda.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Você fica tranquilo",
+                desc: "Alguém cuidando dessa parte continuamente — inclusive quando você não pode.",
+              },
             ].map((b) => (
-
               <div key={b.title} className="rounded-xl border border-border bg-card p-6">
                 <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-primary/5 text-primary">
                   <b.icon className="h-4 w-4" />
@@ -992,16 +1055,14 @@ function WhatsAppSection() {
               Quantas vendas você perde porque ninguém respondeu?
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
-              Enquanto seu time atende um cliente, outro continua sendo
-              acolhido automaticamente. Mesmo com a loja fechada, cada
-              mensagem vira uma conversa iniciada — sem depender de você
-              estar disponível para responder.
+              Enquanto seu time atende um cliente, outro continua sendo acolhido automaticamente.
+              Mesmo com a loja fechada, cada mensagem vira uma conversa iniciada — sem depender de
+              você estar disponível para responder.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
-              <span className="font-medium text-foreground/80">Referência ilustrativa:</span>{" "}
-              boa parte das mensagens que chegam no WhatsApp são perguntas
-              repetidas (horário, endereço, preço) — perguntas que já podem
-              ser respondidas automaticamente, no mesmo instante.
+              <span className="font-medium text-foreground/80">Referência ilustrativa:</span> boa
+              parte das mensagens que chegam no WhatsApp são perguntas repetidas (horário, endereço,
+              preço) — perguntas que já podem ser respondidas automaticamente, no mesmo instante.
             </p>
 
             <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -1013,7 +1074,11 @@ function WhatsAppSection() {
               ))}
             </div>
             <div className="mt-8">
-              <Button asChild size="lg" className="rounded-full bg-brand-green text-white hover:bg-brand-green/90">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-brand-green text-white hover:bg-brand-green/90"
+              >
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                   <WhatsAppIcon className="mr-1 h-4 w-4" />
                   Ver funcionando no WhatsApp
@@ -1058,7 +1123,11 @@ const WA_CONVOS: WAConvo[] = [
     preview: "Onde vocês ficam?",
     messages: [
       { from: "client", text: "Oi, onde vocês ficam localizados?" },
-      { from: "ai", text: "Olá, Maria! Estamos em Lagoa Santa/MG. Posso te enviar o link do Google Maps?", typingMs: 1300 },
+      {
+        from: "ai",
+        text: "Olá, Maria! Estamos em Lagoa Santa/MG. Posso te enviar o link do Google Maps?",
+        typingMs: 1300,
+      },
       { from: "client", text: "Pode sim!" },
       { from: "ai", text: "📍 maps.google.com/…\nAté logo!", typingMs: 1000 },
     ],
@@ -1070,7 +1139,11 @@ const WA_CONVOS: WAConvo[] = [
     preview: "Quanto custa um site?",
     messages: [
       { from: "client", text: "Quanto custa um site para minha empresa?" },
-      { from: "ai", text: "Oi, Carlos! O valor depende do porte do projeto. Posso montar um orçamento em 2 min — qual o segmento?", typingMs: 1400 },
+      {
+        from: "ai",
+        text: "Oi, Carlos! O valor depende do porte do projeto. Posso montar um orçamento em 2 min — qual o segmento?",
+        typingMs: 1400,
+      },
       { from: "client", text: "Restaurante." },
       { from: "ai", text: "Perfeito! Já estou preparando as opções para você.", typingMs: 1000 },
     ],
@@ -1082,7 +1155,11 @@ const WA_CONVOS: WAConvo[] = [
     preview: "Consigo agendar amanhã?",
     messages: [
       { from: "client", text: "Consigo agendar um horário amanhã de manhã?" },
-      { from: "ai", text: "Claro, Ana! Tenho 09:30 ou 10:45 disponíveis. Qual prefere?", typingMs: 1200 },
+      {
+        from: "ai",
+        text: "Claro, Ana! Tenho 09:30 ou 10:45 disponíveis. Qual prefere?",
+        typingMs: 1200,
+      },
       { from: "client", text: "10:45 fica ótimo." },
       { from: "ai", text: "Agendado ✅ Enviei a confirmação por aqui.", typingMs: 1000 },
     ],
@@ -1094,7 +1171,11 @@ const WA_CONVOS: WAConvo[] = [
     preview: "Quais produtos vocês têm?",
     messages: [
       { from: "client", text: "Quais produtos vocês têm disponíveis?" },
-      { from: "ai", text: "Oi, Rafael! Temos catálogo digital atualizado. Quer que eu envie o link?", typingMs: 1200 },
+      {
+        from: "ai",
+        text: "Oi, Rafael! Temos catálogo digital atualizado. Quer que eu envie o link?",
+        typingMs: 1200,
+      },
       { from: "client", text: "Manda por favor." },
       { from: "ai", text: "🛒 catalogo.caetus.app/…", typingMs: 900 },
     ],
@@ -1117,7 +1198,11 @@ const WA_CONVOS: WAConvo[] = [
     preview: "Vocês entregam aqui?",
     messages: [
       { from: "client", text: "Vocês fazem entrega em Vespasiano?" },
-      { from: "ai", text: "Sim, Lucas! Entregamos em toda a região norte de BH. 🚚", typingMs: 1300 },
+      {
+        from: "ai",
+        text: "Sim, Lucas! Entregamos em toda a região norte de BH. 🚚",
+        typingMs: 1300,
+      },
       { from: "client", text: "Ótimo!" },
     ],
   },
@@ -1128,7 +1213,11 @@ const WA_CONVOS: WAConvo[] = [
     preview: "Qual o prazo?",
     messages: [
       { from: "client", text: "Qual o prazo médio do serviço?" },
-      { from: "ai", text: "Normalmente entre 3 e 5 dias úteis, dependendo do escopo.", typingMs: 1200 },
+      {
+        from: "ai",
+        text: "Normalmente entre 3 e 5 dias úteis, dependendo do escopo.",
+        typingMs: 1200,
+      },
       { from: "client", text: "Perfeito." },
     ],
   },
@@ -1139,7 +1228,11 @@ const WA_CONVOS: WAConvo[] = [
     preview: "Precisa de contrato?",
     messages: [
       { from: "client", text: "Precisa assinar contrato mensal?" },
-      { from: "ai", text: "Oi, Diego! Vou encaminhar essa conversa para nossa equipe explicar direitinho. 👥", typingMs: 1400 },
+      {
+        from: "ai",
+        text: "Oi, Diego! Vou encaminhar essa conversa para nossa equipe explicar direitinho. 👥",
+        typingMs: 1400,
+      },
     ],
     handoff: true,
   },
@@ -1149,8 +1242,15 @@ const WA_CONVOS: WAConvo[] = [
     color: "bg-teal-500",
     preview: "Quero falar com alguém",
     messages: [
-      { from: "client", text: "Preciso falar com um atendente, é sobre um problema no meu pedido." },
-      { from: "ai", text: "Claro, Camila. Já estou chamando um humano da equipe para te ajudar agora.", typingMs: 1300 },
+      {
+        from: "client",
+        text: "Preciso falar com um atendente, é sobre um problema no meu pedido.",
+      },
+      {
+        from: "ai",
+        text: "Claro, Camila. Já estou chamando um humano da equipe para te ajudar agora.",
+        typingMs: 1300,
+      },
     ],
     handoff: true,
   },
@@ -1242,15 +1342,16 @@ const WA_STATUS_META: Record<
   delivered: { label: "Produto enviado", icon: "📦", tone: "green" },
 };
 
-
-
 function WhatsAppLiveCounters() {
   const [stats, setStats] = useState({ replied: 127, avg: 6, scheduled: 9, deals: 18 });
   useEffect(() => {
     const id = setInterval(() => {
       setStats((s) => ({
         replied: s.replied + (Math.random() < 0.75 ? 1 : 0),
-        avg: Math.max(4, Math.min(9, s.avg + (Math.random() < 0.5 ? -1 : 1) * (Math.random() < 0.2 ? 1 : 0))),
+        avg: Math.max(
+          4,
+          Math.min(9, s.avg + (Math.random() < 0.5 ? -1 : 1) * (Math.random() < 0.2 ? 1 : 0)),
+        ),
         scheduled: s.scheduled + (Math.random() < 0.18 ? 1 : 0),
         deals: s.deals + (Math.random() < 0.28 ? 1 : 0),
       }));
@@ -1291,7 +1392,11 @@ function WhatsAppLiveCounters() {
 // Floating "real result" badges — visually reinforce that WhatsApp automation
 // generates money, not just replies. Badges appear over the demo, drift up,
 // and fade out with a calm cadence so the effect stays premium, not busy.
-const WA_RESULT_BADGES: Array<{ icon: string; label: string; tone: "green" | "blue" | "amber" | "violet" }> = [
+const WA_RESULT_BADGES: Array<{
+  icon: string;
+  label: string;
+  tone: "green" | "blue" | "amber" | "violet";
+}> = [
   { icon: "💰", label: "Venda iniciada", tone: "green" },
   { icon: "📅", label: "Agendamento confirmado", tone: "blue" },
   { icon: "⭐", label: "Avaliação recebida", tone: "amber" },
@@ -1397,7 +1502,6 @@ function WhatsAppResultBadges() {
   );
 }
 
-
 function WhatsAppLiveDemo() {
   const [convoIdx, setConvoIdx] = useState(0);
   const [visible, setVisible] = useState<WAMsg[]>([]);
@@ -1489,14 +1593,7 @@ function WhatsAppLiveDemo() {
 
   // Live conversation-list simulator
   type WaStatus =
-    | "typing"
-    | "replied"
-    | "seen"
-    | "scheduled"
-    | "quoted"
-    | "location"
-    | "started"
-    | "delivered";
+    "typing" | "replied" | "seen" | "scheduled" | "quoted" | "location" | "started" | "delivered";
   type ConvoState = {
     lastClient: string;
     lastAi: string;
@@ -1511,7 +1608,8 @@ function WhatsAppLiveDemo() {
   const [convoState, setConvoState] = useState<Record<number, ConvoState>>(() => {
     const s: Record<number, ConvoState> = {};
     WA_CONVOS.forEach((c, i) => {
-      const lastClient = [...c.messages].reverse().find((m) => m.from === "client")?.text ?? c.preview;
+      const lastClient =
+        [...c.messages].reverse().find((m) => m.from === "client")?.text ?? c.preview;
       const lastAi = [...c.messages].reverse().find((m) => m.from === "ai")?.text ?? "";
       s[i] = { lastClient, lastAi, status: "replied", unread: 0, showing: "ai" };
     });
@@ -1521,7 +1619,6 @@ function WhatsAppLiveDemo() {
   useEffect(() => {
     setOrder((prev) => [convoIdx, ...prev.filter((i) => i !== convoIdx)]);
     setConvoState((s) => ({ ...s, [convoIdx]: { ...s[convoIdx], unread: 0, status: "replied" } }));
-
   }, [convoIdx]);
 
   // Background: continuously make non-active conversations receive/reply
@@ -1536,8 +1633,16 @@ function WhatsAppLiveDemo() {
       const question = WA_CLIENT_QS[Math.floor(Math.random() * WA_CLIENT_QS.length)];
       const reply = WA_AI_REPLIES[Math.floor(Math.random() * WA_AI_REPLIES.length)];
       const terminalPool: WaStatus[] = [
-        "replied", "replied", "replied", "seen", "seen",
-        "scheduled", "quoted", "location", "delivered", "started",
+        "replied",
+        "replied",
+        "replied",
+        "seen",
+        "seen",
+        "scheduled",
+        "quoted",
+        "location",
+        "delivered",
+        "started",
       ];
       const terminal = terminalPool[Math.floor(Math.random() * terminalPool.length)];
 
@@ -1568,13 +1673,16 @@ function WhatsAppLiveDemo() {
 
       // 3) IA responds — client message replaced by AI reply in the list
       timeouts.push(
-        setTimeout(() => {
-          if (cancelled) return;
-          setConvoState((s) => ({
-            ...s,
-            [idx]: { ...s[idx], lastAi: reply, status: terminal, showing: "ai" },
-          }));
-        }, 2600 + Math.random() * 600),
+        setTimeout(
+          () => {
+            if (cancelled) return;
+            setConvoState((s) => ({
+              ...s,
+              [idx]: { ...s[idx], lastAi: reply, status: terminal, showing: "ai" },
+            }));
+          },
+          2600 + Math.random() * 600,
+        ),
       );
 
       // 4) later, escalate to "seen" occasionally + clear highlight
@@ -1602,11 +1710,23 @@ function WhatsAppLiveDemo() {
     };
   }, [convoIdx]);
 
-  const AGO = ["agora", "1 min", "3 min", "6 min", "12 min", "18 min", "22 min", "27 min", "34 min", "41 min", "52 min", "1 h"];
+  const AGO = [
+    "agora",
+    "1 min",
+    "3 min",
+    "6 min",
+    "12 min",
+    "18 min",
+    "22 min",
+    "27 min",
+    "34 min",
+    "41 min",
+    "52 min",
+    "1 h",
+  ];
   // Render the full buffer so items never unmount — the fixed-height list
   // just clips whatever falls below the visible area (like a real feed).
   const listShown = order;
-
 
   return (
     <div className="relative flex w-full flex-col items-center gap-4">
@@ -1679,7 +1799,12 @@ function WhatsAppLiveDemo() {
                     isActive && "bg-brand-green/5",
                   )}
                 >
-                  <div className={cn("relative grid h-9 w-9 shrink-0 place-items-center rounded-full text-xs font-semibold text-white", c.color)}>
+                  <div
+                    className={cn(
+                      "relative grid h-9 w-9 shrink-0 place-items-center rounded-full text-xs font-semibold text-white",
+                      c.color,
+                    )}
+                  >
                     {c.initial}
                     {(isActive || st.status === "typing") && (
                       <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-card bg-brand-green" />
@@ -1689,7 +1814,9 @@ function WhatsAppLiveDemo() {
                     <div className="flex items-center justify-between gap-2">
                       <p className="truncate text-xs font-semibold">{c.name}</p>
                       <div className="flex shrink-0 items-center gap-1.5">
-                        <span className="text-[10px] text-muted-foreground">{AGO[pos] ?? `${pos + 5} min`}</span>
+                        <span className="text-[10px] text-muted-foreground">
+                          {AGO[pos] ?? `${pos + 5} min`}
+                        </span>
                         <AnimatePresence>
                           {!isActive && st.unread > 0 && (
                             <motion.span
@@ -1756,7 +1883,12 @@ function WhatsAppLiveDemo() {
                       </AnimatePresence>
                     </div>
                     {st.status !== "typing" && (
-                      <p className={cn("mt-0.5 flex items-center gap-1 text-[10px] font-medium", toneClass)}>
+                      <p
+                        className={cn(
+                          "mt-0.5 flex items-center gap-1 text-[10px] font-medium",
+                          toneClass,
+                        )}
+                      >
                         <span>{meta.icon}</span>
                         <span className="truncate">
                           {isActive ? "Atendimento em andamento" : meta.label}
@@ -1773,7 +1905,6 @@ function WhatsAppLiveDemo() {
         {/* Live counters — reinforce the value at a glance */}
         <WhatsAppLiveCounters />
 
-
         {/* Phone card */}
         <div className="rounded-[2rem] border border-border bg-card p-3 shadow-xl shadow-brand-green/10">
           <div className="overflow-hidden rounded-[1.5rem] bg-muted/40">
@@ -1788,7 +1919,12 @@ function WhatsAppLiveDemo() {
                   transition={{ duration: 0.35 }}
                   className="flex items-center gap-3"
                 >
-                  <div className={cn("grid h-10 w-10 place-items-center rounded-full text-sm font-semibold text-white", convo.color)}>
+                  <div
+                    className={cn(
+                      "grid h-10 w-10 place-items-center rounded-full text-sm font-semibold text-white",
+                      convo.color,
+                    )}
+                  >
                     {convo.initial}
                   </div>
                   <div>
@@ -1799,7 +1935,9 @@ function WhatsAppLiveDemo() {
               </AnimatePresence>
               <div className="ml-auto flex items-center gap-1">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-brand-green" />
-                <span className="text-[10px] uppercase tracking-wider text-muted-foreground">IA</span>
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                  IA
+                </span>
               </div>
             </div>
 
@@ -1874,8 +2012,16 @@ function WhatsAppLiveDemo() {
           { label: "Tempo médio", value: "4s", icon: Zap, color: "text-primary" },
           { label: "Automático", value: "97%", icon: Sparkles, color: "text-brand-green" },
         ].map((stat) => (
-          <div key={stat.label} className="rounded-xl border border-border bg-card px-3 py-2 text-center">
-            <div className={cn("flex items-center justify-center gap-1 text-sm font-semibold", stat.color)}>
+          <div
+            key={stat.label}
+            className="rounded-xl border border-border bg-card px-3 py-2 text-center"
+          >
+            <div
+              className={cn(
+                "flex items-center justify-center gap-1 text-sm font-semibold",
+                stat.color,
+              )}
+            >
               <stat.icon className="h-3.5 w-3.5" />
               {stat.value}
             </div>
@@ -1978,10 +2124,7 @@ function BeforeAfter() {
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className={cn(
-              "ba-card ba-card--bad rounded-2xl border p-8",
-              shineBad && "ba-shine",
-            )}
+            className={cn("ba-card ba-card--bad rounded-2xl border p-8", shineBad && "ba-shine")}
           >
             <div className="mb-6 flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[color-mix(in_oklab,oklch(0.62_0.19_25)_14%,transparent)]">
@@ -2024,10 +2167,7 @@ function BeforeAfter() {
               <Sparkles className="h-4 w-4 text-brand-green" />
             </motion.div>
           </div>
-          <div
-            aria-hidden
-            className="flex items-center justify-center md:hidden"
-          >
+          <div aria-hidden className="flex items-center justify-center md:hidden">
             <motion.div
               initial={{ opacity: 0, y: -6 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -2091,10 +2231,26 @@ function BeforeAfter() {
 
 function HowItWorks() {
   const steps = [
-    { n: "Semana 1", title: "Conhecemos você", desc: "Conversamos e mapeamos como sua empresa funciona hoje." },
-    { n: "Semana 2", title: "Organizamos sua presença", desc: "Deixamos você visível e apresentável no digital." },
-    { n: "Semana 3", title: "Ligamos o atendimento", desc: "Colocamos WhatsApp e automações inteligentes para funcionar em segundo plano." },
-    { n: "Semana 4", title: "Passamos a cuidar continuamente", desc: "Acompanhamos, ajustamos e evoluímos — sua rotina digital não para." },
+    {
+      n: "Semana 1",
+      title: "Conhecemos você",
+      desc: "Conversamos e mapeamos como sua empresa funciona hoje.",
+    },
+    {
+      n: "Semana 2",
+      title: "Organizamos sua presença",
+      desc: "Deixamos você visível e apresentável no digital.",
+    },
+    {
+      n: "Semana 3",
+      title: "Ligamos o atendimento",
+      desc: "Colocamos WhatsApp e automações inteligentes para funcionar em segundo plano.",
+    },
+    {
+      n: "Semana 4",
+      title: "Passamos a cuidar continuamente",
+      desc: "Acompanhamos, ajustamos e evoluímos — sua rotina digital não para.",
+    },
   ];
   return (
     <section className="border-t border-border">
@@ -2105,15 +2261,20 @@ function HowItWorks() {
             O que acontece quando você contrata a Caetus?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Não entregamos um projeto e desaparecemos. Assumimos sua Operação
-            Digital e seguimos cuidando conforme sua empresa cresce.
+            Não entregamos um projeto e desaparecemos. Assumimos sua Operação Digital e seguimos
+            cuidando conforme sua empresa cresce.
           </p>
         </div>
-        <div data-reveal-stagger className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div
+          data-reveal-stagger
+          className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
+        >
           {steps.map((s, i) => (
             <div key={s.n} className="relative rounded-xl border border-border bg-card p-6">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-medium uppercase tracking-wider text-primary">{s.n}</span>
+                <span className="text-xs font-medium uppercase tracking-wider text-primary">
+                  {s.n}
+                </span>
                 <div className="h-px flex-1 bg-border" />
               </div>
               <h3 className="mt-4 text-lg font-semibold tracking-tight">{s.title}</h3>
@@ -2145,13 +2306,25 @@ const EVO_STEPS: EvoStep[] = [
   {
     m: "Mês 1",
     title: "Sua base digital começa a tomar forma.",
-    items: ["Site profissional", "Google Business", "Google Maps", "WhatsApp Inteligente", "Redes sociais organizadas"],
+    items: [
+      "Site profissional",
+      "Google Business",
+      "Google Maps",
+      "WhatsApp Inteligente",
+      "Redes sociais organizadas",
+    ],
     icons: [Globe, Instagram, Facebook, Linkedin, MapPin, Search, Heart, Bell, MessageCircle],
   },
   {
     m: "Mês 2",
     title: "Sua empresa começa a ganhar produtividade.",
-    items: ["Publicações periódicas", "Marketplace (quando fizer sentido)", "Cadastro de produtos", "Primeiras automações", "Integrações"],
+    items: [
+      "Publicações periódicas",
+      "Marketplace (quando fizer sentido)",
+      "Cadastro de produtos",
+      "Primeiras automações",
+      "Integrações",
+    ],
     icons: [Workflow, Repeat, Zap, ShoppingBag, Check, ArrowRight, Sparkles],
   },
   {
@@ -2163,14 +2336,28 @@ const EVO_STEPS: EvoStep[] = [
   {
     m: "Mês 4",
     title: "Sua operação começa a trabalhar por você.",
-    items: ["Inteligência Artificial", "Fluxos inteligentes", "Sistemas personalizados (quando necessário)", "Melhorias contínuas"],
+    items: [
+      "Inteligência Artificial",
+      "Fluxos inteligentes",
+      "Sistemas personalizados (quando necessário)",
+      "Melhorias contínuas",
+    ],
     icons: [BrainCircuit, Bot, Cpu, Zap, Sparkles, Code2],
   },
   {
     m: "Depois disso...",
     title: "Sua operação continua evoluindo conforme sua empresa cresce.",
     items: ["Novas soluções são incorporadas sempre que fizer sentido para o seu negócio."],
-    icons: [InfinityIcon, BrainCircuit, LayoutDashboard, Workflow, Globe, MessageCircle, BarChart3, Sparkles],
+    icons: [
+      InfinityIcon,
+      BrainCircuit,
+      LayoutDashboard,
+      Workflow,
+      Globe,
+      MessageCircle,
+      BarChart3,
+      Sparkles,
+    ],
     last: true,
   },
 ];
@@ -2194,7 +2381,13 @@ function ThemeParticles({ icons, activeKey }: { icons: EvoStep["icons"]; activeK
             initial={{ opacity: 0, y: 20, x: 0, rotate: 0, scale: 0.6 }}
             animate={{ opacity: [0, 0.22, 0.18, 0], y: -60, x: p.drift, rotate: p.rot, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 3.6, delay: p.delay, ease: "easeOut", repeat: Infinity, repeatDelay: 0.4 }}
+            transition={{
+              duration: 3.6,
+              delay: p.delay,
+              ease: "easeOut",
+              repeat: Infinity,
+              repeatDelay: 0.4,
+            }}
             style={{ left: `${p.left}%` }}
             className="absolute top-6 text-primary"
           >
@@ -2226,9 +2419,12 @@ function EvolutionTimeline() {
     pauseTimer.current = setTimeout(() => setPaused(false), 8000);
   };
 
-  useEffect(() => () => {
-    if (pauseTimer.current) clearTimeout(pauseTimer.current);
-  }, []);
+  useEffect(
+    () => () => {
+      if (pauseTimer.current) clearTimeout(pauseTimer.current);
+    },
+    [],
+  );
 
   const progress = ((active + 1) / EVO_STEPS.length) * 100;
 
@@ -2342,8 +2538,6 @@ function EvolutionTimeline() {
   );
 }
 
-
-
 function CTA() {
   return (
     <section id="contato" className="border-t border-border bg-primary text-primary-foreground">
@@ -2352,11 +2546,15 @@ function CTA() {
           Finalmente, alguém cuidando dessa parte da sua empresa.
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-balance text-lg text-primary-foreground/70">
-          Conte pra gente como sua empresa funciona hoje. A Caetus assume o
-          digital para você voltar a focar no seu negócio.
+          Conte pra gente como sua empresa funciona hoje. A Caetus assume o digital para você voltar
+          a focar no seu negócio.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button asChild size="lg" className="animate-breathing rounded-full bg-brand-green px-6 text-white hover:bg-brand-green/90">
+          <Button
+            asChild
+            size="lg"
+            className="animate-breathing rounded-full bg-brand-green px-6 text-white hover:bg-brand-green/90"
+          >
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon className="mr-1 h-4 w-4" />
               Falar no WhatsApp
@@ -2368,8 +2566,18 @@ function CTA() {
               <ArrowRight className="ml-1 h-4 w-4" />
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline" className="rounded-full border-primary-foreground/30 bg-transparent px-6 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram da Caetus Systems">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="rounded-full border-primary-foreground/30 bg-transparent px-6 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+          >
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir Instagram da Caetus Systems"
+            >
               <Instagram className="mr-1 h-4 w-4" />
               Instagram
             </a>
@@ -2428,8 +2636,8 @@ function ValueProp() {
           transition={{ duration: 0.7, delay: 0.05 }}
           className="mx-auto mt-8 max-w-4xl text-balance text-center text-3xl font-medium leading-[1.15] tracking-tight text-foreground/80 md:text-5xl lg:text-6xl"
         >
-          Você não precisa contratar uma agência, um desenvolvedor, um social
-          media, um designer e alguém para responder seu WhatsApp.
+          Você não precisa contratar uma agência, um desenvolvedor, um social media, um designer e
+          alguém para responder seu WhatsApp.
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
@@ -2504,7 +2712,10 @@ function EcosystemHighlight() {
       if (p < 1) raf = requestAnimationFrame(tick);
       else {
         // Wait for icons to finish appearing (stagger)
-        const done = window.setTimeout(() => setPhase("revealed"), ECOSYSTEM_ICONS.length * 80 + 400);
+        const done = window.setTimeout(
+          () => setPhase("revealed"),
+          ECOSYSTEM_ICONS.length * 80 + 400,
+        );
         return () => window.clearTimeout(done);
       }
     };
@@ -2553,7 +2764,9 @@ function EcosystemHighlight() {
 
         <div className="relative flex items-center justify-center gap-3 text-primary">
           <Sparkles className="h-5 w-5" />
-          <span className="text-xs font-semibold uppercase tracking-widest">Ecossistema completo</span>
+          <span className="text-xs font-semibold uppercase tracking-widest">
+            Ecossistema completo
+          </span>
         </div>
 
         {/* Orbit stage */}
@@ -2564,31 +2777,32 @@ function EcosystemHighlight() {
             viewBox="0 0 100 100"
             className="pointer-events-none absolute inset-0 h-full w-full"
           >
-            {linkPair && (() => {
-              const [a, b] = linkPair;
-              const rA = a % 2 === 0 ? 44 : 34;
-              const rB = b % 2 === 0 ? 44 : 34;
-              const angA = (a / n) * Math.PI * 2 - Math.PI / 2;
-              const angB = (b / n) * Math.PI * 2 - Math.PI / 2;
-              const ax = 50 + Math.cos(angA) * rA;
-              const ay = 50 + Math.sin(angA) * rA;
-              const bx = 50 + Math.cos(angB) * rB;
-              const by = 50 + Math.sin(angB) * rB;
-              return (
-                <motion.line
-                  x1={ax}
-                  y1={ay}
-                  x2={bx}
-                  y2={by}
-                  stroke="color-mix(in oklab, var(--primary) 55%, transparent)"
-                  strokeWidth={0.35}
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: [0, 1, 1, 0] }}
-                  transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.25, 0.75, 1] }}
-                />
-              );
-            })()}
+            {linkPair &&
+              (() => {
+                const [a, b] = linkPair;
+                const rA = a % 2 === 0 ? 44 : 34;
+                const rB = b % 2 === 0 ? 44 : 34;
+                const angA = (a / n) * Math.PI * 2 - Math.PI / 2;
+                const angB = (b / n) * Math.PI * 2 - Math.PI / 2;
+                const ax = 50 + Math.cos(angA) * rA;
+                const ay = 50 + Math.sin(angA) * rA;
+                const bx = 50 + Math.cos(angB) * rB;
+                const by = 50 + Math.sin(angB) * rB;
+                return (
+                  <motion.line
+                    x1={ax}
+                    y1={ay}
+                    x2={bx}
+                    y2={by}
+                    stroke="color-mix(in oklab, var(--primary) 55%, transparent)"
+                    strokeWidth={0.35}
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: [0, 1, 1, 0] }}
+                    transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.25, 0.75, 1] }}
+                  />
+                );
+              })()}
           </svg>
 
           {/* Center number */}
@@ -2668,8 +2882,8 @@ function EcosystemHighlight() {
           35+ soluções disponíveis em uma única Operação Digital.
         </p>
         <p className="relative mt-3 text-sm text-muted-foreground md:text-base">
-          Sua operação cresce conforme a necessidade da sua empresa —
-          uma mensalidade, um parceiro, uma operação integrada.
+          Sua operação cresce conforme a necessidade da sua empresa — uma mensalidade, um parceiro,
+          uma operação integrada.
         </p>
       </div>
     </div>
@@ -2681,22 +2895,49 @@ function Ecosystem() {
     {
       icon: Globe,
       title: "Presença Digital",
-      items: ["Site Profissional", "Landing Pages", "Google Business", "Google Maps", "Instagram", "Facebook", "LinkedIn", "Marketplace"],
+      items: [
+        "Site Profissional",
+        "Landing Pages",
+        "Google Business",
+        "Google Maps",
+        "Instagram",
+        "Facebook",
+        "LinkedIn",
+        "Marketplace",
+      ],
     },
     {
       icon: Headphones,
       title: "Atendimento",
-      items: ["WhatsApp Inteligente", "IA para atendimento", "Agendamentos", "Orçamentos", "Respostas automáticas"],
+      items: [
+        "WhatsApp Inteligente",
+        "IA para atendimento",
+        "Agendamentos",
+        "Orçamentos",
+        "Respostas automáticas",
+      ],
     },
     {
       icon: Megaphone,
       title: "Marketing",
-      items: ["Publicações periódicas", "Criação de conteúdo", "Campanhas promocionais", "Tráfego Pago (quando fizer sentido)", "Gestão de redes sociais"],
+      items: [
+        "Publicações periódicas",
+        "Criação de conteúdo",
+        "Campanhas promocionais",
+        "Tráfego Pago (quando fizer sentido)",
+        "Gestão de redes sociais",
+      ],
     },
     {
       icon: Workflow,
       title: "Automação",
-      items: ["Automação de planilhas", "Integração entre sistemas", "Fluxos automáticos", "Organização de arquivos", "Relatórios automáticos"],
+      items: [
+        "Automação de planilhas",
+        "Integração entre sistemas",
+        "Fluxos automáticos",
+        "Organização de arquivos",
+        "Relatórios automáticos",
+      ],
     },
     {
       icon: LayoutDashboard,
@@ -2706,12 +2947,24 @@ function Ecosystem() {
     {
       icon: Code2,
       title: "Desenvolvimento",
-      items: ["Sistemas personalizados", "Softwares sob medida", "APIs", "Integrações", "Melhorias contínuas"],
+      items: [
+        "Sistemas personalizados",
+        "Softwares sob medida",
+        "APIs",
+        "Integrações",
+        "Melhorias contínuas",
+      ],
     },
     {
       icon: BrainCircuit,
       title: "Inteligência Artificial",
-      items: ["Atendimento inteligente", "Assistentes digitais", "Geração de conteúdo", "Organização automática", "Fluxos inteligentes"],
+      items: [
+        "Atendimento inteligente",
+        "Assistentes digitais",
+        "Geração de conteúdo",
+        "Organização automática",
+        "Fluxos inteligentes",
+      ],
     },
   ];
   return (
@@ -2723,19 +2976,21 @@ function Ecosystem() {
             Uma contratação. Toda a sua operação digital.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            Enquanto muitas empresas precisam contratar uma agência, um desenvolvedor,
-            um social media, alguém para cuidar do WhatsApp, outro para atualizar o
-            site e outro para automatizar processos, a Caetus reúne tudo isso em uma
-            única operação.
+            Enquanto muitas empresas precisam contratar uma agência, um desenvolvedor, um social
+            media, alguém para cuidar do WhatsApp, outro para atualizar o site e outro para
+            automatizar processos, a Caetus reúne tudo isso em uma única operação.
           </p>
           <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-            Conforme sua empresa evolui, novos serviços são incorporados naturalmente.
-            Você não compra um projeto fechado — você ganha uma estrutura digital que
-            cresce junto com o seu negócio.
+            Conforme sua empresa evolui, novos serviços são incorporados naturalmente. Você não
+            compra um projeto fechado — você ganha uma estrutura digital que cresce junto com o seu
+            negócio.
           </p>
         </div>
 
-        <div data-reveal-stagger className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          data-reveal-stagger
+          className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {categories.map((c) => (
             <div
               key={c.title}
@@ -2760,7 +3015,6 @@ function Ecosystem() {
         </div>
 
         <EcosystemHighlight />
-
       </div>
     </section>
   );
@@ -2794,11 +3048,14 @@ function WhatsIncluded() {
             O que normalmente faz parte da sua operação.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Um mesmo time cuidando de tudo o que hoje vive espalhado — presença,
-            atendimento, automações inteligentes e organização em um só lugar.
+            Um mesmo time cuidando de tudo o que hoje vive espalhado — presença, atendimento,
+            automações inteligentes e organização em um só lugar.
           </p>
         </div>
-        <div data-reveal-stagger className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+        <div
+          data-reveal-stagger
+          className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4"
+        >
           {items.map((i) => (
             <div
               key={i}
@@ -2812,8 +3069,7 @@ function WhatsIncluded() {
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground">
-          O escopo é montado sob medida — só o que faz sentido para a sua empresa,
-          nada além disso.
+          O escopo é montado sob medida — só o que faz sentido para a sua empresa, nada além disso.
         </p>
       </div>
     </section>
@@ -2840,11 +3096,14 @@ function ForWho() {
             Ideal para empresas como:
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            A Caetus atende negócios reais do dia a dia — de quem cuida do
-            atendimento na esquina até quem toca uma operação com equipe.
+            A Caetus atende negócios reais do dia a dia — de quem cuida do atendimento na esquina
+            até quem toca uma operação com equipe.
           </p>
         </div>
-        <div data-reveal-stagger className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+        <div
+          data-reveal-stagger
+          className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4"
+        >
           {segments.map((s) => (
             <div
               key={s.label}
@@ -2893,19 +3152,20 @@ function About() {
           {/* Photo placeholder */}
           <div className="lg:sticky lg:top-24 lg:self-start">
             <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-border/70 bg-gradient-to-br from-muted/60 via-card to-muted/40 shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--primary)_35%,transparent)]">
+              <img
+                src="/Henrique Caetano.jpeg"
+                alt="Henrique Caetano"
+                className="absolute inset-0 h-full w-full object-cover"
+                referrerPolicy="no-referrer"
+              />
               <div
                 aria-hidden
-                className="absolute inset-0 opacity-[0.35]"
+                className="absolute inset-0 opacity-[0.15] pointer-events-none"
                 style={{
                   backgroundImage:
                     "radial-gradient(circle at 30% 20%, color-mix(in oklab, var(--primary) 25%, transparent), transparent 55%), radial-gradient(circle at 80% 90%, color-mix(in oklab, var(--brand-green) 20%, transparent), transparent 60%)",
                 }}
               />
-              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/60">
-                <span className="grid h-16 w-16 place-items-center rounded-2xl border border-border/60 bg-background/60 backdrop-blur">
-                  <ImageIcon className="h-6 w-6" />
-                </span>
-              </div>
               <div className="absolute bottom-4 left-4 rounded-full border border-border/60 bg-background/80 px-3 py-1 text-[11px] font-medium text-foreground/80 backdrop-blur">
                 Henrique Caetano · Fundador
               </div>
@@ -2923,26 +3183,26 @@ function About() {
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/85 sm:text-lg">
               <p>
-                A <strong className="text-foreground">Caetus Systems</strong> nasceu em Lagoa
-                Santa com um objetivo simples: ajudar pequenas empresas a competir em
-                igualdade com empresas muito maiores por meio da tecnologia.
+                A <strong className="text-foreground">Caetus Systems</strong> nasceu em Lagoa Santa
+                com um objetivo simples: ajudar pequenas empresas a competir em igualdade com
+                empresas muito maiores por meio da tecnologia.
               </p>
               <p>
-                Acreditamos que negócios locais têm força — o que costuma faltar é
-                estrutura digital para acompanhar esse potencial. É essa estrutura que
-                a Caetus assume, monta e cuida continuamente para cada cliente.
+                Acreditamos que negócios locais têm força — o que costuma faltar é estrutura digital
+                para acompanhar esse potencial. É essa estrutura que a Caetus assume, monta e cuida
+                continuamente para cada cliente.
               </p>
               <p>
                 A empresa é conduzida por{" "}
-                <strong className="text-foreground">Henrique Caetano</strong>, com mais de 5
-                anos de experiência desenvolvendo soluções de automação industrial,
-                integração de sistemas e otimização de processos — em ambientes onde
-                organização, eficiência e confiabilidade não são opcionais.
+                <strong className="text-foreground">Henrique Caetano</strong>, com mais de 5 anos de
+                experiência desenvolvendo soluções de automação industrial, integração de sistemas e
+                otimização de processos — em ambientes onde organização, eficiência e confiabilidade
+                não são opcionais.
               </p>
               <p>
-                Essa mesma bagagem é aplicada hoje para que pequenas empresas ganhem
-                tempo, vendam mais e tenham uma operação digital organizada — sem
-                depender do dono estar em todo lugar ao mesmo tempo.
+                Essa mesma bagagem é aplicada hoje para que pequenas empresas ganhem tempo, vendam
+                mais e tenham uma operação digital organizada — sem depender do dono estar em todo
+                lugar ao mesmo tempo.
               </p>
             </div>
 
@@ -2973,7 +3233,6 @@ function About() {
                   <CoverageMap />
                 </Suspense>
               </div>
-
 
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 <div>
@@ -3053,9 +3312,8 @@ function About() {
               Nosso posicionamento
             </span>
             <blockquote className="mt-8 text-balance text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
-              <span className="text-primary">“</span>
-              A tecnologia pode ser desenvolvida de qualquer lugar. Mas
-              entender o seu negócio de perto faz toda a diferença.
+              <span className="text-primary">“</span>A tecnologia pode ser desenvolvida de qualquer
+              lugar. Mas entender o seu negócio de perto faz toda a diferença.
               <span className="text-primary">”</span>
             </blockquote>
             <div className="mx-auto mt-10 h-px w-16 bg-primary/40" />
@@ -3065,8 +3323,6 @@ function About() {
     </section>
   );
 }
-
-
 
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
@@ -3113,11 +3369,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
 
 function FAQ() {
   return (
-    <section
-      id="faq"
-      aria-labelledby="faq-title"
-      className="border-t border-border bg-muted/30"
-    >
+    <section id="faq" aria-labelledby="faq-title" className="border-t border-border bg-muted/30">
       <div className="mx-auto max-w-3xl px-6 py-24">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
           Perguntas frequentes
@@ -3129,32 +3381,26 @@ function FAQ() {
           Tudo o que você precisa saber sobre a Caetus
         </h2>
         <p className="mt-4 text-muted-foreground">
-          Respostas objetivas — pensadas para pessoas, para o Google e para
-          mecanismos de resposta baseados em Inteligência Artificial.
+          Respostas objetivas — pensadas para pessoas, para o Google e para mecanismos de resposta
+          baseados em Inteligência Artificial.
         </p>
 
         <div className="mt-10 divide-y divide-border rounded-2xl border border-border bg-card">
           {FAQ_ITEMS.map((item) => (
             <details key={item.q} className="group p-5 open:bg-muted/30">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                <h3 className="text-base font-semibold text-foreground">
-                  {item.q}
-                </h3>
+                <h3 className="text-base font-semibold text-foreground">{item.q}</h3>
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-transform group-open:rotate-45">
                   <span className="text-lg leading-none">+</span>
                 </span>
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {item.a}
-              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
             </details>
           ))}
         </div>
 
         <aside className="mt-10 rounded-2xl border border-border/60 bg-card p-5 text-sm text-muted-foreground">
-          <p className="font-semibold text-foreground">
-            Quer se aprofundar sobre SEO, AEO e GEO?
-          </p>
+          <p className="font-semibold text-foreground">Quer se aprofundar sobre SEO, AEO e GEO?</p>
           <p className="mt-2">
             Leia o artigo{" "}
             <Link
@@ -3173,76 +3419,6 @@ function FAQ() {
             .
           </p>
         </aside>
-      </div>
-    </section>
-  );
-}
-
-const AI_QUESTIONS: { q: string; a: string }[] = [
-  {
-    q: "Quem cria sites para empresas em Lagoa Santa?",
-    a: "A Caetus Systems desenvolve sites profissionais para pequenas empresas em Lagoa Santa, Vespasiano, Pedro Leopoldo, Belo Horizonte e região — preparados para SEO, AEO e GEO desde o primeiro dia.",
-  },
-  {
-    q: "Como automatizar o atendimento no WhatsApp?",
-    a: "A Caetus implementa WhatsApp Business com Inteligência Artificial: atendimento 24/7, agendamentos, respostas personalizadas e encaminhamento humano quando necessário.",
-  },
-  {
-    q: "Vale a pena contratar uma agência ou centralizar tudo em um parceiro?",
-    a: "Centralizar site, redes sociais, WhatsApp, automações e sistemas em um único parceiro — como a Caetus Systems — evita a complexidade de coordenar agência, desenvolvedor, designer e social media separadamente. É o conceito de Operação Digital.",
-  },
-  {
-    q: "Minha empresa precisa de um site ou basta ter Instagram?",
-    a: "Instagram é vitrine, mas não substitui um site. Sites profissionais aparecem no Google, no Google Maps e podem ser citados por IAs como ChatGPT e Gemini. O ideal é ter os dois integrados, como a Caetus faz na Operação Digital.",
-  },
-];
-
-function AIQuestions() {
-  return (
-    <section
-      id="perguntas-para-ia"
-      aria-labelledby="ai-questions-title"
-      className="border-t border-border"
-    >
-      <div className="mx-auto max-w-5xl px-6 py-24">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-          Perguntas que nossos clientes fazem para a IA
-        </p>
-        <h2
-          id="ai-questions-title"
-          className="mt-3 max-w-3xl text-balance text-4xl font-semibold tracking-tight md:text-5xl"
-        >
-          As IAs já respondem — e nós ajudamos você a aparecer.
-        </h2>
-        <p className="mt-4 max-w-2xl text-muted-foreground">
-          Empresários pesquisam no ChatGPT, Gemini, Copilot e Perplexity. Veja
-          como a Caetus Systems aparece naturalmente em perguntas reais do dia
-          a dia.
-        </p>
-
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-          {AI_QUESTIONS.map((item) => (
-            <article
-              key={item.q}
-              className="rounded-2xl border border-border bg-card p-6 shadow-sm"
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Pergunta para a IA
-              </p>
-              <h3 className="mt-2 text-lg font-semibold tracking-tight">
-                “{item.q}”
-              </h3>
-              <div className="mt-4 rounded-xl border border-border/60 bg-muted/30 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-                  Resposta gerada
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/90">
-                  {item.a}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
       </div>
     </section>
   );

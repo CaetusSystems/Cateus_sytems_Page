@@ -6,14 +6,11 @@ const FEATURED = [
   {
     slug: "/blog/futuro-do-seo-com-ia",
     tag: "SEO • AEO • GEO",
-    title:
-      "SEO está mudando: seu próximo cliente talvez nunca entre no Google",
+    title: "SEO está mudando: seu próximo cliente talvez nunca entre no Google",
     excerpt:
       "Como preparar sua empresa para ser encontrada por inteligências artificiais como ChatGPT, Gemini e Copilot — sem depender só da busca tradicional.",
   },
 ] as const;
-
-
 
 export default function Blog() {
   useDocumentHead({
@@ -62,8 +59,8 @@ export default function Blog() {
           Blog Caetus Systems
         </h1>
         <p className="mt-4 text-balance text-muted-foreground">
-          Conteúdos sobre SEO, IA, automação e tecnologia para pequenas
-          empresas de Lagoa Santa, Belo Horizonte e região.
+          Conteúdos sobre SEO, IA, automação e tecnologia para pequenas empresas de Lagoa Santa,
+          Belo Horizonte e região.
         </p>
       </header>
 
@@ -95,10 +92,7 @@ export default function Blog() {
         </h2>
         <ul className="mt-4 grid w-full grid-cols-1 gap-2 text-sm text-muted-foreground sm:grid-cols-2">
           {topics.map((t) => (
-            <li
-              key={t}
-              className="rounded-lg border border-border/60 bg-card px-4 py-3 text-left"
-            >
+            <li key={t} className="rounded-lg border border-border/60 bg-card px-4 py-3 text-left">
               {t}
             </li>
           ))}

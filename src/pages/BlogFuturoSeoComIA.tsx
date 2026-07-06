@@ -25,8 +25,7 @@ import {
 } from "lucide-react";
 
 const ARTICLE_URL = "/blog/futuro-do-seo-com-ia";
-const ARTICLE_TITLE =
-  "SEO, AEO e GEO: como preparar seu site para o Google e para as IAs";
+const ARTICLE_TITLE = "SEO, AEO e GEO: como preparar seu site para o Google e para as IAs";
 const ARTICLE_DESCRIPTION =
   "Guia completo sobre SEO, AEO e GEO: como preparar seu site para o Google e para inteligências artificiais como ChatGPT, Gemini e Copilot em 2026.";
 const ARTICLE_PUBLISHED = "2026-07-03";
@@ -64,7 +63,6 @@ const FAQ: { q: string; a: string }[] = [
     a: "Sim. Em muitos casos é mais rápido e barato reestruturar o site atual do que criar um novo do zero — desde que a base técnica permita adicionar Schema.org, melhorar performance e reorganizar o conteúdo.",
   },
 ];
-
 
 function Reveal({
   children,
@@ -142,11 +140,7 @@ function AnimatedFlow({
               icon={s.icon}
               label={s.label}
               tone={
-                highlightLast && i === steps.length - 1
-                  ? "green"
-                  : i === 0
-                    ? "primary"
-                    : "muted"
+                highlightLast && i === steps.length - 1 ? "green" : i === 0 ? "primary" : "muted"
               }
             />
           </Reveal>
@@ -222,13 +216,7 @@ const CHECKLIST = [
   "Atualizações contínuas de conteúdo",
 ];
 
-function TimelineItem({
-  item,
-  index,
-}: {
-  item: (typeof TIMELINE)[number];
-  index: number;
-}) {
+function TimelineItem({ item, index }: { item: (typeof TIMELINE)[number]; index: number }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const isRight = index % 2 === 1;
@@ -310,11 +298,7 @@ function AnimatedChecklist() {
               >
                 <Check className="h-3.5 w-3.5" />
               </motion.span>
-              <span
-                className={`text-sm ${
-                  isDone ? "text-foreground" : "text-muted-foreground"
-                }`}
-              >
+              <span className={`text-sm ${isDone ? "text-foreground" : "text-muted-foreground"}`}>
                 {item}
               </span>
             </li>
@@ -363,7 +347,15 @@ export default function ArticlePage() {
             name: "Caetus Systems",
             logo: { "@type": "ImageObject", url: "/favicon.ico" },
           },
-          about: ["SEO", "AEO", "GEO", "Inteligência Artificial", "ChatGPT", "Gemini", "Google Business"],
+          about: [
+            "SEO",
+            "AEO",
+            "GEO",
+            "Inteligência Artificial",
+            "ChatGPT",
+            "Gemini",
+            "Google Business",
+          ],
           keywords:
             "SEO, AEO, GEO, IA, ChatGPT, Gemini, Copilot, presença digital, pequenas empresas",
           mainEntityOfPage: { "@type": "WebPage", "@id": ARTICLE_URL },
@@ -393,10 +385,7 @@ export default function ArticlePage() {
       {/* Top nav */}
       <div className="border-b border-border/60 bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <Link
-            to="/"
-            className="text-sm font-semibold tracking-tight text-foreground"
-          >
+          <Link to="/" className="text-sm font-semibold tracking-tight text-foreground">
             Caetus Systems
           </Link>
           <Link
@@ -441,20 +430,17 @@ export default function ArticlePage() {
               </div>
               <span className="hidden h-4 w-px bg-border sm:inline-block" />
               <p className="text-xs">
-                Publicado em{" "}
-                <time dateTime={ARTICLE_PUBLISHED}>03 de julho de 2026</time> ·
-                Atualizado em{" "}
-                <time dateTime={ARTICLE_MODIFIED}>03 de julho de 2026</time>
+                Publicado em <time dateTime={ARTICLE_PUBLISHED}>03 de julho de 2026</time> ·
+                Atualizado em <time dateTime={ARTICLE_MODIFIED}>03 de julho de 2026</time>
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <p className="mt-6 max-w-2xl text-balance text-lg text-muted-foreground">
-              Cada vez mais pessoas fazem perguntas diretamente para
-              inteligências artificiais como ChatGPT, Gemini e Copilot — e
-              recebem uma resposta pronta, sem passar por uma lista de sites.
-              Sua empresa está preparada para aparecer nessas respostas?
+              Cada vez mais pessoas fazem perguntas diretamente para inteligências artificiais como
+              ChatGPT, Gemini e Copilot — e recebem uma resposta pronta, sem passar por uma lista de
+              sites. Sua empresa está preparada para aparecer nessas respostas?
             </p>
           </Reveal>
 
@@ -477,9 +463,7 @@ export default function ArticlePage() {
                   </div>
                   <div className="text-sm">
                     <p className="font-semibold">Hoje</p>
-                    <p className="text-muted-foreground">
-                      Pergunta direta para uma IA
-                    </p>
+                    <p className="text-muted-foreground">Pergunta direta para uma IA</p>
                   </div>
                 </div>
                 <ArrowRight className="hidden h-5 w-5 text-muted-foreground md:block" />
@@ -489,9 +473,7 @@ export default function ArticlePage() {
                   </div>
                   <div className="text-sm">
                     <p className="font-semibold">Amanhã</p>
-                    <p className="text-muted-foreground">
-                      IA recomenda sua empresa
-                    </p>
+                    <p className="text-muted-foreground">IA recomenda sua empresa</p>
                   </div>
                 </div>
               </div>
@@ -508,8 +490,7 @@ export default function ArticlePage() {
               Como funcionava antes
             </h2>
             <p className="mt-3 max-w-2xl text-muted-foreground">
-              Por mais de duas décadas, encontrar uma empresa seguiu quase
-              sempre o mesmo caminho.
+              Por mais de duas décadas, encontrar uma empresa seguiu quase sempre o mesmo caminho.
             </p>
           </Reveal>
           <div className="mt-10">
@@ -533,9 +514,9 @@ export default function ArticlePage() {
               Como está começando a funcionar agora
             </h2>
             <p className="mt-3 max-w-2xl text-muted-foreground">
-              As inteligências artificiais estão se tornando uma nova porta de
-              entrada para encontrar empresas. A pessoa pergunta, a IA
-              responde — e recomenda apenas quem está preparado.
+              As inteligências artificiais estão se tornando uma nova porta de entrada para
+              encontrar empresas. A pessoa pergunta, a IA responde — e recomenda apenas quem está
+              preparado.
             </p>
           </Reveal>
           <div className="mt-10">
@@ -556,14 +537,11 @@ export default function ArticlePage() {
       <section className="border-t border-border/60 bg-muted/30">
         <div className="mx-auto max-w-3xl px-6 py-20">
           <Reveal>
-            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-              O problema
-            </h2>
+            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">O problema</h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Muitos sites foram construídos pensando apenas no Google. Eles
-              não organizam informações essenciais — o que a empresa faz, onde
-              atende, como é contratada, quais dúvidas responde — de um jeito
-              que uma inteligência artificial consiga entender.
+              Muitos sites foram construídos pensando apenas no Google. Eles não organizam
+              informações essenciais — o que a empresa faz, onde atende, como é contratada, quais
+              dúvidas responde — de um jeito que uma inteligência artificial consiga entender.
             </p>
             <p className="mt-4 text-lg text-muted-foreground">
               Resultado: quando alguém pergunta a um ChatGPT da vida{" "}
@@ -600,9 +578,7 @@ export default function ArticlePage() {
                     <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                       {c.subtitle}
                     </p>
-                    <p className="mt-3 text-sm text-muted-foreground">
-                      {c.desc}
-                    </p>
+                    <p className="mt-3 text-sm text-muted-foreground">{c.desc}</p>
                   </div>
                 </Reveal>
               );
@@ -619,8 +595,7 @@ export default function ArticlePage() {
               Um exemplo prático
             </h2>
             <p className="mt-3 max-w-2xl text-muted-foreground">
-              Imagine duas oficinas mecânicas em Lagoa Santa. Alguém pergunta
-              para uma IA:{" "}
+              Imagine duas oficinas mecânicas em Lagoa Santa. Alguém pergunta para uma IA:{" "}
               <span className="font-semibold text-foreground">
                 "Qual a melhor oficina para revisão de carro em Lagoa Santa?"
               </span>
@@ -641,8 +616,8 @@ export default function ArticlePage() {
                   <li>• Google Business desatualizado.</li>
                 </ul>
                 <p className="mt-4 text-sm">
-                  A IA <span className="font-semibold">não a recomenda</span>{" "}
-                  porque não entende o que ela faz.
+                  A IA <span className="font-semibold">não a recomenda</span> porque não entende o
+                  que ela faz.
                 </p>
               </div>
             </Reveal>
@@ -679,8 +654,7 @@ export default function ArticlePage() {
               A evolução da descoberta de empresas
             </h2>
             <p className="mt-3 max-w-2xl text-muted-foreground">
-              Uma linha do tempo curta para entender onde estamos e para onde
-              vamos.
+              Uma linha do tempo curta para entender onde estamos e para onde vamos.
             </p>
           </Reveal>
 
@@ -706,8 +680,7 @@ export default function ArticlePage() {
               O que um site preparado para o futuro precisa ter
             </h2>
             <p className="mt-3 max-w-2xl text-muted-foreground">
-              Cada item abaixo é entregue de série nos sites que a Caetus
-              constrói.
+              Cada item abaixo é entregue de série nos sites que a Caetus constrói.
             </p>
           </Reveal>
 
@@ -719,8 +692,8 @@ export default function ArticlePage() {
             <div className="mt-12 rounded-3xl border border-primary/20 bg-gradient-to-br from-primary to-[color:color-mix(in_oklab,var(--primary)_75%,black)] p-8 text-center text-primary-foreground shadow-lg md:p-10">
               <Cpu className="mx-auto h-8 w-8 opacity-90" />
               <p className="mt-4 text-balance text-xl font-semibold md:text-2xl">
-                Na Caetus Systems, nossos sites já nascem preparados para o
-                presente e para o futuro da internet.
+                Na Caetus Systems, nossos sites já nascem preparados para o presente e para o futuro
+                da internet.
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <Link
@@ -754,8 +727,8 @@ export default function ArticlePage() {
               Dúvidas sobre SEO, AEO e GEO
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Respostas objetivas — pensadas para pessoas, para o Google e
-              para mecanismos de resposta baseados em IA.
+              Respostas objetivas — pensadas para pessoas, para o Google e para mecanismos de
+              resposta baseados em IA.
             </p>
           </Reveal>
 
@@ -764,16 +737,12 @@ export default function ArticlePage() {
               <Reveal key={item.q} delay={i * 0.05}>
                 <details className="group p-5 open:bg-muted/30">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                    <h3 className="text-base font-semibold text-foreground">
-                      {item.q}
-                    </h3>
+                    <h3 className="text-base font-semibold text-foreground">{item.q}</h3>
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-transform group-open:rotate-45">
                       <span className="text-lg leading-none">+</span>
                     </span>
                   </summary>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {item.a}
-                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
                 </details>
               </Reveal>
             ))}
@@ -841,16 +810,16 @@ export default function ArticlePage() {
               Seu site está preparado para o futuro das buscas?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-balance text-muted-foreground">
-              A Caetus Systems desenvolve sites já preparados para SEO, AEO e
-              GEO desde o primeiro dia — com estrutura semântica, dados
-              estruturados e conteúdo pronto para o Google e para as IAs.
+              A Caetus Systems desenvolve sites já preparados para SEO, AEO e GEO desde o primeiro
+              dia — com estrutura semântica, dados estruturados e conteúdo pronto para o Google e
+              para as IAs.
             </p>
           </Reveal>
 
           <Reveal delay={0.15}>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a
-                href="https://wa.me/5531999999999"
+                href="https://wa.me/5531972131824"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-green)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-transform hover:scale-[1.02]"
