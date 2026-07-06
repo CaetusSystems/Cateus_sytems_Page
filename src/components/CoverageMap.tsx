@@ -111,7 +111,33 @@ function FitBounds() {
       if (bounds.isValid()) {
         const t = setTimeout(() => {
           try {
-            map.flyToBounds(bounds, { padding: [40, 40], duration: 2.2, easeLinearity: 0.25 });
+            map.invalidateSize();
+            const size = map.getSize();
+            if (size.x > 0 && size.y > 0) {
+              map.flyToBounds(bounds, { padding: [40, 40], duration: 2.2, easeLinearity: 0.25 });
+            } else {
+              // If size is 0, poll until container gets a valid size
+              const interval = setInterval(() => {
+                try {
+                  map.invalidateSize();
+                  const newSize = map.getSize();
+                  if (newSize.x > 0 && newSize.y > 0) {
+                    map.flyToBounds(bounds, {
+                      padding: [40, 40],
+                      duration: 2.2,
+                      easeLinearity: 0.25,
+                    });
+                    clearInterval(interval);
+                  }
+                } catch (e) {
+                  console.error("Error in fit bounds polling:", e);
+                  clearInterval(interval);
+                }
+              }, 200);
+
+              // Clear interval after 5 seconds to prevent memory leak
+              setTimeout(() => clearInterval(interval), 5000);
+            }
           } catch (e) {
             console.error("Error flying to bounds:", e);
           }
