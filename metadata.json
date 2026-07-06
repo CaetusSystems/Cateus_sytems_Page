@@ -1,0 +1,6 @@
+{
+  "name": "Caetus Systems Page",
+  "description": "Site institucional da Caetus Systems - Automação e Sistemas",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

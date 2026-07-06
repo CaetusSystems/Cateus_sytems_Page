@@ -54,7 +54,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { IntroSplash, useIntroSplash } from "@/components/IntroSplash";
 
 
