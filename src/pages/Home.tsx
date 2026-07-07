@@ -3153,7 +3153,7 @@ function About() {
           <div className="lg:sticky lg:top-24 lg:self-start">
             <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-border/70 bg-gradient-to-br from-muted/60 via-card to-muted/40 shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--primary)_35%,transparent)]">
               <img
-                src="/Henrique Caetano.png"
+                src="/Henrique Caetano.jpeg"
                 alt="Henrique Caetano"
                 className="absolute inset-0 h-full w-full object-cover"
                 referrerPolicy="no-referrer"
