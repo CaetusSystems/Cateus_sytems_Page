@@ -1,10 +1,10 @@
 import {
   MessageCircle,
-  Bot,
   Globe,
   Megaphone,
   LayoutDashboard,
   Code2,
+  Table2,
   Workflow,
   type LucideIcon,
 } from "lucide-react";
@@ -45,22 +45,11 @@ export type Product = {
   bullets: [string, string, string];
   /** mensagem pré-preenchida no WhatsApp ao clicar em "Saiba mais" */
   ctaMessage: string;
+  /** dá ao card um fundo com leve gradiente e uma mini-animação — usar em no máximo 1 produto por vez */
+  highlight?: boolean;
 };
 
 export const PRODUCTS: Product[] = [
-  {
-    slug: "funcionario-digital",
-    category: "atender-clientes",
-    benefit: "Nenhum cliente fica sem resposta.",
-    techName: "Funcionário Digital",
-    icon: Bot,
-    bullets: [
-      "Atende no WhatsApp 24 horas por dia",
-      "Entende o cliente e resolve com inteligência artificial",
-      "Chama você só quando realmente precisa",
-    ],
-    ctaMessage: "Olá! Quero saber mais sobre o Funcionário Digital.",
-  },
   {
     slug: "bot-whatsapp",
     category: "atender-clientes",
@@ -103,7 +92,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: "dashboards",
     category: "organizar-a-empresa",
-    benefit: "Seu negócio em números, sem planilha.",
+    benefit: "Seu negócio em números.",
     techName: "Dashboards",
     icon: LayoutDashboard,
     bullets: [
@@ -125,6 +114,20 @@ export const PRODUCTS: Product[] = [
       "Cresce junto com a empresa",
     ],
     ctaMessage: "Olá! Quero saber mais sobre sistemas sob medida.",
+  },
+  {
+    slug: "automacao-planilhas",
+    category: "organizar-a-empresa",
+    benefit: "Sua planilha vira sistema.",
+    techName: "Automação de planilhas e processos",
+    icon: Table2,
+    bullets: [
+      "Planilhas manuais viram fluxos automáticos",
+      "Processos repetitivos rodando sozinhos",
+      "Menos erro humano, mais consistência",
+    ],
+    ctaMessage: "Olá! Quero saber mais sobre automação de planilhas e processos.",
+    highlight: true,
   },
   {
     slug: "automacoes",

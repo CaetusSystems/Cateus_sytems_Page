@@ -1,11 +1,29 @@
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Section, SectionHeader } from "@/components/Section";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { waUrl } from "@/lib/constants";
 import { PRODUCTS, PRODUCT_CATEGORIES, type ProductCategory } from "@/data/products";
+
+/** Mini-animação em loop: linhas de planilha virando tarefas concluídas sozinhas. */
+function AutomationPulse() {
+  return (
+    <div className="automation-pulse mt-5 space-y-2" aria-hidden>
+      {[0, 1, 2].map((i) => (
+        <div key={i} className="automation-row flex items-center gap-2" style={{ "--row-i": i } as React.CSSProperties}>
+          <span className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-primary/10">
+            <span className="automation-row-bar absolute inset-y-0 left-0 rounded-full bg-primary/50" />
+          </span>
+          <span className="automation-row-check flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-green text-white">
+            <Check className="h-2.5 w-2.5" strokeWidth={3} />
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 /**
  * Catálogo de soluções, organizado pela dor do empresário.
@@ -58,7 +76,12 @@ export function Products() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col rounded-2xl border border-border bg-card p-7 transition-colors hover:border-primary/40"
+                className={cn(
+                  "flex flex-col rounded-2xl border p-7 transition-colors",
+                  p.highlight
+                    ? "border-primary/30 bg-gradient-to-br from-primary/[0.06] via-card to-brand-green/[0.06] hover:border-primary/50"
+                    : "border-border bg-card hover:border-primary/40",
+                )}
               >
                 <div className="flex items-start justify-between gap-3">
                   <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
@@ -74,6 +97,8 @@ export function Products() {
                   {p.benefit}
                 </h3>
                 <p className="mt-1 text-sm font-medium text-primary">{p.techName}</p>
+
+                {p.highlight && <AutomationPulse />}
 
                 <ul className="mt-5 flex-1 space-y-2.5">
                   {p.bullets.map((b) => (

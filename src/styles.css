@@ -367,4 +367,39 @@
     }
     .animate-breathing { animation: none !important; }
   }
+
+  /* Mini-animação "planilha virando tarefa concluída" — card de destaque em Produtos */
+  @keyframes automation-row-fill {
+    0%, 8% { transform: scaleX(0); opacity: 0.5; }
+    45%, 78% { transform: scaleX(1); opacity: 1; }
+    92%, 100% { transform: scaleX(0); opacity: 0.5; }
+  }
+  @keyframes automation-row-check {
+    0%, 45% { opacity: 0; transform: scale(0.5); }
+    58%, 82% { opacity: 1; transform: scale(1); }
+    95%, 100% { opacity: 0; transform: scale(0.5); }
+  }
+  .automation-row-bar {
+    transform-origin: left center;
+    animation: automation-row-fill 3.6s ease-in-out infinite;
+    animation-delay: calc(var(--row-i, 0) * 0.5s);
+  }
+  .automation-row-check {
+    opacity: 0;
+    animation: automation-row-check 3.6s ease-in-out infinite;
+    animation-delay: calc(var(--row-i, 0) * 0.5s);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .automation-row-bar {
+      animation: none !important;
+      transform: scaleX(1) !important;
+      opacity: 1 !important;
+    }
+    .automation-row-check {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: scale(1) !important;
+    }
+  }
 }
