@@ -45,8 +45,6 @@ export type Product = {
   bullets: [string, string, string];
   /** mensagem pré-preenchida no WhatsApp ao clicar em "Saiba mais" */
   ctaMessage: string;
-  /** dá ao card um fundo com leve gradiente e uma mini-animação — usar em no máximo 1 produto por vez */
-  highlight?: boolean;
 };
 
 export const PRODUCTS: Product[] = [
@@ -127,7 +125,6 @@ export const PRODUCTS: Product[] = [
       "Menos erro humano, mais consistência",
     ],
     ctaMessage: "Olá! Quero saber mais sobre automação de planilhas e processos.",
-    highlight: true,
   },
   {
     slug: "automacoes",
