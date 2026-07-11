@@ -6,6 +6,7 @@ import "./styles.css";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { NotFound } from "./components/NotFound";
 import Home from "./pages/Home";
+import Sobre from "./pages/Sobre";
 import Blog from "./pages/Blog";
 import BlogFuturoSeoComIA from "./pages/BlogFuturoSeoComIA";
 import Presentation from "./pages/Presentation";
@@ -16,6 +17,7 @@ createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/sobre" element={<Sobre />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/futuro-do-seo-com-ia" element={<BlogFuturoSeoComIA />} />
           <Route path="/presentation" element={<Presentation />} />
