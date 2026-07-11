@@ -5,7 +5,7 @@
 export const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "O que a Caetus faz, em uma frase?",
-    a: "Colocamos o atendimento, a presença digital e a organização da sua empresa para funcionar no automático — você cuida do negócio, a gente cuida do digital.",
+    a: "Colocamos o atendimento, a presença digital e a organização da sua empresa para funcionar no automático — você cuida do negócio físico, a gente cuida do digital.",
   },
   {
     q: "O WhatsApp responde sozinho mesmo?",

@@ -24,7 +24,7 @@ export function AboutCompact() {
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             A Caetus Systems nasceu em Lagoa Santa para dar a pequenas empresas a mesma estrutura
             digital das grandes. Quem cuida da sua operação é quem desenvolve: Henrique Caetano,
-            com mais de 5 anos de automação industrial nas costas.
+            com mais de 5 anos de indústria e mais de 2 anos de automação.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-sm text-foreground/80">
