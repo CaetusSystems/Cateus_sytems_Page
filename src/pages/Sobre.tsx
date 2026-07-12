@@ -82,9 +82,9 @@ export default function Sobre() {
                   </p>
                   <p>
                     A empresa é conduzida por{" "}
-                    <strong className="text-foreground">Henrique Caetano</strong>, com mais de 5
-                    anos de experiência desenvolvendo soluções de automação industrial, integração
-                    de sistemas e otimização de processos — em ambientes onde organização,
+                    <strong className="text-foreground">Henrique Caetano</strong>, com 5 anos de
+                    indústria e mais de 2 anos de experiência desenvolvendo soluções de automação,
+                    integração de sistemas e otimização de processos — em ambientes onde organização,
                     eficiência e confiabilidade não são opcionais.
                   </p>
                   <p>
