@@ -15,7 +15,8 @@ import {
  * As categorias são as DORES do empresário, não áreas técnicas.
  * Cada solução tem um `slug` reservado para a futura página /produtos/<slug>;
  * enquanto ela não existe, o botão "Saiba mais" abre o WhatsApp com
- * `ctaMessage` pré-preenchida.
+ * `ctaMessage` pré-preenchida. Quando a página existe, informe `detailPath`
+ * e o card linka para ela em vez de abrir o WhatsApp direto.
  *
  * Para adicionar uma solução nova: acrescente um item neste array. Nada mais.
  */
@@ -45,6 +46,8 @@ export type Product = {
   bullets: [string, string, string];
   /** mensagem pré-preenchida no WhatsApp ao clicar em "Saiba mais" */
   ctaMessage: string;
+  /** rota interna já existente (ex: "/produtos/bot-whatsapp") — se presente, o card linka para ela */
+  detailPath?: string;
 };
 
 export const PRODUCTS: Product[] = [
@@ -52,14 +55,15 @@ export const PRODUCTS: Product[] = [
     slug: "bot-whatsapp",
     category: "atender-clientes",
     benefit: "Seu WhatsApp respondendo sozinho.",
-    techName: "Bot de WhatsApp",
+    techName: "Atendente virtual para WhatsApp",
     icon: MessageCircle,
     bullets: [
       "Perguntas frequentes respondidas na hora",
       "Horários, endereço e preços no automático",
       "Nenhuma mensagem fica no vácuo",
     ],
-    ctaMessage: "Olá! Quero saber mais sobre o Bot de WhatsApp.",
+    ctaMessage: "Olá! Quero testar grátis o Atendente Virtual para WhatsApp.",
+    detailPath: "/produtos/bot-whatsapp",
   },
   {
     slug: "sites",

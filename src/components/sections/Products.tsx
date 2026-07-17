@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Section, SectionHeader } from "@/components/Section";
@@ -89,10 +90,17 @@ export function Products() {
                 </ul>
 
                 <Button asChild variant="outline" className="mt-6 w-full rounded-full">
-                  <a href={waUrl(p.ctaMessage)} target="_blank" rel="noopener noreferrer">
-                    Saiba mais
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </a>
+                  {p.detailPath ? (
+                    <Link to={p.detailPath}>
+                      Teste grátis
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  ) : (
+                    <a href={waUrl(p.ctaMessage)} target="_blank" rel="noopener noreferrer">
+                      Saiba mais
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </a>
+                  )}
                 </Button>
               </motion.article>
             );

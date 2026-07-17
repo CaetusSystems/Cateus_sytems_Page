@@ -10,6 +10,7 @@ import Sobre from "./pages/Sobre";
 import Blog from "./pages/Blog";
 import BlogFuturoSeoComIA from "./pages/BlogFuturoSeoComIA";
 import Presentation from "./pages/Presentation";
+import ProdutoAtendenteVirtual from "./pages/ProdutoAtendenteVirtual";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
+          <Route path="/produtos/bot-whatsapp" element={<ProdutoAtendenteVirtual />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/futuro-do-seo-com-ia" element={<BlogFuturoSeoComIA />} />
           <Route path="/presentation" element={<Presentation />} />
