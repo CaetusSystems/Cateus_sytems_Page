@@ -215,35 +215,43 @@ function ChatMock() {
   const showTyping = phase === "typing";
   const showAnswer = phase === "answer" || phase === "hold";
 
+  // Coordenadas do recorte transparente da tela dentro do PNG da moldura
+  // (assets/stock/elements/mockups/mockups-mockuphone-iphone-15-preto-retrato.png,
+  // 1419x2796), medidas pelo canal alpha — não são um chute visual.
+  const SCREEN = { left: "8.46%", top: "5.19%", width: "83.09%", height: "89.63%" };
+
   return (
     <div
       ref={ref}
-      className="mx-auto w-full max-w-sm rounded-[28px] border border-border bg-card p-2 shadow-2xl shadow-primary/10"
+      className="relative mx-auto w-full max-w-[260px] drop-shadow-2xl"
+      style={{ aspectRatio: "1419 / 2796" }}
     >
-      <div className="rounded-[22px] bg-muted/40 p-4">
-        <div className="mb-4 flex items-center gap-3 border-b border-border/60 pb-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <WhatsAppIcon className="h-4.5 w-4.5" />
+      <div
+        className="absolute flex flex-col overflow-hidden rounded-[10%] bg-[#e9edf1]"
+        style={SCREEN}
+      >
+        <div className="flex items-center gap-2 bg-primary px-3 pb-2 pt-6">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-white">
+            <WhatsAppIcon className="h-3 w-3" />
           </span>
           <div>
-            <p className="text-sm font-semibold leading-none">Atendente Virtual</p>
-            <p className="mt-1 flex items-center gap-1.5 text-[11px] text-brand-green">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-green" />
-              online agora
+            <p className="text-[11px] font-semibold leading-none text-white">
+              Atendente Virtual
             </p>
+            <p className="mt-1 text-[9px] text-white/70">online agora</p>
           </div>
         </div>
 
-        <div className="flex min-h-[220px] flex-col justify-end gap-2.5">
+        <div className="flex flex-1 flex-col justify-end gap-1.5 p-2.5">
           <AnimatePresence mode="wait">
             {showQuestion && (
               <motion.div
                 key={`q-${index}`}
-                initial={{ opacity: 0, y: 12, scale: 0.97 }}
+                initial={{ opacity: 0, y: 10, scale: 0.97 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="max-w-[85%] self-start rounded-2xl rounded-bl-sm bg-background px-4 py-2.5 text-sm text-foreground/90 shadow-sm"
+                className="max-w-[85%] self-start rounded-xl rounded-bl-sm bg-white px-2.5 py-2 text-[11px] leading-snug text-foreground/90 shadow-sm"
               >
                 {current.q}
               </motion.div>
@@ -254,16 +262,16 @@ function ChatMock() {
             {showTyping && (
               <motion.div
                 key={`t-${index}`}
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className="flex max-w-[60%] items-center gap-1 self-end rounded-2xl rounded-br-sm bg-brand-green px-4 py-3"
+                className="flex max-w-[55%] items-center gap-1 self-end rounded-xl rounded-br-sm bg-brand-green px-2.5 py-2"
               >
                 {[0, 1, 2].map((d) => (
                   <span
                     key={d}
-                    className="h-1.5 w-1.5 animate-bounce rounded-full bg-white/80"
+                    className="h-1 w-1 animate-bounce rounded-full bg-white/80"
                     style={{ animationDelay: `${d * 120}ms` }}
                   />
                 ))}
@@ -275,22 +283,30 @@ function ChatMock() {
             {showAnswer && (
               <motion.div
                 key={`a-${index}`}
-                initial={{ opacity: 0, y: 12, scale: 0.97 }}
+                initial={{ opacity: 0, y: 10, scale: 0.97 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="max-w-[85%] self-end rounded-2xl rounded-br-sm bg-brand-green px-4 py-2.5 text-sm text-white shadow-sm"
+                className="max-w-[85%] self-end rounded-xl rounded-br-sm bg-brand-green px-2.5 py-2 text-[11px] leading-snug text-white shadow-sm"
               >
                 {current.a}
                 <div className="mt-1 flex items-center justify-end gap-1">
-                  <span className="text-[10px] text-white/70">agora</span>
-                  <CheckCheck className="h-3 w-3 text-white/70" />
+                  <span className="text-[8px] text-white/70">agora</span>
+                  <CheckCheck className="h-2.5 w-2.5 text-white/70" />
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
       </div>
+
+      <img
+        src="/mockups/iphone-15-frame.png"
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        className="pointer-events-none absolute inset-0 h-full w-full select-none"
+      />
     </div>
   );
 }
