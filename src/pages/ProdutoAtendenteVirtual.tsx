@@ -217,8 +217,14 @@ function ChatMock() {
 
   // Coordenadas do recorte transparente da tela dentro do PNG da moldura
   // (assets/stock/elements/mockups/mockups-mockuphone-iphone-15-preto-retrato.png,
-  // 1419x2796), medidas pelo canal alpha — não são um chute visual.
-  const SCREEN = { left: "8.46%", top: "5.19%", width: "83.09%", height: "89.63%" };
+  // 1419x2796), medidas varrendo o canal alpha pixel a pixel — bordas retas em
+  // left=120 top=120 right=1298 bottom=2675, raio de canto real ~165px medido
+  // por ajuste de círculo em 2 pontos do arco (não é um chute visual).
+  const SCREEN = { left: "8.46%", top: "4.29%", width: "83.02%", height: "91.38%" };
+  // Raio do arco medido em px do PNG original (~165px), convertido para % de
+  // cada eixo do próprio recorte — um único "10%" ficaria pequeno demais no
+  // eixo vertical e grande demais no horizontal, por ser um retângulo estreito.
+  const SCREEN_RADIUS = "14% / 6.5%";
 
   return (
     <div
@@ -227,8 +233,8 @@ function ChatMock() {
       style={{ aspectRatio: "1419 / 2796" }}
     >
       <div
-        className="absolute flex flex-col overflow-hidden rounded-[10%] bg-[#e9edf1]"
-        style={SCREEN}
+        className="absolute flex flex-col overflow-hidden bg-[#e9edf1]"
+        style={{ ...SCREEN, borderRadius: SCREEN_RADIUS }}
       >
         <div className="flex items-center gap-2 bg-primary px-3 pb-2 pt-6">
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-white">
@@ -242,7 +248,7 @@ function ChatMock() {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col justify-end gap-1.5 p-2.5">
+        <div className="flex flex-1 flex-col justify-end gap-1.5 px-2.5 pb-5 pt-2.5">
           <AnimatePresence mode="wait">
             {showQuestion && (
               <motion.div

@@ -1,16 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useDocumentHead } from "../lib/useDocumentHead";
-
-const FEATURED = [
-  {
-    slug: "/blog/futuro-do-seo-com-ia",
-    tag: "SEO • AEO • GEO",
-    title: "SEO está mudando: seu próximo cliente talvez nunca entre no Google",
-    excerpt:
-      "Como preparar sua empresa para ser encontrada por inteligências artificiais como ChatGPT, Gemini e Copilot — sem depender só da busca tradicional.",
-  },
-] as const;
+import { BLOG_POSTS } from "../data/blog";
 
 export default function Blog() {
   useDocumentHead({
@@ -65,7 +56,7 @@ export default function Blog() {
       </header>
 
       <section className="mt-14 space-y-4">
-        {FEATURED.map((post) => (
+        {BLOG_POSTS.map((post) => (
           <Link
             key={post.slug}
             to={post.slug}
