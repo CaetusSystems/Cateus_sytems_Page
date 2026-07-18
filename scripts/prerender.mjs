@@ -15,8 +15,29 @@ import { createServer } from "node:http";
 import { readFile, writeFile, mkdir, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import puppeteer from "puppeteer";
 import { ROUTES } from "./routes.mjs";
+
+// No build da Vercel não dá para usar o Chromium baixado pelo `puppeteer`
+// normal — falta biblioteca de sistema (libnspr4.so e afins) que o
+// container de build não tem e não deixa instalar via apt. `@sparticuz/chromium`
+// é um build de Chromium empacotado justamente para rodar em ambientes
+// serverless/CI restritos como esse; localmente (dev/preview) continuamos
+// usando o Chromium normal do `puppeteer`, que já está no cache da máquina.
+const isServerlessBuild = Boolean(process.env.VERCEL || process.env.CI);
+
+async function launchBrowser() {
+  if (isServerlessBuild) {
+    const { default: chromium } = await import("@sparticuz/chromium");
+    const { default: puppeteerCore } = await import("puppeteer-core");
+    return puppeteerCore.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: true,
+    });
+  }
+  const { default: puppeteer } = await import("puppeteer");
+  return puppeteer.launch({ headless: true });
+}
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.resolve(dirname, "../dist");
@@ -103,7 +124,7 @@ async function main() {
 
   const server = await startStaticServer();
   const baseUrl = `http://localhost:${PORT}`;
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await launchBrowser();
 
   const results = [];
   for (const route of ROUTES) {
