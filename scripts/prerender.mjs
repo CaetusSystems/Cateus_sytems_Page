@@ -96,6 +96,21 @@ function startStaticServer() {
 
 async function prerenderRoute(browser, baseUrl, route) {
   const page = await browser.newPage();
+
+  // A Home mostra uma splash de abertura (~13s) que trava o scroll do
+  // <body> enquanto roda (IntroSplash.tsx). Sem isto, o Puppeteer captura o
+  // HTML nesse meio-tempo e o `overflow: hidden` fica gravado para sempre
+  // no HTML estático publicado — travando o scroll de todo mundo, mesmo
+  // depois do React montar. Marcar a splash como "já vista" antes de
+  // navegar garante que ela nunca apareça durante a captura.
+  await page.evaluateOnNewDocument(() => {
+    try {
+      localStorage.setItem("caetus_intro_seen_v1", "1");
+    } catch {
+      /* localStorage indisponível — sem problema, só afeta a splash */
+    }
+  });
+
   const url = `${baseUrl}${route.path}`;
   await page.goto(url, { waitUntil: "networkidle0", timeout: 30000 });
 

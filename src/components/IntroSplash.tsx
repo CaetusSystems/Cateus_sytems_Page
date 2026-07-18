@@ -17,12 +17,14 @@ export function IntroSplash({ onFinish }: IntroSplashProps) {
   const [phase, setPhase] = useState<Phase>("logo");
   const [wordIdx, setWordIdx] = useState(0);
 
-  // Block scroll
+  // Block scroll enquanto a splash está ativa. Restaura sempre para "" (não
+  // para o valor anterior) — um HTML pré-renderizado ou uma montagem
+  // anterior podem já ter deixado "hidden" ali, e restaurar esse valor
+  // travaria o scroll para sempre mesmo depois da splash terminar.
   useEffect(() => {
-    const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = "";
     };
   }, []);
 
