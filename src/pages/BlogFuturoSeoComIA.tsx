@@ -534,18 +534,18 @@ export default function ArticlePage() {
       </section>
 
       {/* 4. O problema */}
-      <section className="border-t border-border/60 bg-muted/30">
-        <div className="mx-auto max-w-3xl px-6 py-20">
+      <section className="border-t border-border/60 bg-primary text-primary-foreground">
+        <div className="mx-auto max-w-4xl px-6 py-20">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">O problema</h2>
-            <p className="mt-5 text-lg text-muted-foreground">
+            <p className="mt-5 text-lg text-primary-foreground/75">
               Muitos sites foram construídos pensando apenas no Google. Eles não organizam
               informações essenciais — o que a empresa faz, onde atende, como é contratada, quais
               dúvidas responde — de um jeito que uma inteligência artificial consiga entender.
             </p>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-primary-foreground/75">
               Resultado: quando alguém pergunta a um ChatGPT da vida{" "}
-              <span className="font-semibold text-foreground">
+              <span className="font-semibold text-primary-foreground">
                 "qual a melhor empresa para X na minha região?"
               </span>
               , essas empresas simplesmente não aparecem.
@@ -556,7 +556,7 @@ export default function ArticlePage() {
 
       {/* 5. SEO x AEO x GEO */}
       <section>
-        <div className="mx-auto max-w-5xl px-6 py-20">
+        <div className="mx-auto max-w-4xl px-6 py-20">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
               SEO, AEO e GEO — o que muda?
@@ -589,7 +589,7 @@ export default function ArticlePage() {
 
       {/* 6. Exemplo prático */}
       <section className="border-t border-border/60 bg-muted/30">
-        <div className="mx-auto max-w-5xl px-6 py-20">
+        <div className="mx-auto max-w-4xl px-6 py-20">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
               Um exemplo prático
@@ -718,7 +718,7 @@ export default function ArticlePage() {
 
       {/* 9. FAQ */}
       <section id="faq">
-        <div className="mx-auto max-w-3xl px-6 py-20">
+        <div className="mx-auto max-w-4xl px-6 py-20">
           <Reveal>
             <div className="flex items-center gap-2 text-sm font-medium text-primary">
               <HelpCircle className="h-4 w-4" /> Perguntas frequentes
@@ -803,13 +803,13 @@ export default function ArticlePage() {
       </section>
 
       {/* 10. CTA final */}
-      <section className="border-t border-border/60 bg-muted/30">
-        <div className="mx-auto max-w-3xl px-6 py-20 text-center">
+      <section className="border-t border-border/60 bg-primary text-primary-foreground">
+        <div className="mx-auto max-w-4xl px-6 py-20 text-center">
           <Reveal>
             <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
               Seu site está preparado para o futuro das buscas?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-balance text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-xl text-balance text-primary-foreground/70">
               A Caetus Systems desenvolve sites já preparados para SEO, AEO e GEO desde o primeiro
               dia — com estrutura semântica, dados estruturados e conteúdo pronto para o Google e
               para as IAs.
@@ -829,7 +829,7 @@ export default function ArticlePage() {
               </a>
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 bg-transparent px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
               >
                 Conhecer nossos serviços
                 <ArrowRight className="h-4 w-4" />
