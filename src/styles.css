@@ -60,7 +60,6 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-brand-green: var(--brand-green);
-  --color-brand-amber: var(--brand-amber);
 }
 
 :root {
@@ -82,8 +81,6 @@
   --accent-foreground: oklch(0.22 0.05 260);
   --accent-soft: oklch(0.95 0.03 258);
   --brand-green: oklch(0.68 0.14 155);
-  /* Warm amber — reservado para destacar dados/relatórios sem competir com o azul primário */
-  --brand-amber: oklch(0.74 0.15 60);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0.005 250);
   --border: oklch(0.93 0.008 250);

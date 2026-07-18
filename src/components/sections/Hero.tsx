@@ -132,19 +132,8 @@ function MockDashboard() {
   ];
 
   return (
-    <div
-      ref={ref}
-      className="rounded-2xl border p-2 shadow-2xl"
-      style={{
-        borderColor: "color-mix(in oklab, var(--brand-amber) 30%, var(--border))",
-        backgroundColor: "color-mix(in oklab, var(--brand-amber) 14%, var(--card))",
-        boxShadow: "0 25px 50px -12px color-mix(in oklab, var(--brand-amber) 22%, transparent)",
-      }}
-    >
-      <div
-        className="rounded-xl p-6"
-        style={{ backgroundColor: "color-mix(in oklab, var(--brand-amber) 9%, var(--muted))" }}
-      >
+    <div ref={ref} className="rounded-2xl border border-primary/20 bg-primary p-2 shadow-2xl shadow-primary/30">
+      <div className="rounded-xl bg-white/[0.04] p-6">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img
@@ -153,11 +142,11 @@ function MockDashboard() {
               aria-hidden="true"
               className="h-6 w-6 rounded-md object-contain"
             />
-            <span className="text-sm font-semibold tracking-tight text-foreground">
+            <span className="text-sm font-semibold tracking-tight text-primary-foreground">
               Dashboard de Relatórios
             </span>
           </div>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-primary-foreground/70">
             <MonitorPlay className="h-3 w-3" />
             Simulação
           </span>
@@ -167,12 +156,15 @@ function MockDashboard() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-green opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-green" />
           </span>
-          <span className="text-xs text-muted-foreground">Assim fica o seu dia a dia</span>
+          <span className="text-xs text-primary-foreground/60">Assim fica o seu dia a dia</span>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {stats.map((s) => (
-            <div key={s.label} className="rounded-lg border border-border bg-background p-4 text-left">
-              <p className="text-xs text-muted-foreground">{s.label}</p>
+            <div
+              key={s.label}
+              className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 p-4 text-left"
+            >
+              <p className="text-xs text-primary-foreground/60">{s.label}</p>
               <div className="relative mt-1 h-8 overflow-hidden">
                 <AnimatePresence mode="popLayout" initial={false}>
                   <motion.p
@@ -181,13 +173,13 @@ function MockDashboard() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -18, opacity: 0 }}
                     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-2xl font-semibold tracking-tight tabular-nums"
+                    className="text-2xl font-semibold tracking-tight tabular-nums text-primary-foreground"
                   >
                     {s.value}
                   </motion.p>
                 </AnimatePresence>
               </div>
-              <p className="mt-1 text-xs text-muted-foreground">{s.sub}</p>
+              <p className="mt-1 text-xs text-primary-foreground/60">{s.sub}</p>
             </div>
           ))}
         </div>
@@ -201,12 +193,12 @@ function MockDashboard() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -16, scale: 0.98 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="flex items-center gap-3 rounded-lg border border-border bg-background px-4 py-3 text-sm"
+                className="flex items-center gap-3 rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 px-4 py-3 text-sm"
               >
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-green/10">
+                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-green/15">
                   <Check className="h-3.5 w-3.5 text-brand-green" />
                 </div>
-                <span className="text-foreground/80">{item.text}</span>
+                <span className="text-primary-foreground/85">{item.text}</span>
               </motion.div>
             ))}
           </AnimatePresence>
