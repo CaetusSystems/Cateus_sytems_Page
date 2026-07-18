@@ -93,12 +93,25 @@ export default function ProdutoAtendenteVirtual() {
     description:
       "Atendimento automático no WhatsApp para pequenas empresas: responde clientes, agenda horários e nunca deixa mensagem no vácuo. Teste grátis com a Caetus Systems.",
     canonical: "https://caetussystems.com.br/produtos/bot-whatsapp",
+    og: {
+      "og:title": "Atendente Virtual para WhatsApp — Caetus Systems",
+      "og:description":
+        "Atendimento automático no WhatsApp para pequenas empresas: responde clientes, agenda horários e nunca deixa mensagem no vácuo.",
+      "og:url": "/produtos/bot-whatsapp",
+      "og:type": "website",
+    },
   });
 
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+      >
+        Pular para o conteúdo
+      </a>
       <Nav />
-      <main>
+      <main id="conteudo">
         <ProductHero />
         <TrustStrip />
         <BenefitsSection />

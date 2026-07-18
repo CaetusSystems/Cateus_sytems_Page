@@ -1,11 +1,18 @@
 import { useEffect } from "react";
 
+const SITE_URL = "https://caetussystems.com.br";
+
 interface HeadOptions {
   title: string;
   description?: string;
   canonical?: string;
   og?: Record<string, string>;
   jsonLd?: object;
+}
+
+/** Garante URL absoluta — Google recomenda canonical absoluto, não relativo. */
+function toAbsoluteUrl(url: string): string {
+  return url.startsWith("http") ? url : `${SITE_URL}${url}`;
 }
 
 // Pure Vite SPA has no server-side rendering, so per-route <head> tags
@@ -28,7 +35,10 @@ export function useDocumentHead({ title, description, canonical, og, jsonLd }: H
     };
 
     if (description) upsertMeta("name", "description", description);
-    if (og) Object.entries(og).forEach(([key, content]) => upsertMeta("property", key, content));
+    if (og)
+      Object.entries(og).forEach(([key, content]) =>
+        upsertMeta("property", key, key === "og:url" ? toAbsoluteUrl(content) : content),
+      );
 
     let canonicalEl: HTMLLinkElement | null = null;
     if (canonical) {
@@ -38,7 +48,7 @@ export function useDocumentHead({ title, description, canonical, og, jsonLd }: H
         canonicalEl.setAttribute("rel", "canonical");
         document.head.appendChild(canonicalEl);
       }
-      canonicalEl.setAttribute("href", canonical);
+      canonicalEl.setAttribute("href", toAbsoluteUrl(canonical));
     }
 
     let jsonLdEl: HTMLScriptElement | null = null;

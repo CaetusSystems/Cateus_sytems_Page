@@ -11,6 +11,8 @@ import Home from "./pages/Home";
 import Sobre from "./pages/Sobre";
 import Blog from "./pages/Blog";
 import BlogFuturoSeoComIA from "./pages/BlogFuturoSeoComIA";
+import BlogInstagramNaoEGoogle from "./pages/BlogInstagramNaoEGoogle";
+import BlogPerfilGoogleNaoSubstituiSite from "./pages/BlogPerfilGoogleNaoSubstituiSite";
 import Presentation from "./pages/Presentation";
 import ProdutoAtendenteVirtual from "./pages/ProdutoAtendenteVirtual";
 
@@ -24,6 +26,11 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/produtos/bot-whatsapp" element={<ProdutoAtendenteVirtual />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/futuro-do-seo-com-ia" element={<BlogFuturoSeoComIA />} />
+          <Route
+            path="/blog/aparece-no-instagram-mas-nao-no-google"
+            element={<BlogInstagramNaoEGoogle />}
+          />
+          <Route path="/blog/perfil-google-nao-substitui-site" element={<BlogPerfilGoogleNaoSubstituiSite />} />
           <Route path="/presentation" element={<Presentation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

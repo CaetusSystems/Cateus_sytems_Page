@@ -39,12 +39,26 @@ export default function Sobre() {
     title: "Quem somos — Caetus Systems",
     description:
       "A Caetus Systems nasceu em Lagoa Santa para ajudar pequenas empresas a competir em igualdade por meio da tecnologia. Conheça nossa história e onde atendemos.",
+    canonical: "/sobre",
+    og: {
+      "og:title": "Quem somos — Caetus Systems",
+      "og:description":
+        "A Caetus Systems nasceu em Lagoa Santa para ajudar pequenas empresas a competir em igualdade por meio da tecnologia.",
+      "og:url": "/sobre",
+      "og:type": "website",
+    },
   });
 
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+      >
+        Pular para o conteúdo
+      </a>
       <Nav />
-      <main>
+      <main id="conteudo">
         <section className="relative bg-background">
           <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
             <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:gap-16">
