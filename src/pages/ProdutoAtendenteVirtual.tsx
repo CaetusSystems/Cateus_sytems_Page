@@ -100,6 +100,7 @@ export default function ProdutoAtendenteVirtual() {
       <Nav />
       <main>
         <ProductHero />
+        <TrustStrip />
         <BenefitsSection />
         <HowItWorksSection />
         <FaqSection />
@@ -157,6 +158,29 @@ function ProductHero() {
         >
           <ChatMock />
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+const TRUST_STATS = [
+  { value: "24/7", label: "sempre disponível" },
+  { value: "< 1min", label: "tempo médio de resposta" },
+  { value: "0", label: "mensagens perdidas" },
+] as const;
+
+function TrustStrip() {
+  return (
+    <section className="border-t border-border bg-primary">
+      <div className="mx-auto grid max-w-3xl grid-cols-3 gap-4 px-6 py-8 text-center">
+        {TRUST_STATS.map((s) => (
+          <div key={s.label}>
+            <p className="text-2xl font-semibold tracking-tight text-primary-foreground sm:text-3xl">
+              {s.value}
+            </p>
+            <p className="mt-1 text-[11px] text-primary-foreground/60 sm:text-xs">{s.label}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -220,7 +244,11 @@ function ChatMock() {
   // 1419x2796), medidas varrendo o canal alpha pixel a pixel — bordas retas em
   // left=120 top=120 right=1298 bottom=2675, raio de canto real ~165px medido
   // por ajuste de círculo em 2 pontos do arco (não é um chute visual).
-  const SCREEN = { left: "8.46%", top: "4.29%", width: "83.02%", height: "91.38%" };
+  // Levemente maior que o recorte medido (0.3% de folga por lado) para nunca
+  // deixar uma linha de arredondamento sub-pixel do navegador aparecer como
+  // uma fresta branca na borda — o excesso fica escondido atrás da moldura
+  // opaca, que sempre é desenhada por cima.
+  const SCREEN = { left: "8.16%", top: "3.99%", width: "83.62%", height: "91.98%" };
   // Raio do arco medido em px do PNG original (~165px), convertido para % de
   // cada eixo do próprio recorte — um único "10%" ficaria pequeno demais no
   // eixo vertical e grande demais no horizontal, por ser um retângulo estreito.
@@ -236,15 +264,15 @@ function ChatMock() {
         className="absolute flex flex-col overflow-hidden bg-[#e9edf1]"
         style={{ ...SCREEN, borderRadius: SCREEN_RADIUS }}
       >
-        <div className="flex items-center gap-2 bg-primary px-3 pb-2 pt-6">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-white">
+        <div className="flex items-center gap-2 bg-primary px-3 pb-2 pt-9">
+          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/15 text-white">
             <WhatsAppIcon className="h-3 w-3" />
           </span>
-          <div>
-            <p className="text-[11px] font-semibold leading-none text-white">
+          <div className="min-w-0">
+            <p className="truncate text-[11px] font-semibold leading-none text-white">
               Atendente Virtual
             </p>
-            <p className="mt-1 text-[9px] text-white/70">online agora</p>
+            <p className="mt-1 truncate text-[9px] text-white/70">online agora</p>
           </div>
         </div>
 
@@ -344,25 +372,29 @@ function BenefitsSection() {
 
 function HowItWorksSection() {
   return (
-    <Section id="como-funciona-atendente">
-      <SectionHeader eyebrow="Como funciona" title="Três passos até ele responder por você." />
-      <div
-        data-reveal-stagger
-        className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3"
-      >
+    <Section id="como-funciona-atendente" tone="brand">
+      <div className="mx-auto max-w-2xl text-center">
+        <p className="text-sm font-medium text-primary-foreground/70">Como funciona</p>
+        <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight md:text-5xl">
+          Três passos até ele responder por você.
+        </h2>
+      </div>
+      <div className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3">
         {STEPS.map((s, i) => (
           <div
             key={s.title}
-            className="relative rounded-2xl border border-border bg-card p-8 text-center"
+            className="relative rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-8 text-center"
           >
-            <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+            <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-foreground/10 text-primary-foreground">
               <s.icon className="h-7 w-7" />
             </span>
-            <h3 className="mt-5 text-lg font-semibold tracking-tight">{s.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+            <h3 className="mt-5 text-lg font-semibold tracking-tight text-primary-foreground">
+              {s.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-primary-foreground/70">{s.desc}</p>
             {i < STEPS.length - 1 && (
               <span className="absolute right-[-16px] top-1/2 hidden -translate-y-1/2 md:block">
-                <ArrowRight className="h-4 w-4 text-muted-foreground/40" />
+                <ArrowRight className="h-4 w-4 text-primary-foreground/25" />
               </span>
             )}
           </div>
