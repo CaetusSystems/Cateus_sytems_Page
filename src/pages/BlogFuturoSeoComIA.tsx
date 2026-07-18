@@ -20,7 +20,6 @@ import {
   Calendar,
   HelpCircle,
   ExternalLink,
-  User,
   type LucideIcon,
 } from "lucide-react";
 
@@ -340,6 +339,7 @@ export default function ArticlePage() {
             "@type": "Person",
             name: AUTHOR_NAME,
             jobTitle: AUTHOR_ROLE,
+            image: "/Henrique Caetano perfil.jpeg",
             worksFor: { "@type": "Organization", name: "Caetus Systems" },
           },
           publisher: {
@@ -420,9 +420,12 @@ export default function ArticlePage() {
           <Reveal delay={0.28}>
             <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <User className="h-4 w-4" />
-                </div>
+                <img
+                  src="/Henrique Caetano perfil.jpeg"
+                  alt={AUTHOR_NAME}
+                  referrerPolicy="no-referrer"
+                  className="h-9 w-9 rounded-full object-cover"
+                />
                 <div>
                   <p className="font-semibold text-foreground">{AUTHOR_NAME}</p>
                   <p className="text-xs">{AUTHOR_ROLE}</p>
