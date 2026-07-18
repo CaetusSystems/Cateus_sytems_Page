@@ -385,8 +385,15 @@ export default function ArticlePage() {
       {/* Top nav */}
       <div className="border-b border-border/60 bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <Link to="/" className="text-sm font-semibold tracking-tight text-foreground">
-            Caetus Systems
+          <Link to="/" className="flex items-center gap-2">
+            <img
+              src="/caetus-logo.png"
+              alt="Caetus Systems"
+              className="h-7 w-7 rounded-md object-contain"
+            />
+            <span className="text-sm font-semibold tracking-tight text-foreground">
+              Caetus <span className="font-normal text-muted-foreground">Systems</span>
+            </span>
           </Link>
           <Link
             to="/blog"

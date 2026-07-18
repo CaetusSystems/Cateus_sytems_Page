@@ -132,20 +132,42 @@ function MockDashboard() {
   ];
 
   return (
-    <div ref={ref} className="rounded-2xl border border-border bg-card p-2 shadow-2xl shadow-primary/10">
-      <div className="rounded-xl bg-muted/40 p-6">
-        <div className="mb-6 flex items-center justify-between">
+    <div
+      ref={ref}
+      className="rounded-2xl border p-2 shadow-2xl"
+      style={{
+        borderColor: "color-mix(in oklab, var(--brand-amber) 30%, var(--border))",
+        backgroundColor: "color-mix(in oklab, var(--brand-amber) 14%, var(--card))",
+        boxShadow: "0 25px 50px -12px color-mix(in oklab, var(--brand-amber) 22%, transparent)",
+      }}
+    >
+      <div
+        className="rounded-xl p-6"
+        style={{ backgroundColor: "color-mix(in oklab, var(--brand-amber) 9%, var(--muted))" }}
+      >
+        <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-green opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-green" />
+            <img
+              src="/caetus-logo.png"
+              alt=""
+              aria-hidden="true"
+              className="h-6 w-6 rounded-md object-contain"
+            />
+            <span className="text-sm font-semibold tracking-tight text-foreground">
+              Dashboard de Relatórios
             </span>
-            <span className="text-xs text-muted-foreground">Assim fica o seu dia a dia</span>
           </div>
           <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
             <MonitorPlay className="h-3 w-3" />
             Simulação
           </span>
+        </div>
+        <div className="mb-6 flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-green opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-green" />
+          </span>
+          <span className="text-xs text-muted-foreground">Assim fica o seu dia a dia</span>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {stats.map((s) => (
