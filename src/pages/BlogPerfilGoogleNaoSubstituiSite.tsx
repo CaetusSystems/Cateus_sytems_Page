@@ -1,4 +1,13 @@
+import { MapPin, Globe, ListChecks, Bot, Building2 } from "lucide-react";
 import { BlogArticleLayout, BlogSection } from "@/components/BlogArticleLayout";
+import {
+  Highlight,
+  ComparisonGrid,
+  BeforeAfterGrid,
+  AnimatedChecklist,
+  FlowSteps,
+  CalloutBlock,
+} from "@/components/BlogVisuals";
 
 const FAQ = [
   {
@@ -28,10 +37,15 @@ export default function BlogPerfilGoogleNaoSubstituiSite() {
     <BlogArticleLayout
       url="/blog/perfil-google-nao-substitui-site"
       title="Seu Perfil do Google não substitui um site"
+      titleNode={
+        <>
+          Seu Perfil do Google <Highlight>não substitui um site</Highlight>
+        </>
+      }
       description="Entenda por que o Perfil da Empresa ajuda na descoberta, mas o site ainda é o que organiza a confiança e converte visitas em contato."
       published="2026-07-18"
       eyebrow="Presença digital • Google Maps e site"
-      lead="O Perfil da Empresa no Google ajuda sua empresa a ser encontrada. O site é o que explica melhor o que você faz, passa confiança e transforma interesse em contato."
+      lead="O Perfil da Empresa ajuda sua empresa a ser encontrada no Maps. O site é o que explica o que você faz, passa confiança e transforma esse achado em contato."
       tags={[
         "Perfil da Empresa no Google",
         "Google Maps",
@@ -57,80 +71,110 @@ export default function BlogPerfilGoogleNaoSubstituiSite() {
       ctaHref="/#solucoes"
       ctaLabel="Conhecer nossas soluções"
     >
-      <BlogSection title="Por que esse assunto importa?">
+      <BlogSection title="Um padrão comum em pequenas empresas">
         <p>
           Muita empresa pequena investe tempo no Perfil da Empresa, responde avaliações e atualiza
           fotos, mas continua dependendo de um site fraco ou nem tem site. O resultado é comum: a
-          pessoa encontra a empresa, mas não encontra motivo suficiente para entrar em contato.
-        </p>
-        <p>
-          O problema não é o Perfil da Empresa. Ele é útil e deve continuar ativo. O ponto é que,
-          sozinho, ele não organiza tudo o que o cliente precisa para confiar em você.
+          pessoa encontra a empresa, mas não encontra motivo suficiente para entrar em contato. O
+          problema não é o Perfil — ele deve continuar ativo. É que, sozinho, ele não organiza tudo
+          o que o cliente precisa para confiar em você.
         </p>
       </BlogSection>
 
-      <BlogSection title="O que o perfil faz bem e onde ele para" muted>
+      <BlogSection title="Onde cada um entrega valor" muted wide>
+        <ComparisonGrid
+          items={[
+            {
+              icon: MapPin,
+              title: "Perfil da Empresa",
+              subtitle: "descoberta rápida",
+              desc: "Aparece no Google Maps, mostra telefone, horário, avaliações e fotos. Ótimo para ser encontrado — mas com espaço curto para explicar serviço, diferencial e processo.",
+            },
+            {
+              icon: Globe,
+              title: "Site",
+              subtitle: "confiança e decisão",
+              desc: "Conta a história do negócio com clareza: serviços, cidades atendidas, dúvidas frequentes e contato em um lugar só. Reduz incerteza e encurta o caminho até a decisão.",
+            },
+          ]}
+        />
+      </BlogSection>
+
+      <BlogSection eyebrow="Exemplo real" icon={Building2} title="Uma oficina em Lagoa Santa">
         <p>
-          O perfil ajuda a aparecer no Google Maps, mostra telefone, horário, avaliações e fotos.
-          Isso é ótimo para descoberta rápida. Mas ele tem espaço limitado para explicar serviço,
-          diferencial, processo e contexto.
+          No Google Maps ela aparece, recebe ligações e tem boas avaliações. Mas o cliente ainda
+          quer saber se faz revisão, suspensão, troca de óleo ou atendimento para frota — perguntas
+          que o Perfil não responde bem.
         </p>
-        <p>
-          Já o site permite contar a história do seu negócio com clareza. Você mostra serviços,
-          cidades atendidas, dúvidas frequentes e formas de contato em um lugar só. Isso reduz a
-          incerteza e encurta o caminho até a decisão.
+        <div className="mt-6">
+          <CalloutBlock icon={Globe}>
+            Com uma página simples de serviços, cidades atendidas, FAQ e botão de contato, a
+            decisão fica muito mais fácil — o mesmo vale para negócios em Vespasiano, Pedro
+            Leopoldo e Belo Horizonte.
+          </CalloutBlock>
+        </div>
+      </BlogSection>
+
+      <BlogSection
+        eyebrow="Sem site ainda"
+        icon={ListChecks}
+        title="Só perfil no Google vs. perfil + site"
+        muted
+        wide
+      >
+        <BeforeAfterGrid
+          before={{
+            label: "Só Perfil no Google",
+            items: [
+              "Boa visibilidade no Maps, pouca profundidade de informação",
+              "Cliente precisa ligar ou ir até o local para tirar dúvidas simples",
+              "Nome, telefone e serviços só existem em um lugar",
+              "Nenhuma base própria para o Google e as IAs entenderem seu negócio",
+            ],
+          }}
+          after={{
+            label: "Perfil + Site",
+            items: [
+              "Descoberta rápida no Maps e explicação completa no site",
+              "FAQ e página de serviços tiram dúvida antes do primeiro contato",
+              "Nome, telefone e serviços consistentes nos dois lugares",
+              "Base própria e estruturada, que Google e IAs conseguem citar",
+            ],
+          }}
+        />
+      </BlogSection>
+
+      <BlogSection eyebrow="Por onde começar" icon={ListChecks} title="O que colocar no site primeiro">
+        <div className="mx-auto max-w-2xl">
+          <AnimatedChecklist
+            items={[
+              "Apresentação clara da empresa",
+              "Página de serviços",
+              "Prova social (avaliações, casos)",
+              "Área atendida ou endereço",
+              "Perguntas frequentes",
+              "Caminho simples de contato (WhatsApp)",
+            ]}
+          />
+        </div>
+        <p className="mx-auto mt-6 max-w-2xl text-muted-foreground">
+          Não precisa começar grande: rápido, bem escrito e fácil de navegar já cumpre o papel.
+          Depois dá para evoluir com páginas específicas, artigos e integrações.
         </p>
       </BlogSection>
 
-      <BlogSection title="Por que o site ainda pesa na decisão?">
-        <p>
-          Quando alguém está escolhendo uma empresa de confiança, ela quer respostas simples:
-          quem atende, o que faz, onde atende e como falar com você. O site é o lugar ideal para
-          responder isso sem depender de vários links soltos.
-        </p>
-        <p>
-          Ele também ajuda sua presença digital a ficar mais consistente. Se o nome, telefone,
-          endereço e serviços aparecem do mesmo jeito no site e no Perfil da Empresa, o Google e o
-          cliente entendem sua operação com mais facilidade.
-        </p>
-      </BlogSection>
-
-      <BlogSection title="Exemplo real de negócio local" muted>
-        <p>
-          Pense em uma oficina em Lagoa Santa. No Google Maps, ela aparece, recebe ligações e tem
-          boas avaliações. Mas o cliente ainda quer saber se faz revisão, suspensão, troca de óleo
-          ou atendimento para frota.
-        </p>
-        <p>
-          Se o site tiver uma página simples com serviços, cidades atendidas, perguntas frequentes e
-          botão de contato, a decisão fica muito mais fácil. O mesmo vale para negócios em
-          Vespasiano, Pedro Leopoldo e Belo Horizonte que dependem de confiança antes da primeira
-          conversa.
-        </p>
-      </BlogSection>
-
-      <BlogSection title="O que colocar no site primeiro?">
-        <p>
-          Não comece tentando fazer um site grande. Comece com o essencial: apresentação clara da
-          empresa, serviços, prova social, contato, mapa ou área atendida e respostas às dúvidas
-          mais comuns.
-        </p>
-        <p>
-          Se o site estiver rápido, bem escrito e fácil de navegar, ele já cumpre seu papel. Depois
-          você pode evoluir com páginas específicas, artigos e integrações com WhatsApp ou sistemas
-          internos.
-        </p>
-      </BlogSection>
-
-      <BlogSection title="Como o Google e a IA usam essa combinação?" muted>
-        <p>
-          O Google usa sinais do site e do Perfil da Empresa para entender se sua empresa é real,
-          local e confiável. Já as inteligências artificiais procuram informações organizadas para
-          responder perguntas com mais segurança.
-        </p>
-        <p>
-          Quando o perfil e o site falam a mesma língua, sua empresa fica mais fácil de entender.
-          Isso melhora a chance de aparecer, ser lembrada e ser citada.
+      <BlogSection title="Como o Google e a IA usam essa combinação" wide>
+        <FlowSteps
+          highlightLast
+          steps={[
+            { icon: MapPin, label: "Perfil da Empresa" },
+            { icon: Globe, label: "Site consistente" },
+            { icon: Bot, label: "Google e IA entendem" },
+          ]}
+        />
+        <p className="mx-auto mt-8 max-w-2xl text-center text-muted-foreground">
+          Quando o perfil e o site falam a mesma língua, sua empresa fica mais fácil de entender —
+          e mais fácil de aparecer, ser lembrada e ser citada.
         </p>
       </BlogSection>
     </BlogArticleLayout>

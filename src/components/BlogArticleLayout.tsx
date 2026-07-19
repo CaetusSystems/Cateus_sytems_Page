@@ -1,9 +1,18 @@
 import type { ReactNode } from "react";
+import type { LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ExternalLink, HelpCircle, MessageCircle } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ExternalLink,
+  HelpCircle,
+  MessageCircle,
+  Sparkles,
+} from "lucide-react";
 import { useDocumentHead } from "@/lib/useDocumentHead";
 import { WHATSAPP_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/BlogVisuals";
 
 /**
  * Layout único para páginas de post do blog — mesma estrutura e mesmo
@@ -19,8 +28,15 @@ export type BlogReference = { label: string; href: string };
 export type BlogArticleLayoutProps = {
   /** rota completa do post, ex. "/blog/meu-post" */
   url: string;
-  /** título do artigo, sem o sufixo " — Caetus Systems" (o layout adiciona) */
+  /** título do artigo, sem o sufixo " — Caetus Systems" (o layout adiciona). Texto puro — usado em <title>, og:title e JSON-LD. */
   title: string;
+  /**
+   * Versão visual do H1 (opcional). Use para destacar a frase-chave na cor
+   * da marca, ex.: `<>Sua empresa some no Google, <Highlight>mas aparece no
+   * Instagram</Highlight></>` (ver `Highlight` em BlogVisuals.tsx). Se
+   * omitido, usa `title` como texto simples.
+   */
+  titleNode?: ReactNode;
   /** meta description, 140–160 caracteres */
   description: string;
   /** data ISO (YYYY-MM-DD) */
@@ -49,6 +65,7 @@ export type BlogArticleLayoutProps = {
 export function BlogArticleLayout({
   url,
   title,
+  titleNode,
   description,
   published,
   modified,
@@ -166,38 +183,48 @@ export function BlogArticleLayout({
             aria-hidden="true"
           />
           <div className="mx-auto max-w-4xl px-6 pb-16 pt-20 md:pt-28">
-            <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
-              {eyebrow}
-            </p>
-            <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-              {title}
-            </h1>
-            <p className="mt-6 max-w-2xl text-balance text-lg text-muted-foreground">{lead}</p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <img
-                  src={authorImage}
-                  alt={authorName}
-                  referrerPolicy="no-referrer"
-                  className="h-9 w-9 rounded-full object-cover"
-                />
-                <div>
-                  <p className="font-semibold text-foreground">{authorName}</p>
-                  <p className="text-xs">{authorRole}</p>
-                </div>
-              </div>
-              <span className="hidden h-4 w-px bg-border sm:inline-block" aria-hidden="true" />
-              <p className="text-xs">
-                Publicado em <time dateTime={published}>{formatDatePtBr(published)}</time>
-                {modifiedDate !== published && (
-                  <>
-                    {" "}
-                    · Atualizado em <time dateTime={modifiedDate}>{formatDatePtBr(modifiedDate)}</time>
-                  </>
-                )}
+            <Reveal>
+              <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+                <Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+                {eyebrow}
               </p>
-            </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+                {titleNode ?? title}
+              </h1>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="mt-6 max-w-2xl text-balance text-lg text-muted-foreground">{lead}</p>
+            </Reveal>
+
+            <Reveal delay={0.28}>
+              <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <img
+                    src={authorImage}
+                    alt={authorName}
+                    referrerPolicy="no-referrer"
+                    className="h-9 w-9 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-semibold text-foreground">{authorName}</p>
+                    <p className="text-xs">{authorRole}</p>
+                  </div>
+                </div>
+                <span className="hidden h-4 w-px bg-border sm:inline-block" aria-hidden="true" />
+                <p className="text-xs">
+                  Publicado em <time dateTime={published}>{formatDatePtBr(published)}</time>
+                  {modifiedDate !== published && (
+                    <>
+                      {" "}
+                      · Atualizado em{" "}
+                      <time dateTime={modifiedDate}>{formatDatePtBr(modifiedDate)}</time>
+                    </>
+                  )}
+                </p>
+              </div>
+            </Reveal>
           </div>
         </section>
 
@@ -286,21 +313,56 @@ export function BlogArticleLayout({
   );
 }
 
-/** Bloco de conteúdo padrão do corpo do artigo — um por H2. */
+/**
+ * Bloco de conteúdo padrão do corpo do artigo — um por H2. Por padrão o
+ * texto fica limitado a `max-w-2xl` (prosa legível); passe `wide` para
+ * seções com componentes visuais de BlogVisuals.tsx (ComparisonGrid,
+ * FlowSteps, BeforeAfterGrid, Timeline), que precisam da largura cheia.
+ */
 export function BlogSection({
   title,
+  eyebrow,
+  icon: Icon,
   muted,
+  wide,
+  lead,
   children,
 }: {
   title?: string;
+  /** rótulo curto acima do H2, ex. "Checklist Caetus" — some com um ícone */
+  eyebrow?: string;
+  icon?: LucideIcon;
   muted?: boolean;
+  /** remove o limite de largura de prosa — use com componentes visuais */
+  wide?: boolean;
+  /** linha de apoio abaixo do H2, mesmo padrão do lead do hero */
+  lead?: string;
   children: ReactNode;
 }) {
   return (
     <section className={cn("border-t border-border/60", muted && "bg-muted/30")}>
       <div className="mx-auto max-w-4xl px-6 py-16">
-        {title && <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">{title}</h2>}
-        <div className="prose-blog mt-4 max-w-2xl space-y-4 text-muted-foreground">{children}</div>
+        {(eyebrow || title) && (
+          <Reveal>
+            <div>
+              {eyebrow && (
+                <div className="flex items-center gap-2 text-sm font-medium text-primary">
+                  {Icon && <Icon className="h-4 w-4" aria-hidden="true" />}
+                  {eyebrow}
+                </div>
+              )}
+              {title && (
+                <h2 className={cn("text-3xl font-semibold tracking-tight md:text-4xl", eyebrow && "mt-2")}>
+                  {title}
+                </h2>
+              )}
+              {lead && <p className="mt-3 max-w-2xl text-muted-foreground">{lead}</p>}
+            </div>
+          </Reveal>
+        )}
+        <div className={cn("mt-8", !wide && "max-w-2xl space-y-4 text-muted-foreground")}>
+          {children}
+        </div>
       </div>
     </section>
   );

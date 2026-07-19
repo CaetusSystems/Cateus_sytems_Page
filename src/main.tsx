@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./styles.css";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { NotFound } from "./components/NotFound";
+import { ScrollToTop } from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Sobre from "./pages/Sobre";
 import Blog from "./pages/Blog";
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ErrorBoundary>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />

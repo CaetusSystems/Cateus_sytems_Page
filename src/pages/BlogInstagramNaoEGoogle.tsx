@@ -1,5 +1,21 @@
 import { Link } from "react-router-dom";
+import {
+  Search,
+  Instagram,
+  Globe,
+  ShieldCheck,
+  ListChecks,
+  ScanSearch,
+  Clock,
+} from "lucide-react";
 import { BlogArticleLayout, BlogSection } from "@/components/BlogArticleLayout";
+import {
+  Highlight,
+  ComparisonGrid,
+  AnimatedChecklist,
+  BeforeAfterGrid,
+  CalloutBlock,
+} from "@/components/BlogVisuals";
 
 const FAQ = [
   {
@@ -29,6 +45,11 @@ export default function BlogInstagramNaoEGoogle() {
     <BlogArticleLayout
       url="/blog/aparece-no-instagram-mas-nao-no-google"
       title="Sua empresa some no Google, mas aparece no Instagram"
+      titleNode={
+        <>
+          Sua empresa some no Google, <Highlight>mas aparece no Instagram</Highlight>
+        </>
+      }
       description="Entenda por que o Instagram da sua empresa aparece no Google e o site não — e o passo a passo real para o Google indexar seu site: Search Console, sitemap e Perfil da Empresa."
       published="2026-07-18"
       eyebrow="Presença digital • Google vs. redes sociais"
@@ -52,85 +73,102 @@ export default function BlogInstagramNaoEGoogle() {
       ctaHref="/#solucoes"
       ctaLabel="Conhecer nossas soluções"
     >
-      <BlogSection title="Por que isso acontece">
-        <p>
-          Não é falta de sorte, e quase nunca é um problema técnico complicado. O Instagram é um
-          domínio gigante que o Google já rastreia continuamente há mais de uma década — quando
-          você cria uma conta e ela fica pública, ela entra nesse fluxo de rastreamento quase sem
-          esforço nenhum da sua parte.
+      <BlogSection title="Por que isso acontece" wide>
+        <p className="mx-auto max-w-2xl text-muted-foreground">
+          Não é falta de sorte, e quase nunca é um problema técnico complicado. É uma diferença de
+          ponto de partida entre os dois:
         </p>
-        <p>
-          Um site novo é o oposto: é um domínio que o Google nunca viu antes. Ele só passa a
-          indexar as páginas depois que alguém confirma a propriedade daquele domínio (isso se faz
-          no Google Search Console) e mostra ao Google onde estão as páginas — normalmente enviando
-          um arquivo chamado sitemap. Sem esse passo, o site pode estar no ar, bonito, funcionando
-          perfeitamente para quem já tem o link — e simplesmente não existir para quem pesquisa no
-          Google.
+        <div className="mt-10">
+          <ComparisonGrid
+            items={[
+              {
+                icon: Instagram,
+                title: "Instagram",
+                subtitle: "domínio já rastreado",
+                desc: "Bilhões de páginas que o Google já rastreia continuamente há mais de uma década. Uma conta nova pública entra nesse fluxo quase sem esforço nenhum.",
+              },
+              {
+                icon: Globe,
+                title: "Site novo",
+                subtitle: "domínio desconhecido",
+                desc: "O Google nunca viu esse endereço antes. Só passa a indexar depois que alguém confirma a propriedade (Search Console) e mostra onde estão as páginas (sitemap).",
+              },
+            ]}
+          />
+        </div>
+        <p className="mx-auto mt-8 max-w-2xl text-muted-foreground">
+          Sem esse passo, o site pode estar no ar, bonito, funcionando perfeitamente para quem já
+          tem o link — e simplesmente não existir para quem pesquisa no Google.
         </p>
       </BlogSection>
 
-      <BlogSection title="Como saber se o seu site está indexado" muted>
-        <p>
-          Existe um teste de 10 segundos: pesquise{" "}
-          <code className="rounded bg-muted px-1.5 py-0.5 text-sm">
+      <BlogSection
+        eyebrow="Teste de 10 segundos"
+        icon={ScanSearch}
+        title="Como saber se o seu site está indexado"
+        muted
+      >
+        <CalloutBlock icon={Search}>
+          Pesquise{" "}
+          <code className="rounded bg-primary-foreground/15 px-2 py-1 text-lg">
             site:seudominio.com.br
           </code>{" "}
-          direto na busca do Google, sem espaço depois dos dois-pontos. Se aparecer pelo menos uma
-          página do seu site, ele está indexado (o problema aí seria de ranqueamento, não de
-          indexação). Se não aparecer nada, é isso: o Google simplesmente não tem nenhuma página
-          sua na base — não importa o quão bom o site seja.
-        </p>
-        <p>
-          Foi exatamente esse teste que confirmou o problema que motivou este post: um site novo,
-          bem construído, com toda a marcação técnica correta — e zero páginas indexadas, porque
-          ninguém tinha verificado o domínio no Search Console ainda.
-        </p>
-      </BlogSection>
-
-      <BlogSection title="O que realmente resolve isso">
-        <p>Nenhum desses passos é caro nem exige conhecimento técnico avançado — a maioria leva minutos:</p>
-        <ul className="list-disc space-y-2 pl-5">
-          <li>
-            Verificar o domínio no{" "}
-            <a
-              href="https://search.google.com/search-console/about"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-foreground"
-            >
-              Google Search Console
-            </a>{" "}
-            (por tag no site ou registro DNS).
-          </li>
-          <li>Enviar o sitemap do site pelo próprio Search Console.</li>
-          <li>
-            Pedir a indexação manual das páginas principais ("Inspeção de URL → Solicitar
-            indexação") em vez de esperar o Google encontrar sozinho.
-          </li>
-          <li>
-            Criar ou reivindicar o Perfil da Empresa no Google (Google Meu Negócio), com nome,
-            endereço e telefone idênticos aos do site — essa consistência conta para o Google.
-          </li>
-          <li>Registrar o mesmo sitemap no Bing Webmaster Tools — é o índice que alimenta o Copilot.</li>
-        </ul>
-      </BlogSection>
-
-      <BlogSection title="Depender só do Instagram é um risco silencioso" muted>
-        <p>
-          Para quem já é cliente e já segue o perfil, o Instagram funciona bem — é rápido, visual,
-          direto. O problema aparece com quem <em>ainda não conhece</em> a empresa: essa pessoa não
-          pesquisa "@suaempresa" no Instagram, ela pesquisa o serviço que precisa no Google ("oficina
-          em Lagoa Santa", "clínica em Vespasiano"). Se só o concorrente tem site indexado, é ele
-          quem aparece — mesmo que o Instagram da sua empresa seja mais ativo e mais bonito.
-        </p>
-        <p>
-          Tem também o risco de plataforma: o Instagram é propriedade da Meta, não sua. Uma
-          mudança de algoritmo, uma suspensão de conta por engano, uma troca de usuário
-          responsável — nada disso afeta um site que é seu, verificado e indexado no Google.
+          direto no Google, sem espaço depois dos dois-pontos.
+        </CalloutBlock>
+        <p className="mx-auto mt-6 max-w-2xl text-muted-foreground">
+          Se aparecer pelo menos uma página, o site está indexado (o problema aí seria de
+          ranqueamento, não de indexação). Se não aparecer nada, é isso: o Google não tem nenhuma
+          página sua na base — não importa o quão bom o site seja. Foi exatamente esse teste que
+          confirmou o problema que motivou este post: um site novo, bem construído, com toda a
+          marcação técnica correta — e zero páginas indexadas, porque ninguém tinha verificado o
+          domínio no Search Console ainda.
         </p>
       </BlogSection>
 
-      <BlogSection title="Se você não tem site ainda">
+      <BlogSection eyebrow="Checklist Caetus" icon={ListChecks} title="O que realmente resolve isso">
+        <div className="mx-auto max-w-2xl">
+          <AnimatedChecklist
+            items={[
+              "Verificar o domínio no Google Search Console",
+              "Enviar o sitemap do site pelo Search Console",
+              'Pedir indexação manual das páginas principais ("Inspeção de URL")',
+              "Criar/reivindicar o Perfil da Empresa no Google com dados idênticos ao site",
+              "Registrar o mesmo sitemap no Bing Webmaster Tools",
+            ]}
+          />
+        </div>
+      </BlogSection>
+
+      <BlogSection
+        eyebrow="Risco silencioso"
+        icon={ShieldCheck}
+        title="Depender só do Instagram tem um custo escondido"
+        muted
+        wide
+      >
+        <BeforeAfterGrid
+          before={{
+            label: "Só Instagram",
+            items: [
+              "Só quem já segue o perfil te encontra",
+              "Quem pesquisa o serviço no Google acha o concorrente primeiro",
+              "A conta é da Meta — suspensão ou mudança de algoritmo foge do seu controle",
+              "Nenhum canal seu é indexado como fonte de confiança",
+            ],
+          }}
+          after={{
+            label: "Site + Instagram",
+            items: [
+              "Aparece para quem já conhece e para quem está descobrindo agora",
+              "Concorre de igual para igual nas buscas locais",
+              "O site é seu — verificado, indexado, sob seu controle",
+              "Instagram continua sendo o canal rápido e visual, sem carregar sozinho a presença digital",
+            ],
+          }}
+        />
+      </BlogSection>
+
+      <BlogSection eyebrow="Sem site ainda?" icon={Clock} title="Comece pelo básico">
         <p>
           Sem site, não tem o que indexar — o Instagram continua sendo a única porta de entrada
           possível, e o problema descrito aqui nem chega a existir porque não há domínio próprio
