@@ -14,6 +14,7 @@ import Blog from "./pages/Blog";
 import BlogFuturoSeoComIA from "./pages/BlogFuturoSeoComIA";
 import BlogInstagramNaoEGoogle from "./pages/BlogInstagramNaoEGoogle";
 import BlogPerfilGoogleNaoSubstituiSite from "./pages/BlogPerfilGoogleNaoSubstituiSite";
+import BlogSiteNaoConverte from "./pages/BlogSiteNaoConverte";
 import Presentation from "./pages/Presentation";
 import ProdutoAtendenteVirtual from "./pages/ProdutoAtendenteVirtual";
 
@@ -33,6 +34,7 @@ createRoot(document.getElementById("root")!).render(
             element={<BlogInstagramNaoEGoogle />}
           />
           <Route path="/blog/perfil-google-nao-substitui-site" element={<BlogPerfilGoogleNaoSubstituiSite />} />
+          <Route path="/blog/site-nao-converte-em-contato" element={<BlogSiteNaoConverte />} />
           <Route path="/presentation" element={<Presentation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

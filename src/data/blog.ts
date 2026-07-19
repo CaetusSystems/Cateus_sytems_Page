@@ -40,6 +40,14 @@ export const BLOG_POSTS: BlogPost[] = [
       "Por que o Perfil da Empresa ajuda a ser encontrado, mas o site ainda é o que organiza a confiança e converte visitas em contato.",
     date: "2026-07-18",
   },
+  {
+    slug: "/blog/site-nao-converte-em-contato",
+    tag: "Presença digital • Conversão do site",
+    title: "Seu site recebe visitas, mas não gera contato",
+    excerpt:
+      "Por que um site pode ter acesso e ainda assim não gerar WhatsApp, formulário ou ligação — e o que ajustar para transformar visita em contato.",
+    date: "2026-07-19",
+  },
 ];
 
 /** Posts mais recentes primeiro, limitados a `limit` — usado pelo Footer. */
