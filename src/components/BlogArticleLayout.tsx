@@ -230,6 +230,36 @@ export function BlogArticleLayout({
 
         {children}
 
+        <section className="border-t border-border/60 bg-primary text-primary-foreground">
+          <div className="mx-auto max-w-4xl px-6 py-20 text-center">
+            <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
+              Quer resolver isso na sua empresa?
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-balance text-primary-foreground/70">
+              A Caetus Systems cuida da presença digital de pequenas empresas de Lagoa Santa,
+              Belo Horizonte e região — do site ao WhatsApp com IA.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-green)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-transform hover:scale-[1.02]"
+              >
+                <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                Conversar no WhatsApp
+              </a>
+              <Link
+                to={ctaHref}
+                className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 bg-transparent px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+              >
+                {ctaLabel}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section id="faq" className="border-t border-border/60">
           <div className="mx-auto max-w-4xl px-6 py-16">
             <div className="flex items-center gap-2 text-sm font-medium text-primary">
@@ -276,36 +306,6 @@ export function BlogArticleLayout({
                 </ul>
               </div>
             )}
-          </div>
-        </section>
-
-        <section className="border-t border-border/60 bg-primary text-primary-foreground">
-          <div className="mx-auto max-w-4xl px-6 py-20 text-center">
-            <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-              Quer resolver isso na sua empresa?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-balance text-primary-foreground/70">
-              A Caetus Systems cuida da presença digital de pequenas empresas de Lagoa Santa,
-              Belo Horizonte e região — do site ao WhatsApp com IA.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-green)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-transform hover:scale-[1.02]"
-              >
-                <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                Conversar no WhatsApp
-              </a>
-              <Link
-                to={ctaHref}
-                className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 bg-transparent px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
-              >
-                {ctaLabel}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
           </div>
         </section>
       </article>

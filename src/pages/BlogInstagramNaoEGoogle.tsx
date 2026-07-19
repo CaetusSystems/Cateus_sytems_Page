@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import {
   Search,
   Instagram,
@@ -15,6 +14,7 @@ import {
   AnimatedChecklist,
   BeforeAfterGrid,
   CalloutBlock,
+  InlineCta,
 } from "@/components/BlogVisuals";
 
 const FAQ = [
@@ -173,12 +173,15 @@ export default function BlogInstagramNaoEGoogle() {
           Sem site, não tem o que indexar — o Instagram continua sendo a única porta de entrada
           possível, e o problema descrito aqui nem chega a existir porque não há domínio próprio
           para verificar. Nesse caso o primeiro passo é ter um site profissional; os passos de
-          indexação deste post entram logo em seguida.{" "}
-          <Link to="/#solucoes" className="underline hover:text-foreground">
-            Veja as soluções de site da Caetus Systems
-          </Link>
-          .
+          indexação deste post entram logo em seguida.
         </p>
+        <div className="mt-6">
+          <InlineCta
+            title="Ainda não tem site?"
+            description="A Caetus Systems cria sites profissionais já prontos para o Google — e cuida da indexação por você."
+            whatsappMessage="Olá! Vim pelo blog e quero saber mais sobre sites profissionais da Caetus."
+          />
+        </div>
       </BlogSection>
     </BlogArticleLayout>
   );

@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, MessageCircle } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { WHATSAPP_URL, waUrl } from "@/lib/constants";
 
 /**
  * Biblioteca de blocos visuais animados para posts do blog — extraída do
@@ -285,6 +287,60 @@ function TimelineRow({ item, index }: { item: TimelineStep; index: number }) {
         </motion.div>
       </div>
     </div>
+  );
+}
+
+/**
+ * CTA embutido no meio do artigo — para a seção onde o problema descrito
+ * bate direto com uma solução da Caetus (ex.: "comece pelo básico", "se
+ * você não tem site ainda"). Mais discreto que o CTA final da página
+ * (que já aparece em todo post) — use em 1-2 seções onde faz sentido de
+ * verdade, não em todas.
+ */
+export function InlineCta({
+  title = "Quer ajuda para resolver isso?",
+  description = "A Caetus Systems cuida disso na prática — fala com a gente no WhatsApp.",
+  whatsappMessage,
+  productHref,
+  productLabel,
+}: {
+  title?: string;
+  description?: string;
+  /** mensagem pré-preenchida do WhatsApp, específica pro contexto da seção */
+  whatsappMessage?: string;
+  /** link interno opcional pra um produto relacionado (ex: "/produtos/bot-whatsapp") */
+  productHref?: string;
+  productLabel?: string;
+}) {
+  return (
+    <Reveal>
+      <div className="flex flex-col items-start gap-4 rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="font-semibold text-foreground">{title}</p>
+          <p className="mt-1 text-sm text-muted-foreground">{description}</p>
+        </div>
+        <div className="flex shrink-0 flex-wrap gap-2">
+          <a
+            href={whatsappMessage ? waUrl(whatsappMessage) : WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-green)] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:scale-[1.02]"
+          >
+            <MessageCircle className="h-4 w-4" aria-hidden="true" />
+            WhatsApp
+          </a>
+          {productHref && productLabel && (
+            <Link
+              to={productHref}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/10"
+            >
+              {productLabel}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          )}
+        </div>
+      </div>
+    </Reveal>
   );
 }
 

@@ -7,6 +7,7 @@ import {
   AnimatedChecklist,
   FlowSteps,
   CalloutBlock,
+  InlineCta,
 } from "@/components/BlogVisuals";
 
 const FAQ = [
@@ -81,6 +82,21 @@ export default function BlogPerfilGoogleNaoSubstituiSite() {
         </p>
       </BlogSection>
 
+      <BlogSection eyebrow="Exemplo real" icon={Building2} title="Uma oficina em Lagoa Santa">
+        <p>
+          No Google Maps ela aparece, recebe ligações e tem boas avaliações. Mas o cliente ainda
+          quer saber se faz revisão, suspensão, troca de óleo ou atendimento para frota — perguntas
+          que o Perfil não responde bem.
+        </p>
+        <div className="mt-6">
+          <CalloutBlock icon={Globe}>
+            Com uma página simples de serviços, cidades atendidas, FAQ e botão de contato, a
+            decisão fica muito mais fácil — o mesmo vale para negócios em Vespasiano, Pedro
+            Leopoldo e Belo Horizonte.
+          </CalloutBlock>
+        </div>
+      </BlogSection>
+
       <BlogSection title="Onde cada um entrega valor" muted wide>
         <ComparisonGrid
           items={[
@@ -100,18 +116,29 @@ export default function BlogPerfilGoogleNaoSubstituiSite() {
         />
       </BlogSection>
 
-      <BlogSection eyebrow="Exemplo real" icon={Building2} title="Uma oficina em Lagoa Santa">
-        <p>
-          No Google Maps ela aparece, recebe ligações e tem boas avaliações. Mas o cliente ainda
-          quer saber se faz revisão, suspensão, troca de óleo ou atendimento para frota — perguntas
-          que o Perfil não responde bem.
+      <BlogSection eyebrow="Por onde começar" icon={ListChecks} title="O que colocar no site primeiro">
+        <div className="mx-auto max-w-2xl">
+          <AnimatedChecklist
+            items={[
+              "Apresentação clara da empresa",
+              "Página de serviços",
+              "Prova social (avaliações, casos)",
+              "Área atendida ou endereço",
+              "Perguntas frequentes",
+              "Caminho simples de contato (WhatsApp)",
+            ]}
+          />
+        </div>
+        <p className="mx-auto mt-6 max-w-2xl text-muted-foreground">
+          Não precisa começar grande: rápido, bem escrito e fácil de navegar já cumpre o papel.
+          Depois dá para evoluir com páginas específicas, artigos e integrações.
         </p>
-        <div className="mt-6">
-          <CalloutBlock icon={Globe}>
-            Com uma página simples de serviços, cidades atendidas, FAQ e botão de contato, a
-            decisão fica muito mais fácil — o mesmo vale para negócios em Vespasiano, Pedro
-            Leopoldo e Belo Horizonte.
-          </CalloutBlock>
+        <div className="mx-auto mt-6 max-w-2xl">
+          <InlineCta
+            title="Quer esse site pronto?"
+            description="A Caetus Systems monta esse site com tudo isso já incluso, conectado ao seu Perfil da Empresa."
+            whatsappMessage="Olá! Vim pelo blog e quero saber mais sobre sites profissionais da Caetus."
+          />
         </div>
       </BlogSection>
 
@@ -142,25 +169,6 @@ export default function BlogPerfilGoogleNaoSubstituiSite() {
             ],
           }}
         />
-      </BlogSection>
-
-      <BlogSection eyebrow="Por onde começar" icon={ListChecks} title="O que colocar no site primeiro">
-        <div className="mx-auto max-w-2xl">
-          <AnimatedChecklist
-            items={[
-              "Apresentação clara da empresa",
-              "Página de serviços",
-              "Prova social (avaliações, casos)",
-              "Área atendida ou endereço",
-              "Perguntas frequentes",
-              "Caminho simples de contato (WhatsApp)",
-            ]}
-          />
-        </div>
-        <p className="mx-auto mt-6 max-w-2xl text-muted-foreground">
-          Não precisa começar grande: rápido, bem escrito e fácil de navegar já cumpre o papel.
-          Depois dá para evoluir com páginas específicas, artigos e integrações.
-        </p>
       </BlogSection>
 
       <BlogSection title="Como o Google e a IA usam essa combinação" wide>
