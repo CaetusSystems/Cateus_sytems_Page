@@ -369,3 +369,33 @@
   }
 
 }
+
+/* Hero 3D stage — cena WebGL (Hero3DScene) atrás do MockDashboard, com tilt no mouse */
+@layer utilities {
+  .hero3d-stage {
+    position: relative;
+    perspective: 1800px;
+  }
+
+  @keyframes hero3d-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .hero3d-float {
+    animation: hero3d-float 6s ease-in-out infinite;
+  }
+
+  .hero3d-tilt {
+    position: relative;
+    z-index: 1;
+    transform-style: preserve-3d;
+    transform: rotateX(6deg) rotateY(-10deg);
+    transition: transform 0.25s ease-out;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero3d-float { animation: none; }
+    .hero3d-tilt { transform: none; transition: none; }
+  }
+}

@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { useInView } from "@/hooks/use-in-view";
 import { WHATSAPP_URL } from "@/lib/constants";
+import { Hero3DStage } from "./Hero3DStage";
 
 export function Hero() {
   return (
@@ -72,7 +73,9 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mx-auto mt-16 max-w-4xl md:mt-20"
         >
-          <MockDashboard />
+          <Hero3DStage>
+            <MockDashboard />
+          </Hero3DStage>
         </motion.div>
       </div>
     </section>
