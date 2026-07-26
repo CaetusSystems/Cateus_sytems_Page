@@ -34,10 +34,17 @@ export function BrazilCoverage() {
       </div>
 
       <div className="relative z-10 -translate-y-8 w-fit px-6 sm:-translate-y-10 md:-translate-y-10">
+        {/* No mobile o mapa de pontos é bem mais baixo (ver
+            MIN_VISIBLE_WIDTH_FRACTION no HeroParticleField) e fica centrado
+            na seção — a logo, no fluxo normal, caía bem em cima do topo do
+            território. Um translate extra só nela (não afeta o fluxo dos
+            irmãos abaixo) sobe a logo pra ficar inteira acima do mapa,
+            deixando "Atendimento em todo o Brasil" e os CTAs centralizados
+            sobre o território como antes. */}
         <img
           src="/caetus-wordmark.png"
           alt="Caetus Systems"
-          className="pointer-events-none block h-20 w-auto sm:h-24 md:h-32 lg:h-36"
+          className="pointer-events-none block h-20 w-auto max-sm:-translate-y-[90px] sm:h-24 md:h-32 lg:h-36"
         />
         {/* A "escrita" CAETUS SYSTEMS ocupa só ~67,7% da largura da wordmark
             (os outros ~32,3% à esquerda são o ícone "C") — esse bloco fica
