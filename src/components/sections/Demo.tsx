@@ -55,7 +55,7 @@ export function Demo() {
               <span className="text-brand-green">agora</span>.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Restaurante, clínica, oficina, loja — cada conversa ao lado é uma situação real do
+              Restaurante, clínica, oficina, loja: cada conversa ao lado é uma situação real do
               dia a dia sendo resolvida sem ninguém pegar no telefone.
             </p>
             <ul className="mt-8 space-y-3">
@@ -142,7 +142,7 @@ const WA_CONVOS: WAConvo[] = [
       { from: "client", text: "Quanto custa o serviço para minha empresa?" },
       {
         from: "ai",
-        text: "Oi, Carlos! O valor depende do que você precisa. Posso montar um orçamento em 2 min — qual o segmento?",
+        text: "Oi, Carlos! O valor depende do que você precisa. Posso montar um orçamento em 2 min. Qual o segmento?",
         typingMs: 1400,
       },
       { from: "client", text: "Restaurante." },
@@ -291,7 +291,7 @@ const WA_CLIENT_QS = [
 const WA_AI_REPLIES = [
   "Temos 9h, 10h e 14h. Posso reservar?",
   "Aceitamos Pix, cartão e dinheiro. 💳",
-  "Av. Central, 150 — envio a localização.",
+  "Av. Central, 150. Envio a localização.",
   "Claro! Vou fazer algumas perguntas rápidas.",
   "Sim, das 8h às 13h. 👍",
   "Temos em estoque! Envio o link.",

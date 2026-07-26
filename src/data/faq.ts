@@ -5,7 +5,7 @@
 export const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "O que a Caetus faz, em uma frase?",
-    a: "Colocamos o atendimento, a presença digital e a organização da sua empresa para funcionar no automático — você cuida do negócio físico, a gente cuida do digital.",
+    a: "Colocamos o atendimento, a presença digital e a organização da sua empresa para funcionar no automático: você cuida do negócio físico, a gente cuida do digital.",
   },
   {
     q: "O WhatsApp responde sozinho mesmo?",
@@ -21,7 +21,7 @@ export const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Preciso contratar tudo de uma vez?",
-    a: "Não — e nem recomendamos. Começamos pequeno, resolvendo um problema de cada vez. Conforme sua empresa cresce, novas soluções entram quando fizer sentido.",
+    a: "Não, e nem recomendamos. Começamos pequeno, resolvendo um problema de cada vez. Conforme sua empresa cresce, novas soluções entram quando fizer sentido.",
   },
   {
     q: "Vocês atendem na minha cidade?",

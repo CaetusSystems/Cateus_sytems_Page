@@ -3,6 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import { IntroSplash, useIntroSplash } from "@/components/IntroSplash";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Nav } from "@/components/sections/Nav";
+import { BrazilCoverage } from "@/components/sections/BrazilCoverage";
 import { Hero } from "@/components/sections/Hero";
 import { HelpSection } from "@/components/sections/HelpSection";
 import { Products } from "@/components/sections/Products";
@@ -90,6 +91,7 @@ function Index() {
       </AnimatePresence>
       <Nav />
       <main id="conteudo">
+        <BrazilCoverage />
         <Hero />
         <HelpSection />
         <Products />

@@ -500,7 +500,7 @@ export function Slide12() {
 
       {/* Footer Branding */}
       <div className="text-xs text-muted-foreground/60">
-        Caetus Systems — Você cuida do seu negócio. A gente cuida do digital.
+        Caetus Systems: você cuida do seu negócio. A gente cuida do digital.
       </div>
     </div>
   );

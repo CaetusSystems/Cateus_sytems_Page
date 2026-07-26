@@ -20,7 +20,7 @@ const BENEFITS = [
   {
     icon: ShieldCheck,
     title: "Você fica tranquilo",
-    desc: "Tem alguém cuidando dessa parte — todos os dias.",
+    desc: "Tem alguém cuidando dessa parte, todos os dias.",
   },
 ];
 

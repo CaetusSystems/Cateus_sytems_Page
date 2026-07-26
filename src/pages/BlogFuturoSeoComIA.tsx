@@ -39,7 +39,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "O que é AEO?",
-    a: "AEO (Answer Engine Optimization) é a otimização de um site para que mecanismos de resposta — como o Google com IA, ChatGPT e Gemini — consigam extrair respostas prontas do seu conteúdo e exibi-las diretamente ao usuário.",
+    a: "AEO (Answer Engine Optimization) é a otimização de um site para que mecanismos de resposta, como o Google com IA, ChatGPT e Gemini, consigam extrair respostas prontas do seu conteúdo e exibi-las diretamente ao usuário.",
   },
   {
     q: "O que é GEO?",
@@ -59,7 +59,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Vale a pena atualizar um site antigo?",
-    a: "Sim. Em muitos casos é mais rápido e barato reestruturar o site atual do que criar um novo do zero — desde que a base técnica permita adicionar Schema.org, melhorar performance e reorganizar o conteúdo.",
+    a: "Sim. Em muitos casos é mais rápido e barato reestruturar o site atual do que criar um novo do zero, desde que a base técnica permita adicionar Schema.org, melhorar performance e reorganizar o conteúdo.",
   },
 ];
 
@@ -210,8 +210,8 @@ const CHECKLIST = [
   "Conteúdo organizado por tópicos",
   "FAQ com perguntas reais dos clientes",
   "Marcação semântica para IAs",
-  "AEO — respostas prontas para IA",
-  "GEO — presença nas respostas generativas",
+  "AEO: respostas prontas para IA",
+  "GEO: presença nas respostas generativas",
   "Atualizações contínuas de conteúdo",
 ];
 
@@ -310,7 +310,7 @@ function AnimatedChecklist() {
 
 export default function ArticlePage() {
   useDocumentHead({
-    title: `${ARTICLE_TITLE} — Caetus Systems`,
+    title: `${ARTICLE_TITLE}, Caetus Systems`,
     description: ARTICLE_DESCRIPTION,
     canonical: ARTICLE_URL,
     og: {
@@ -449,7 +449,7 @@ export default function ArticlePage() {
           <Reveal delay={0.2}>
             <p className="mt-6 max-w-2xl text-balance text-lg text-muted-foreground">
               Cada vez mais pessoas fazem perguntas diretamente para inteligências artificiais como
-              ChatGPT, Gemini e Copilot — e recebem uma resposta pronta, sem passar por uma lista de
+              ChatGPT, Gemini e Copilot, e recebem uma resposta pronta, sem passar por uma lista de
               sites. Sua empresa está preparada para aparecer nessas respostas?
             </p>
           </Reveal>
@@ -525,7 +525,7 @@ export default function ArticlePage() {
             </h2>
             <p className="mt-3 max-w-2xl text-muted-foreground">
               As inteligências artificiais estão se tornando uma nova porta de entrada para
-              encontrar empresas. A pessoa pergunta, a IA responde — e recomenda apenas quem está
+              encontrar empresas. A pessoa pergunta, a IA responde e recomenda apenas quem está
               preparado.
             </p>
           </Reveal>
@@ -550,8 +550,8 @@ export default function ArticlePage() {
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">O problema</h2>
             <p className="mt-5 text-lg text-primary-foreground/75">
               Muitos sites foram construídos pensando apenas no Google. Eles não organizam
-              informações essenciais — o que a empresa faz, onde atende, como é contratada, quais
-              dúvidas responde — de um jeito que uma inteligência artificial consiga entender.
+              informações essenciais: o que a empresa faz, onde atende, como é contratada, quais
+              dúvidas responde, de um jeito que uma inteligência artificial consiga entender.
             </p>
             <p className="mt-4 text-lg text-primary-foreground/75">
               Resultado: quando alguém pergunta a um ChatGPT da vida{" "}
@@ -569,7 +569,7 @@ export default function ArticlePage() {
         <div className="mx-auto max-w-4xl px-6 py-20">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-              SEO, AEO e GEO — o que muda?
+              SEO, AEO e GEO: o que muda?
             </h2>
             <p className="mt-3 max-w-2xl text-muted-foreground">
               Três siglas, três públicos diferentes. Explicado sem jargão:
@@ -616,7 +616,7 @@ export default function ArticlePage() {
             <Reveal>
               <div className="h-full rounded-2xl border border-border bg-card p-6">
                 <div className="flex items-center gap-2 text-sm font-semibold text-destructive">
-                  <X className="h-4 w-4" /> Oficina A — site comum
+                  <X className="h-4 w-4" /> Oficina A: site comum
                 </div>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                   <li>• Página com foto do dono e um telefone.</li>
@@ -634,7 +634,7 @@ export default function ArticlePage() {
             <Reveal delay={0.1}>
               <div className="h-full rounded-2xl border border-[color:var(--brand-green)]/40 bg-[color:color-mix(in_oklab,var(--brand-green)_8%,var(--card))] p-6">
                 <div className="flex items-center gap-2 text-sm font-semibold text-[color:var(--brand-green)]">
-                  <Check className="h-4 w-4" /> Oficina B — site preparado
+                  <Check className="h-4 w-4" /> Oficina B: site preparado
                 </div>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                   <li>• Serviços descritos por categoria e preço médio.</li>
@@ -737,7 +737,7 @@ export default function ArticlePage() {
               Dúvidas sobre SEO, AEO e GEO
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Respostas objetivas — pensadas para pessoas, para o Google e para mecanismos de
+              Respostas objetivas, pensadas para pessoas, para o Google e para mecanismos de
               resposta baseados em IA.
             </p>
           </Reveal>
@@ -791,7 +791,7 @@ export default function ArticlePage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 hover:text-foreground"
                   >
-                    OpenAI — ChatGPT Search
+                    OpenAI: ChatGPT Search
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 </li>
@@ -821,7 +821,7 @@ export default function ArticlePage() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-balance text-primary-foreground/70">
               A Caetus Systems desenvolve sites já preparados para SEO, AEO e GEO desde o primeiro
-              dia — com estrutura semântica, dados estruturados e conteúdo pronto para o Google e
+              dia, com estrutura semântica, dados estruturados e conteúdo pronto para o Google e
               para as IAs.
             </p>
           </Reveal>

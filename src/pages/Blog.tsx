@@ -5,7 +5,7 @@ import { BLOG_POSTS } from "../data/blog";
 
 export default function Blog() {
   useDocumentHead({
-    title: "Blog Caetus Systems — SEO, IA, automação e tecnologia",
+    title: "Blog Caetus Systems: SEO, IA, automação e tecnologia",
     description:
       "Conteúdos sobre SEO, AEO, GEO, inteligência artificial, automação de WhatsApp, Google Business e presença digital para pequenas empresas de Lagoa Santa e região.",
     canonical: "/blog",

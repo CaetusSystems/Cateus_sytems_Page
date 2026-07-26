@@ -77,7 +77,7 @@ export default function BlogPerfilGoogleNaoSubstituiSite() {
           Muita empresa pequena investe tempo no Perfil da Empresa, responde avaliações e atualiza
           fotos, mas continua dependendo de um site fraco ou nem tem site. O resultado é comum: a
           pessoa encontra a empresa, mas não encontra motivo suficiente para entrar em contato. O
-          problema não é o Perfil — ele deve continuar ativo. É que, sozinho, ele não organiza tudo
+          problema não é o Perfil: ele deve continuar ativo. É que, sozinho, ele não organiza tudo
           o que o cliente precisa para confiar em você.
         </p>
       </BlogSection>
@@ -85,13 +85,13 @@ export default function BlogPerfilGoogleNaoSubstituiSite() {
       <BlogSection eyebrow="Exemplo real" icon={Building2} title="Uma oficina em Lagoa Santa">
         <p>
           No Google Maps ela aparece, recebe ligações e tem boas avaliações. Mas o cliente ainda
-          quer saber se faz revisão, suspensão, troca de óleo ou atendimento para frota — perguntas
+          quer saber se faz revisão, suspensão, troca de óleo ou atendimento para frota, perguntas
           que o Perfil não responde bem.
         </p>
         <div className="mt-6">
           <CalloutBlock icon={Globe}>
             Com uma página simples de serviços, cidades atendidas, FAQ e botão de contato, a
-            decisão fica muito mais fácil — o mesmo vale para negócios em Vespasiano, Pedro
+            decisão fica muito mais fácil, o mesmo vale para negócios em Vespasiano, Pedro
             Leopoldo e Belo Horizonte.
           </CalloutBlock>
         </div>
@@ -104,7 +104,7 @@ export default function BlogPerfilGoogleNaoSubstituiSite() {
               icon: MapPin,
               title: "Perfil da Empresa",
               subtitle: "descoberta rápida",
-              desc: "Aparece no Google Maps, mostra telefone, horário, avaliações e fotos. Ótimo para ser encontrado — mas com espaço curto para explicar serviço, diferencial e processo.",
+              desc: "Aparece no Google Maps, mostra telefone, horário, avaliações e fotos. Ótimo para ser encontrado, mas com espaço curto para explicar serviço, diferencial e processo.",
             },
             {
               icon: Globe,
@@ -181,7 +181,7 @@ export default function BlogPerfilGoogleNaoSubstituiSite() {
           ]}
         />
         <p className="mx-auto mt-8 max-w-2xl text-center text-muted-foreground">
-          Quando o perfil e o site falam a mesma língua, sua empresa fica mais fácil de entender —
+          Quando o perfil e o site falam a mesma língua, sua empresa fica mais fácil de entender
           e mais fácil de aparecer, ser lembrada e ser citada.
         </p>
       </BlogSection>

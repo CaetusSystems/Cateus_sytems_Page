@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  ArrowRight,
   BarChart3,
   Bell,
   Boxes,
@@ -22,10 +21,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { useInView } from "@/hooks/use-in-view";
-import { WHATSAPP_URL } from "@/lib/constants";
 import { Hero3DStage } from "./Hero3DStage";
 
 export function Hero() {
@@ -44,27 +40,8 @@ export function Hero() {
             <span className="text-primary">mesmo quando você não está.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-lg font-medium text-foreground/80 md:text-xl">
-            Atendimento, vendas e organização no automático — enquanto você toca o negócio.
+            Atendimento, vendas e organização no automático, enquanto você toca o negócio.
           </p>
-
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button
-              asChild
-              size="lg"
-              className="rounded-full bg-brand-green px-6 text-white hover:bg-brand-green/90"
-            >
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                <WhatsAppIcon className="mr-1 h-4 w-4" />
-                Falar no WhatsApp
-              </a>
-            </Button>
-            <Button asChild variant="ghost" size="lg" className="rounded-full">
-              <a href="#solucoes">
-                Ver soluções
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </a>
-            </Button>
-          </div>
         </motion.div>
 
         <motion.div
@@ -195,10 +172,6 @@ function MockDashboard() {
   return (
     <div ref={ref} className="rounded-2xl border border-primary/20 bg-primary p-2 shadow-2xl shadow-primary/30">
       <div className="relative overflow-hidden rounded-xl bg-white/[0.04] p-6">
-        <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-cyan-400/20 blur-3xl" />
-        <div className="pointer-events-none absolute -right-10 top-10 h-48 w-48 rounded-full bg-purple-400/15 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 left-1/3 h-44 w-44 rounded-full bg-amber-400/10 blur-3xl" />
-
         <div className="relative mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img

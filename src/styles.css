@@ -370,8 +370,8 @@
 
 }
 
-/* Hero 3D stage — o MockDashboard real vive dentro da cena (WebGL + CSS3DObject
-   via Hero3DStage), preso a uma "tela" que gira junto com o cage de wireframe. */
+/* Hero 3D stage — canvas WebGL decorativo (cards flutuando + partículas) atrás
+   do MockDashboard real, que continua sendo DOM normal por cima. */
 @layer utilities {
   .hero3d-stage {
     position: relative;
