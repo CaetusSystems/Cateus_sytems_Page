@@ -46,10 +46,15 @@ export function BrazilCoverage() {
             (caetus-wordmark.png, texto vai de x=187 a x=579 numa imagem de
             579px de largura). */}
         <div
-          className="mt-9 flex flex-col items-center text-center md:mt-10"
+          className="mt-9 flex flex-col items-center text-center max-sm:mt-7 md:mt-10"
           style={{ marginLeft: "32.3%", width: "67.7%" }}
         >
-          <p className="text-balance text-lg font-semibold tracking-tight text-foreground/70 md:text-xl">
+          {/* No mobile o texto cai sobre a parte mais densa dos pontos do
+              mapa — text-foreground/70 lia bem no fundo liso do desktop, mas
+              vira ruído contra a textura. Maior, mais peso e um halo branco
+              (text-shadow) separam a letra do fundo sem mexer na animação
+              nem introduzir um card/blur por cima do mapa. */}
+          <p className="text-balance text-lg font-semibold tracking-tight text-foreground/70 max-sm:text-xl max-sm:font-bold max-sm:text-foreground max-sm:[text-shadow:0_1px_3px_rgba(255,255,255,.9),0_0_18px_rgba(255,255,255,.75)] md:text-xl">
             Atendimento em todo o Brasil.
           </p>
 
@@ -64,7 +69,12 @@ export function BrazilCoverage() {
                 Falar no WhatsApp
               </a>
             </Button>
-            <Button asChild variant="ghost" size="lg" className="rounded-full">
+            <Button
+              asChild
+              variant="ghost"
+              size="lg"
+              className="rounded-full max-sm:font-semibold max-sm:[text-shadow:0_1px_3px_rgba(255,255,255,.9),0_0_18px_rgba(255,255,255,.75)]"
+            >
               <a href="#solucoes">
                 Ver soluções
                 <ArrowRight className="ml-1 h-4 w-4" />
