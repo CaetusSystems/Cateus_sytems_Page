@@ -33,7 +33,7 @@ export function BrazilCoverage() {
         </span>
       </div>
 
-      <div className="relative z-10 -translate-y-8 w-fit px-6 sm:-translate-y-10 md:-translate-y-10">
+      <div className="relative z-10 -translate-y-8 flex flex-col items-center px-6 sm:-translate-y-10 md:-translate-y-10">
         {/* No mobile o mapa de pontos é bem mais baixo (ver
             MIN_VISIBLE_WIDTH_FRACTION no HeroParticleField) e fica centrado
             na seção — a logo, no fluxo normal, caía bem em cima do topo do
@@ -46,16 +46,10 @@ export function BrazilCoverage() {
           alt="Caetus Systems"
           className="pointer-events-none block h-20 w-auto max-sm:-translate-y-[90px] sm:h-24 md:h-32 lg:h-36"
         />
-        {/* A "escrita" CAETUS SYSTEMS ocupa só ~67,7% da largura da wordmark
-            (os outros ~32,3% à esquerda são o ícone "C") — esse bloco fica
-            restrito a essa faixa pra centralizar de verdade só sob o texto,
-            não sob a logo inteira. Frações vêm da bbox real do PNG
-            (caetus-wordmark.png, texto vai de x=187 a x=579 numa imagem de
-            579px de largura). */}
-        <div
-          className="mt-9 flex flex-col items-center text-center max-sm:mt-7 md:mt-10"
-          style={{ marginLeft: "32.3%", width: "67.7%" }}
-        >
+        {/* Texto e CTAs centralizados na tela (não mais restritos à faixa da
+            "escrita" da logo) — a logo continua no mesmo lugar, só o bloco de
+            texto abaixo passou a centralizar em relação à seção inteira. */}
+        <div className="mt-9 flex flex-col items-center text-center max-sm:mt-7 md:mt-10">
           {/* No mobile o texto cai sobre a parte mais densa dos pontos do
               mapa — text-foreground/70 lia bem no fundo liso do desktop, mas
               vira ruído contra a textura. Maior, mais peso e um halo branco
