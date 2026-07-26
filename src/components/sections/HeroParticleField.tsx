@@ -91,7 +91,19 @@ function initField(canvas: HTMLCanvasElement) {
 
   function buildParticles() {
     const off = document.createElement("canvas");
-    const ratio = (REFERENCE_HEIGHT / img.height) * SCALE_MULTIPLIER;
+    const heightRatio = (REFERENCE_HEIGHT / img.height) * SCALE_MULTIPLIER;
+    // Em telas estreitas (celular), a escala calculada pela altura de
+    // referência deixa o mapa muito mais largo que o container — como ele é
+    // centralizado horizontalmente (startX abaixo), isso corta as bordas
+    // leste/oeste do Brasil sem nenhum fade, ficando com "paredão" reto nas
+    // laterais. Nunca deixamos o mapa ficar mais largo que o próprio
+    // container: se a escala por altura estourar a largura disponível, usamos
+    // a escala por largura em vez dela (mapa fica proporcionalmente menor,
+    // mas inteiro, sem corte lateral). Em desktop a largura do container é
+    // sempre maior que o mapa calculado por altura, então essa escala nunca
+    // é a menor das duas e o comportamento atual não muda.
+    const widthRatio = width / img.width;
+    const ratio = Math.min(heightRatio, widthRatio);
     const iw = Math.max(1, Math.round(img.width * ratio));
     const ih = Math.max(1, Math.round(img.height * ratio));
     off.width = iw;
