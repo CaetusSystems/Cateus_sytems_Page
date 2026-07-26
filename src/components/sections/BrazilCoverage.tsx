@@ -49,7 +49,7 @@ export function BrazilCoverage() {
         {/* Texto e CTAs centralizados na tela (não mais restritos à faixa da
             "escrita" da logo) — a logo continua no mesmo lugar, só o bloco de
             texto abaixo passou a centralizar em relação à seção inteira. */}
-        <div className="mt-9 flex flex-col items-center text-center max-sm:mt-7 md:mt-10">
+        <div className="mt-9 flex flex-col items-center text-center max-sm:mt-2 md:mt-10">
           {/* No mobile o texto cai sobre a parte mais densa dos pontos do
               mapa — text-foreground/70 lia bem no fundo liso do desktop, mas
               vira ruído contra a textura. Maior, mais peso e um halo branco
