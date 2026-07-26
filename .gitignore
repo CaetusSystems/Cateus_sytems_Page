@@ -15,6 +15,9 @@ dist-ssr
 # Vercel
 .vercel
 
+# Claude Code (skills/config locais, não fazem parte do site)
+.claude
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
