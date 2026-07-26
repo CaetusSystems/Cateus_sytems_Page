@@ -16,10 +16,13 @@ export function BrazilCoverage() {
     // físico fixo (ver HeroParticleField) e em janelas de desktop comuns
     // (~650-760px úteis) sobrava um corte na ponta do Sul. Em vez de mexer
     // no tamanho do mapa, esticamos o container um pouco além da altura da
-    // viewport pra ganhar esses pixels embaixo.
+    // viewport pra ganhar esses pixels embaixo. No mobile o mapa físico é
+    // menor (limitado pela largura, ver MIN_VISIBLE_WIDTH_FRACTION), então a
+    // mesma folga sobrava como vão em branco acima/abaixo — reduzida só
+    // abaixo do breakpoint sm, o desktop mantém os valores originais.
     <section
       aria-label="Caetus Systems atende empresas em todo o Brasil"
-      className="relative isolate flex h-[calc(100svh+110px)] min-h-[670px] w-full items-center justify-center overflow-hidden bg-white"
+      className="relative isolate flex h-[calc(100svh+40px)] min-h-[560px] w-full items-center justify-center overflow-hidden bg-white sm:h-[calc(100svh+110px)] sm:min-h-[670px]"
     >
       <HeroParticleField className="absolute inset-0 h-full w-full" />
 
@@ -31,10 +34,17 @@ export function BrazilCoverage() {
       </div>
 
       <div className="relative z-10 -translate-y-8 w-fit px-6 sm:-translate-y-10 md:-translate-y-10">
+        {/* No mobile o mapa de pontos é bem mais baixo (ver
+            MIN_VISIBLE_WIDTH_FRACTION no HeroParticleField) e fica centrado
+            na seção — a logo, no fluxo normal, caía bem em cima do topo do
+            território. Um translate extra só nela (não afeta o fluxo dos
+            irmãos abaixo) sobe a logo pra ficar inteira acima do mapa,
+            deixando "Atendimento em todo o Brasil" e os CTAs centralizados
+            sobre o território como antes. */}
         <img
           src="/caetus-wordmark.png"
           alt="Caetus Systems"
-          className="pointer-events-none block h-20 w-auto sm:h-24 md:h-32 lg:h-36"
+          className="pointer-events-none block h-20 w-auto max-sm:-translate-y-[90px] sm:h-24 md:h-32 lg:h-36"
         />
         {/* A "escrita" CAETUS SYSTEMS ocupa só ~67,7% da largura da wordmark
             (os outros ~32,3% à esquerda são o ícone "C") — esse bloco fica
@@ -43,9 +53,15 @@ export function BrazilCoverage() {
             (caetus-wordmark.png, texto vai de x=187 a x=579 numa imagem de
             579px de largura). */}
         <div
-          className="mt-9 mx-auto flex w-[67.7%] flex-col items-center text-center md:mt-10 md:mx-0 md:ml-[32.3%]"
+          className="mt-9 flex flex-col items-center text-center max-sm:mt-7 md:mt-10"
+          style={{ marginLeft: "32.3%", width: "67.7%" }}
         >
-          <p className="text-balance text-lg font-semibold tracking-tight text-foreground/70 md:text-xl">
+          {/* No mobile o texto cai sobre a parte mais densa dos pontos do
+              mapa — text-foreground/70 lia bem no fundo liso do desktop, mas
+              vira ruído contra a textura. Maior, mais peso e um halo branco
+              (text-shadow) separam a letra do fundo sem mexer na animação
+              nem introduzir um card/blur por cima do mapa. */}
+          <p className="text-balance text-lg font-semibold tracking-tight text-foreground/70 max-sm:text-xl max-sm:font-bold max-sm:text-foreground max-sm:[text-shadow:0_1px_3px_rgba(255,255,255,.9),0_0_18px_rgba(255,255,255,.75)] md:text-xl">
             Atendimento em todo o Brasil.
           </p>
 
@@ -60,7 +76,12 @@ export function BrazilCoverage() {
                 Falar no WhatsApp
               </a>
             </Button>
-            <Button asChild variant="ghost" size="lg" className="rounded-full">
+            <Button
+              asChild
+              variant="ghost"
+              size="lg"
+              className="rounded-full max-sm:font-semibold max-sm:[text-shadow:0_1px_3px_rgba(255,255,255,.9),0_0_18px_rgba(255,255,255,.75)]"
+            >
               <a href="#solucoes">
                 Ver soluções
                 <ArrowRight className="ml-1 h-4 w-4" />

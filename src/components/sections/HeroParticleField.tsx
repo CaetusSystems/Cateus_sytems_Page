@@ -91,7 +91,23 @@ function initField(canvas: HTMLCanvasElement) {
 
   function buildParticles() {
     const off = document.createElement("canvas");
-    const ratio = (REFERENCE_HEIGHT / img.height) * SCALE_MULTIPLIER;
+    const heightRatio = (REFERENCE_HEIGHT / img.height) * SCALE_MULTIPLIER;
+    // Em telas estreitas (celular), a escala calculada pela altura de
+    // referência deixa o mapa muito mais largo que o container. Ajustar pra
+    // caber 100% da largura (sem nenhum corte) deixava o mapa baixo demais —
+    // "minúsculo" dentro da seção. E manter a escala do desktop sem limite
+    // recriava o bug original: só uma fatia central estreita do território
+    // fica visível, sem formato reconhecível de Brasil. O meio-termo: nunca
+    // deixamos menos que ~62% da largura do mapa dentro do container — dá pra
+    // manter o mapa grande (fisicamente quase do tamanho do desktop) mostrando
+    // a maior parte do contorno, e o que sobra nas bordas dissolve em fade
+    // (ver FADE_ZONE abaixo) em vez de terminar numa linha reta. Em desktop a
+    // largura do container é sempre maior que o mapa calculado por altura,
+    // então esse teto nunca é o menor dos dois e o comportamento atual não
+    // muda.
+    const MIN_VISIBLE_WIDTH_FRACTION = 0.62;
+    const widthRatio = width / (img.width * MIN_VISIBLE_WIDTH_FRACTION);
+    const ratio = Math.min(heightRatio, widthRatio);
     const iw = Math.max(1, Math.round(img.width * ratio));
     const ih = Math.max(1, Math.round(img.height * ratio));
     off.width = iw;
@@ -121,11 +137,13 @@ function initField(canvas: HTMLCanvasElement) {
     const overflowY = Math.max(0, ih - height);
     const startY = (height - ih) / 2 + (overflowY / 2) * TOP_CROP_RELIEF;
 
-    // Em janelas mais baixas que o mapa, uma parte de cima e/ou de baixo
-    // sempre vai ficar fora do container (ver comentário do startY acima).
-    // Em vez de um corte seco bem na borda, as partículas ali percebem um
-    // "fade" suave nos últimos FADE_ZONE px — fica parecendo que o campo de
-    // partículas se dissipa naturalmente, não que a imagem foi truncada.
+    // Em janelas mais baixas (ou, no celular, mais estreitas) que o mapa,
+    // uma parte das bordas sempre vai ficar fora do container (ver
+    // comentários de startY/widthRatio acima). Em vez de um corte seco bem
+    // na borda, as partículas ali percebem um "fade" suave nos últimos
+    // FADE_ZONE px de cada lado — fica parecendo que o campo de partículas se
+    // dissipa naturalmente, não que a imagem foi truncada. Aplicado nos dois
+    // eixos: vertical (janelas baixas) e horizontal (telas estreitas).
     const FADE_ZONE = 64;
 
     const next: Particle[] = [];
@@ -136,7 +154,9 @@ function initField(canvas: HTMLCanvasElement) {
         if (brightness > 120) {
           const px = startX + x;
           const py = startY + y;
-          const fade = Math.max(0, Math.min(1, Math.min(py, height - py) / FADE_ZONE));
+          const fadeY = Math.max(0, Math.min(1, Math.min(py, height - py) / FADE_ZONE));
+          const fadeX = Math.max(0, Math.min(1, Math.min(px, width - px) / FADE_ZONE));
+          const fade = Math.min(fadeX, fadeY);
           next.push({ ox: px, oy: py, x: px, y: py, vx: 0, vy: 0, brightness, fade });
         }
       }
