@@ -16,10 +16,13 @@ export function BrazilCoverage() {
     // físico fixo (ver HeroParticleField) e em janelas de desktop comuns
     // (~650-760px úteis) sobrava um corte na ponta do Sul. Em vez de mexer
     // no tamanho do mapa, esticamos o container um pouco além da altura da
-    // viewport pra ganhar esses pixels embaixo.
+    // viewport pra ganhar esses pixels embaixo. No mobile o mapa físico é
+    // menor (limitado pela largura, ver MIN_VISIBLE_WIDTH_FRACTION), então a
+    // mesma folga sobrava como vão em branco acima/abaixo — reduzida só
+    // abaixo do breakpoint sm, o desktop mantém os valores originais.
     <section
       aria-label="Caetus Systems atende empresas em todo o Brasil"
-      className="relative isolate flex h-[calc(100svh+110px)] min-h-[670px] w-full items-center justify-center overflow-hidden bg-white"
+      className="relative isolate flex h-[calc(100svh+40px)] min-h-[560px] w-full items-center justify-center overflow-hidden bg-white sm:h-[calc(100svh+110px)] sm:min-h-[670px]"
     >
       <HeroParticleField className="absolute inset-0 h-full w-full" />
 
