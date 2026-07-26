@@ -43,7 +43,7 @@ export function BrazilCoverage() {
             (caetus-wordmark.png, texto vai de x=187 a x=579 numa imagem de
             579px de largura). */}
         <div
-          className="mt-9 flex w-full flex-col items-center text-center md:mt-10 md:ml-[32.3%] md:w-[67.7%]"
+          className="mt-9 mx-auto flex w-[67.7%] flex-col items-center text-center md:mt-10 md:mx-0 md:ml-[32.3%]"
         >
           <p className="text-balance text-lg font-semibold tracking-tight text-foreground/70 md:text-xl">
             Atendimento em todo o Brasil.
