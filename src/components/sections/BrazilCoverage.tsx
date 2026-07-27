@@ -46,10 +46,16 @@ export function BrazilCoverage() {
           alt="Caetus Systems"
           className="pointer-events-none block h-20 w-auto max-sm:-translate-y-[90px] sm:h-24 md:h-32 lg:h-36"
         />
-        {/* Texto e CTAs centralizados na tela (não mais restritos à faixa da
-            "escrita" da logo) — a logo continua no mesmo lugar, só o bloco de
-            texto abaixo passou a centralizar em relação à seção inteira. */}
-        <div className="mt-9 flex flex-col items-center text-center max-sm:mt-2 md:mt-10">
+        {/* No mobile o texto/CTAs ficam centralizados na tela inteira. No
+            desktop (sm+), voltam a ficar restritos à faixa da "escrita"
+            CAETUS SYSTEMS (67,7% da largura da wordmark, os outros 32,3% à
+            esquerda são o ícone "C") pra alinhar de verdade sob o texto da
+            logo, não sob a logo inteira. Frações vêm da bbox real do PNG
+            (caetus-wordmark.png, texto vai de x=187 a x=579 numa imagem de
+            579px de largura). */}
+        <div
+          className="mt-9 flex flex-col items-center text-center max-sm:-mt-8 md:mt-10 sm:ml-[32.3%] sm:w-[67.7%]"
+        >
           {/* No mobile o texto cai sobre a parte mais densa dos pontos do
               mapa — text-foreground/70 lia bem no fundo liso do desktop, mas
               vira ruído contra a textura. Maior, mais peso e um halo branco
