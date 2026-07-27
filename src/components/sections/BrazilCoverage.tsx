@@ -20,9 +20,12 @@ export function BrazilCoverage() {
     // menor (limitado pela largura, ver MIN_VISIBLE_WIDTH_FRACTION), então a
     // mesma folga sobrava como vão em branco acima/abaixo — reduzida só
     // abaixo do breakpoint sm, o desktop mantém os valores originais.
+    // Seção inteira (logo + "Atendimento em todo o Brasil" + CTAs + mapa)
+    // escondida no mobile por enquanto (ajuste futuro) — só aparece a partir
+    // do breakpoint sm, onde volta a funcionar como antes.
     <section
       aria-label="Caetus Systems atende empresas em todo o Brasil"
-      className="relative isolate flex h-[calc(100svh+40px)] min-h-[560px] w-full items-center justify-center overflow-hidden bg-white sm:h-[calc(100svh+110px)] sm:min-h-[670px]"
+      className="relative isolate hidden h-[calc(100svh+110px)] min-h-[670px] w-full items-center justify-center overflow-hidden bg-white sm:flex"
     >
       {/* Animação do mapa escondida no mobile por enquanto (ajuste futuro);
           continua normal a partir do breakpoint sm. Não mexe no
