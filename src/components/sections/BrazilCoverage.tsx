@@ -24,7 +24,10 @@ export function BrazilCoverage() {
       aria-label="Caetus Systems atende empresas em todo o Brasil"
       className="relative isolate flex h-[calc(100svh+40px)] min-h-[560px] w-full items-center justify-center overflow-hidden bg-white sm:h-[calc(100svh+110px)] sm:min-h-[670px]"
     >
-      <HeroParticleField className="absolute inset-0 h-full w-full" />
+      {/* Animação do mapa escondida no mobile por enquanto (ajuste futuro);
+          continua normal a partir do breakpoint sm. Não mexe no
+          HeroParticleField em si, só na visibilidade do wrapper. */}
+      <HeroParticleField className="absolute inset-0 hidden h-full w-full sm:block" />
 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex px-6 pt-8 text-[10px] font-mono font-semibold uppercase tracking-widest text-gray-400 md:px-12 md:pt-10">
         <span className="flex items-center gap-2">
