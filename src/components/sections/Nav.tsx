@@ -6,6 +6,7 @@ const LINKS = [
   { href: "/#solucoes", label: "Soluções" },
   { href: "/#como-funciona", label: "Como funciona" },
   { href: "/#demonstracao", label: "Demonstração" },
+  { href: "/templates", label: "Catálogo de sites" },
   { href: "/#faq", label: "Perguntas" },
   { href: "/sobre", label: "Quem somos" },
 ];

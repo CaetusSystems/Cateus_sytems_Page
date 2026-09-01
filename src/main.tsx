@@ -16,6 +16,8 @@ import BlogInstagramNaoEGoogle from "./pages/BlogInstagramNaoEGoogle";
 import BlogPerfilGoogleNaoSubstituiSite from "./pages/BlogPerfilGoogleNaoSubstituiSite";
 import Presentation from "./pages/Presentation";
 import ProdutoAtendenteVirtual from "./pages/ProdutoAtendenteVirtual";
+import Templates from "./pages/Templates";
+import FormularioCriacaoSite from "./pages/FormularioCriacaoSite";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -33,6 +35,8 @@ createRoot(document.getElementById("root")!).render(
             element={<BlogInstagramNaoEGoogle />}
           />
           <Route path="/blog/perfil-google-nao-substitui-site" element={<BlogPerfilGoogleNaoSubstituiSite />} />
+          <Route path="/templates" element={<Templates />} />
+          <Route path="/formulario_criacao_sites" element={<FormularioCriacaoSite />} />
           <Route path="/presentation" element={<Presentation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

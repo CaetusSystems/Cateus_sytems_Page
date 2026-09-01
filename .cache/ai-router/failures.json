@@ -1,0 +1,12 @@
+{
+  "gemini:gemini-2.5-flash:5e3411ca1f70": {
+    "provider": "gemini",
+    "model": "gemini-2.5-flash",
+    "key_fingerprint": "5e3411ca1f70",
+    "status_code": 503,
+    "reason": "Erro HTTP 503 de https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high dem",
+    "failed_at": 1786662387.9658816,
+    "cooldown_until": 1786662687.9658816,
+    "cooldown_seconds": 300
+  }
+}
