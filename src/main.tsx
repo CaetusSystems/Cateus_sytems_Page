@@ -15,6 +15,7 @@ import BlogFuturoSeoComIA from "./pages/BlogFuturoSeoComIA";
 import BlogInstagramNaoEGoogle from "./pages/BlogInstagramNaoEGoogle";
 import BlogPerfilGoogleNaoSubstituiSite from "./pages/BlogPerfilGoogleNaoSubstituiSite";
 import BlogSiteNaoConverte from "./pages/BlogSiteNaoConverte";
+import BlogChatbotWhatsAppAtendimentoHumano from "./pages/BlogChatbotWhatsAppAtendimentoHumano";
 import Presentation from "./pages/Presentation";
 import ProdutoAtendenteVirtual from "./pages/ProdutoAtendenteVirtual";
 import Templates from "./pages/Templates";
@@ -37,6 +38,10 @@ createRoot(document.getElementById("root")!).render(
           />
           <Route path="/blog/perfil-google-nao-substitui-site" element={<BlogPerfilGoogleNaoSubstituiSite />} />
           <Route path="/blog/site-nao-converte-em-contato" element={<BlogSiteNaoConverte />} />
+          <Route
+            path="/blog/chatbot-whatsapp-atendimento-humano"
+            element={<BlogChatbotWhatsAppAtendimentoHumano />}
+          />
           <Route path="/templates" element={<Templates />} />
           <Route path="/formulario_criacao_sites" element={<FormularioCriacaoSite />} />
           <Route path="/presentation" element={<Presentation />} />

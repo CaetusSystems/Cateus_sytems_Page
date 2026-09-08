@@ -48,6 +48,14 @@ export const BLOG_POSTS: BlogPost[] = [
       "Por que um site pode ter acesso e ainda assim não gerar WhatsApp, formulário ou ligação — e o que ajustar para transformar visita em contato.",
     date: "2026-07-19",
   },
+  {
+    slug: "/blog/chatbot-whatsapp-atendimento-humano",
+    tag: "Atendimento digital • WhatsApp com IA",
+    title: "Chatbot no WhatsApp: quando ele ajuda de verdade",
+    excerpt:
+      "Entenda como um atendente digital pode responder dúvidas, organizar a triagem e passar a conversa para uma pessoa na hora certa.",
+    date: "2026-09-08",
+  },
 ];
 
 /** Posts mais recentes primeiro, limitados a `limit` — usado pelo Footer. */
