@@ -13,7 +13,7 @@ export function Testimonials() {
       <SectionHeader
         eyebrow="O que nossos clientes dizem"
         title="Esse espaço é dos nossos clientes."
-        lead="Estamos coletando os primeiros depoimentos — em breve, histórias reais aqui."
+        lead="Estamos coletando os primeiros depoimentos, em breve, histórias reais aqui."
       />
       <div data-reveal-stagger className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 md:grid-cols-3">
         {TESTIMONIALS.map((t, i) => (

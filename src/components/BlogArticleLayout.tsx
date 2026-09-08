@@ -82,7 +82,7 @@ export function BlogArticleLayout({
   children,
 }: BlogArticleLayoutProps) {
   const modifiedDate = modified ?? published;
-  const fullTitle = `${title} — Caetus Systems`;
+  const fullTitle = `${title}, Caetus Systems`;
 
   useDocumentHead({
     title: fullTitle,
@@ -237,7 +237,7 @@ export function BlogArticleLayout({
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-balance text-primary-foreground/70">
               A Caetus Systems cuida da presença digital de pequenas empresas de Lagoa Santa,
-              Belo Horizonte e região — do site ao WhatsApp com IA.
+              Belo Horizonte e região, do site ao WhatsApp com IA.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a

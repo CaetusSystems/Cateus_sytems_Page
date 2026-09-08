@@ -369,3 +369,12 @@
   }
 
 }
+
+/* Hero 3D stage — canvas WebGL decorativo (cards flutuando + partículas) atrás
+   do MockDashboard real, que continua sendo DOM normal por cima. */
+@layer utilities {
+  .hero3d-stage {
+    position: relative;
+    overflow: visible;
+  }
+}

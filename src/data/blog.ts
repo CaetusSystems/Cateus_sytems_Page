@@ -21,7 +21,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tag: "SEO • AEO • GEO",
     title: "SEO está mudando: seu próximo cliente talvez nunca entre no Google",
     excerpt:
-      "Como preparar sua empresa para ser encontrada por inteligências artificiais como ChatGPT, Gemini e Copilot — sem depender só da busca tradicional.",
+      "Como preparar sua empresa para ser encontrada por inteligências artificiais como ChatGPT, Gemini e Copilot, sem depender só da busca tradicional.",
     date: "2026-06-18",
   },
   {
@@ -29,7 +29,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tag: "Presença digital • Google vs. redes sociais",
     title: "Sua empresa some no Google, mas aparece no Instagram",
     excerpt:
-      "Por que o Instagram aparece na busca e o site não — e o passo a passo real para o Google indexar seu site: Search Console, sitemap e Perfil da Empresa.",
+      "Por que o Instagram aparece na busca e o site não, e o passo a passo real para o Google indexar seu site: Search Console, sitemap e Perfil da Empresa.",
     date: "2026-07-18",
   },
   {

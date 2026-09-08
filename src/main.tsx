@@ -17,6 +17,8 @@ import BlogPerfilGoogleNaoSubstituiSite from "./pages/BlogPerfilGoogleNaoSubstit
 import BlogSiteNaoConverte from "./pages/BlogSiteNaoConverte";
 import Presentation from "./pages/Presentation";
 import ProdutoAtendenteVirtual from "./pages/ProdutoAtendenteVirtual";
+import Templates from "./pages/Templates";
+import FormularioCriacaoSite from "./pages/FormularioCriacaoSite";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -35,6 +37,8 @@ createRoot(document.getElementById("root")!).render(
           />
           <Route path="/blog/perfil-google-nao-substitui-site" element={<BlogPerfilGoogleNaoSubstituiSite />} />
           <Route path="/blog/site-nao-converte-em-contato" element={<BlogSiteNaoConverte />} />
+          <Route path="/templates" element={<Templates />} />
+          <Route path="/formulario_criacao_sites" element={<FormularioCriacaoSite />} />
           <Route path="/presentation" element={<Presentation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

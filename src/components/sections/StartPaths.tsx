@@ -68,7 +68,7 @@ export function StartPaths() {
       </div>
 
       <p className="mt-10 text-center text-base font-medium text-foreground/80">
-        Depois, evoluímos juntos — no ritmo da sua empresa.
+        Depois, evoluímos juntos, no ritmo da sua empresa.
       </p>
     </Section>
   );

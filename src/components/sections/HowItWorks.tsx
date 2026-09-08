@@ -50,7 +50,7 @@ export function HowItWorks() {
         ))}
       </div>
       <p className="mt-8 text-center text-sm text-primary-foreground/60">
-        Não entregamos um projeto e desaparecemos — sua operação continua evoluindo com a empresa.
+        Não entregamos um projeto e desaparecemos: sua operação continua evoluindo com a empresa.
       </p>
     </Section>
   );

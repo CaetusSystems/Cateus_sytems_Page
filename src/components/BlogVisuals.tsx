@@ -299,7 +299,7 @@ function TimelineRow({ item, index }: { item: TimelineStep; index: number }) {
  */
 export function InlineCta({
   title = "Quer ajuda para resolver isso?",
-  description = "A Caetus Systems cuida disso na prática — fala com a gente no WhatsApp.",
+  description = "A Caetus Systems cuida disso na prática. Fale com a gente no WhatsApp.",
   whatsappMessage,
   productHref,
   productLabel,

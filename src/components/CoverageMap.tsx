@@ -106,47 +106,75 @@ function FitBounds() {
 
     if (validCoords.length === 0) return;
 
+    let bounds: L.LatLngBounds | null = null;
     try {
-      const bounds = L.latLngBounds(validCoords.map((coord) => L.latLng(coord[0], coord[1])));
-      if (bounds.isValid()) {
-        const t = setTimeout(() => {
-          try {
-            map.invalidateSize();
-            const size = map.getSize();
-            if (size.x > 0 && size.y > 0) {
-              map.flyToBounds(bounds, { padding: [40, 40], duration: 2.2, easeLinearity: 0.25 });
-            } else {
-              // If size is 0, poll until container gets a valid size
-              const interval = setInterval(() => {
-                try {
-                  map.invalidateSize();
-                  const newSize = map.getSize();
-                  if (newSize.x > 0 && newSize.y > 0) {
-                    map.flyToBounds(bounds, {
-                      padding: [40, 40],
-                      duration: 2.2,
-                      easeLinearity: 0.25,
-                    });
-                    clearInterval(interval);
-                  }
-                } catch (e) {
-                  console.error("Error in fit bounds polling:", e);
-                  clearInterval(interval);
-                }
-              }, 200);
-
-              // Clear interval after 5 seconds to prevent memory leak
-              setTimeout(() => clearInterval(interval), 5000);
-            }
-          } catch (e) {
-            console.error("Error flying to bounds:", e);
-          }
-        }, 350);
-        return () => clearTimeout(t);
-      }
+      const b = L.latLngBounds(validCoords.map((coord) => L.latLng(coord[0], coord[1])));
+      if (b.isValid()) bounds = b;
     } catch (e) {
       console.error("Error setting up bounds:", e);
     }
+    if (!bounds) return;
+    const fittedBounds = bounds;
+
+    // Re-fit whenever the container's actual pixel size changes: window
+    // resizes, orientation changes, and browser/OS zoom level changes all
+    // resize the Leaflet container without firing any Leaflet event on
+    // their own, which is what left the map stuck at whatever size it was
+    // first rendered at.
+    const container = map.getContainer();
+    let hasFitted = false;
+    let refitTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const refit = (animate: boolean) => {
+      try {
+        map.invalidateSize();
+        const size = map.getSize();
+        if (size.x > 0 && size.y > 0) {
+          map.flyToBounds(fittedBounds, {
+            padding: [40, 40],
+            duration: animate ? 2.2 : 0,
+            easeLinearity: 0.25,
+          });
+          hasFitted = true;
+        }
+      } catch (e) {
+        console.error("Error fitting bounds:", e);
+      }
+    };
+
+    const scheduleRefit = (animate: boolean) => {
+      if (refitTimer) clearTimeout(refitTimer);
+      refitTimer = setTimeout(() => refit(animate), animate ? 0 : 150);
+    };
+
+    // Initial fit — poll until the container has a real size (it can be
+    // 0x0 for a frame while layout settles, e.g. inside collapsed tabs).
+    const initialTimer = setTimeout(() => {
+      refit(true);
+      if (!hasFitted) {
+        const interval = setInterval(() => {
+          const size = map.getSize();
+          if (size.x > 0 && size.y > 0) {
+            refit(true);
+            clearInterval(interval);
+          }
+        }, 200);
+        setTimeout(() => clearInterval(interval), 5000);
+      }
+    }, 350);
+
+    const resizeObserver = new ResizeObserver(() => scheduleRefit(false));
+    resizeObserver.observe(container);
+
+    const onWindowResize = () => scheduleRefit(false);
+    window.addEventListener("resize", onWindowResize);
+
+    return () => {
+      clearTimeout(initialTimer);
+      if (refitTimer) clearTimeout(refitTimer);
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", onWindowResize);
+    };
   }, [map]);
   return null;
 }

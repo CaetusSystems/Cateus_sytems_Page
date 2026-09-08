@@ -27,7 +27,7 @@ const BENEFITS = [
   {
     icon: Clock,
     title: "Responde a qualquer hora",
-    desc: "De madrugada, no domingo, no feriado — o cliente nunca encontra o \"visto por último\" sem resposta.",
+    desc: "De madrugada, no domingo, no feriado: o cliente nunca encontra o \"visto por último\" sem resposta.",
   },
   {
     icon: Calendar,
@@ -55,7 +55,7 @@ const STEPS = [
   {
     icon: Settings,
     title: "Montamos o Atendente Virtual",
-    desc: "Configuramos as respostas e conectamos ao número que sua empresa já usa — sem trocar de WhatsApp.",
+    desc: "Configuramos as respostas e conectamos ao número que sua empresa já usa, sem trocar de WhatsApp.",
   },
   {
     icon: Check,
@@ -67,7 +67,7 @@ const STEPS = [
 const FAQ_ITEMS = [
   {
     q: "Ele substitui completamente o atendimento humano?",
-    a: "Não precisa. O Atendente Virtual cuida do repetitivo — perguntas frequentes, horários, preços, agendamento — e passa para uma pessoa da equipe quando o assunto exige.",
+    a: "Não precisa. O Atendente Virtual cuida do repetitivo (perguntas frequentes, horários, preços, agendamento) e passa para uma pessoa da equipe quando o assunto exige.",
   },
   {
     q: "Preciso trocar de número de WhatsApp?",
@@ -79,7 +79,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Quanto tempo leva para entrar no ar?",
-    a: "Depende do tamanho da empresa, mas normalmente algumas poucas semanas — do primeiro contato até o atendente respondendo de verdade.",
+    a: "Depende do tamanho da empresa, mas normalmente algumas poucas semanas, do primeiro contato até o atendente respondendo de verdade.",
   },
   {
     q: "Como funciona o teste grátis?",
@@ -89,12 +89,12 @@ const FAQ_ITEMS = [
 
 export default function ProdutoAtendenteVirtual() {
   useDocumentHead({
-    title: "Atendente Virtual para WhatsApp — Caetus Systems",
+    title: "Atendente Virtual para WhatsApp, Caetus Systems",
     description:
       "Atendimento automático no WhatsApp para pequenas empresas: responde clientes, agenda horários e nunca deixa mensagem no vácuo. Teste grátis com a Caetus Systems.",
     canonical: "https://caetussystems.com.br/produtos/bot-whatsapp",
     og: {
-      "og:title": "Atendente Virtual para WhatsApp — Caetus Systems",
+      "og:title": "Atendente Virtual para WhatsApp, Caetus Systems",
       "og:description":
         "Atendimento automático no WhatsApp para pequenas empresas: responde clientes, agenda horários e nunca deixa mensagem no vácuo.",
       "og:url": "/produtos/bot-whatsapp",
@@ -141,7 +141,7 @@ function ProductHero() {
             <span className="text-primary">no seu WhatsApp.</span>
           </h1>
           <p className="mt-6 max-w-lg text-balance text-lg text-foreground/80 md:text-xl">
-            Ele responde perguntas, agenda horários e cuida do repetitivo — enquanto sua equipe
+            Ele responde perguntas, agenda horários e cuida do repetitivo, enquanto sua equipe
             resolve o que só uma pessoa resolve.
           </p>
           <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
@@ -453,7 +453,7 @@ function TrialCta() {
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-balance text-lg text-primary-foreground/70">
           Chame no WhatsApp, conte como seu atendimento funciona hoje e a gente mostra o Atendente
-          Virtual respondendo do jeito da sua empresa — sem custo, sem compromisso.
+          Virtual respondendo do jeito da sua empresa, sem custo, sem compromisso.
         </p>
         <div className="mt-10 flex justify-center">
           <Button

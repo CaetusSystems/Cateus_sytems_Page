@@ -351,7 +351,7 @@ export function Slide5() {
           <div className="bg-card/40 border border-border/60 rounded-2xl p-6 h-full">
             <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-4 flex items-center gap-2">
               <Sparkles className="h-4.5 w-4.5" />
-              {categories.find((c) => c.id === activeCategory)?.label} — Soluções Integradas
+              {categories.find((c) => c.id === activeCategory)?.label}: Soluções Integradas
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

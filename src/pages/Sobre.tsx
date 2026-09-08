@@ -36,12 +36,12 @@ const REASONS = [
 
 export default function Sobre() {
   useDocumentHead({
-    title: "Quem somos — Caetus Systems",
+    title: "Quem somos, Caetus Systems",
     description:
       "A Caetus Systems nasceu em Lagoa Santa para ajudar pequenas empresas a competir em igualdade por meio da tecnologia. Conheça nossa história e onde atendemos.",
     canonical: "/sobre",
     og: {
-      "og:title": "Quem somos — Caetus Systems",
+      "og:title": "Quem somos, Caetus Systems",
       "og:description":
         "A Caetus Systems nasceu em Lagoa Santa para ajudar pequenas empresas a competir em igualdade por meio da tecnologia.",
       "og:url": "/sobre",
@@ -90,7 +90,7 @@ export default function Sobre() {
                     com empresas muito maiores por meio da tecnologia.
                   </p>
                   <p>
-                    Acreditamos que negócios locais têm força — o que costuma faltar é estrutura
+                    Acreditamos que negócios locais têm força: o que costuma faltar é estrutura
                     digital para acompanhar esse potencial. É essa estrutura que a Caetus assume,
                     monta e cuida continuamente para cada cliente.
                   </p>
@@ -98,12 +98,12 @@ export default function Sobre() {
                     A empresa é conduzida por{" "}
                     <strong className="text-foreground">Henrique Caetano</strong>, com 5 anos de
                     indústria e mais de 2 anos de experiência desenvolvendo soluções de automação,
-                    integração de sistemas e otimização de processos — em ambientes onde organização,
+                    integração de sistemas e otimização de processos, em ambientes onde organização,
                     eficiência e confiabilidade não são opcionais.
                   </p>
                   <p>
                     Essa mesma bagagem é aplicada hoje para que pequenas empresas ganhem tempo,
-                    vendam mais e tenham uma operação digital organizada — sem depender do dono
+                    vendam mais e tenham uma operação digital organizada, sem depender do dono
                     estar em todo lugar ao mesmo tempo.
                   </p>
                 </div>
@@ -184,8 +184,8 @@ export default function Sobre() {
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     Também atendemos empresas de qualquer lugar do Brasil. Grande parte do
-                    acompanhamento acontece por videoconferência, acesso remoto e suporte contínuo
-                    — mantendo a mesma qualidade independentemente da localização do cliente.
+                    acompanhamento acontece por videoconferência, acesso remoto e suporte contínuo,
+                    mantendo a mesma qualidade independentemente da localização do cliente.
                   </p>
                 </div>
 

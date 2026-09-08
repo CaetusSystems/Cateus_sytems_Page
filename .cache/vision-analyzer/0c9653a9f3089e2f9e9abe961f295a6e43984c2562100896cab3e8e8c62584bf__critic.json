@@ -1,0 +1,62 @@
+{
+  "image_hash": "sha256:0c9653a9f3089e2f9e9abe961f295a6e43984c2562100896cab3e8e8c62584bf",
+  "image_hashes": [
+    "sha256:0c9653a9f3089e2f9e9abe961f295a6e43984c2562100896cab3e8e8c62584bf"
+  ],
+  "mode": "critic",
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "gerado_em": "2026-08-13T23:06:38.208671+00:00",
+  "summary": "Logotipo de alta complexidade com excelente execução técnica, porém ineficaz em escalas reduzidas devido ao excesso de detalhes.",
+  "design_contract": {
+    "cta_assessment": {
+      "intent": "branding",
+      "expected": false,
+      "note": "CTA não esperado para intenção 'branding' -- ausência não penalizada (critério neutralizado em 100)."
+    },
+    "quality_score": {
+      "criteria": {
+        "hierarquia_visual": 85,
+        "contraste": 95,
+        "legibilidade": 60,
+        "espacamento": 90,
+        "alinhamento": 95,
+        "equilibrio_visual": 95,
+        "branding": 90,
+        "cta": 100,
+        "uso_de_cores": 100,
+        "sensacao_premium": 85
+      },
+      "overall": 90
+    },
+    "problems": {
+      "must_fix": [],
+      "should_fix": [
+        {
+          "problema": "baixa legibilidade em escalas reduzidas",
+          "motivo": "excesso de elementos ornamentais finos",
+          "impacto": "o logo torna-se um borrão abaixo de 64px",
+          "action": "remove",
+          "target": "ornamentos internos e espigas de trigo",
+          "value_recommended": null,
+          "value_min": null,
+          "value_max": null,
+          "unit": "none"
+        }
+      ],
+      "nice_to_have": []
+    },
+    "layout_suggestions": [
+      {
+        "priority": "should_fix",
+        "action": "resize",
+        "target": "texto tipográfico",
+        "value_recommended": 15,
+        "value_min": 12,
+        "value_max": 20,
+        "unit": "percent",
+        "rationale": "aumentar corpo da fonte para garantir leitura em telas de dispositivos móveis"
+      }
+    ]
+  }
+}

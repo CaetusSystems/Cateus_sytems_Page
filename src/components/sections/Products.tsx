@@ -23,7 +23,7 @@ export function Products() {
       <SectionHeader
         eyebrow="Soluções para sua empresa"
         title="Cada problema daqui tem solução pronta."
-        lead="Escolha pela dor — o nome técnico é o que menos importa."
+        lead="Escolha pela dor: o nome técnico é o que menos importa."
       />
 
       {/* Filtro por dor */}
