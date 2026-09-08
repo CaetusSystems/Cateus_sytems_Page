@@ -49,9 +49,9 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-07-19",
   },
   {
-    slug: "/blog/chatbot-whatsapp-atendimento-humano",
+    slug: "/blog/chatbot-para-whatsapp-atendimento-humano",
     tag: "Atendimento digital • WhatsApp com IA",
-    title: "Chatbot no WhatsApp: quando ele ajuda de verdade",
+    title: "Chatbot para WhatsApp: quando ele ajuda de verdade",
     excerpt:
       "Entenda como um atendente digital pode responder dúvidas, organizar a triagem e passar a conversa para uma pessoa na hora certa.",
     date: "2026-09-08",

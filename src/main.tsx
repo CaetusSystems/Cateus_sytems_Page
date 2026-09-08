@@ -39,7 +39,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/blog/perfil-google-nao-substitui-site" element={<BlogPerfilGoogleNaoSubstituiSite />} />
           <Route path="/blog/site-nao-converte-em-contato" element={<BlogSiteNaoConverte />} />
           <Route
-            path="/blog/chatbot-whatsapp-atendimento-humano"
+            path="/blog/chatbot-para-whatsapp-atendimento-humano"
             element={<BlogChatbotWhatsAppAtendimentoHumano />}
           />
           <Route path="/templates" element={<Templates />} />

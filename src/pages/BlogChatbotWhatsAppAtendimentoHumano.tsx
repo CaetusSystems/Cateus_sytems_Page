@@ -45,11 +45,11 @@ const FAQ = [
 export default function BlogChatbotWhatsAppAtendimentoHumano() {
   return (
     <BlogArticleLayout
-      url="/blog/chatbot-whatsapp-atendimento-humano"
-      title="Chatbot no WhatsApp: quando ele ajuda de verdade"
+      url="/blog/chatbot-para-whatsapp-atendimento-humano"
+      title="Chatbot para WhatsApp: quando ele ajuda de verdade"
       titleNode={
         <>
-          Chatbot no WhatsApp: <Highlight>quando ele ajuda de verdade</Highlight>
+          Chatbot para WhatsApp: <Highlight>quando ele ajuda de verdade</Highlight>
         </>
       }
       description="Entenda como um atendente digital com IA pode responder no WhatsApp, organizar a triagem e passar a conversa para uma pessoa na hora certa, hoje."
@@ -57,7 +57,7 @@ export default function BlogChatbotWhatsAppAtendimentoHumano() {
       eyebrow="Atendimento digital • WhatsApp com IA"
       lead="Um bom atendente digital não tenta esconder que existe tecnologia. Ele responde o básico rapidamente, entende o pedido do cliente e chama sua equipe quando a conversa realmente precisa de uma pessoa."
       tags={[
-        "chatbot no WhatsApp",
+        "chatbot para WhatsApp",
         "atendente digital",
         "IA no atendimento",
         "WhatsApp para empresas",
