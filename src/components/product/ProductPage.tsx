@@ -1,16 +1,18 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CalendarCheck, Eye, Plus, Rocket, type LucideIcon } from "lucide-react";
+import { ArrowRight, CalendarCheck, Eye, Plus, Rocket } from "lucide-react";
 import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { LeadForm } from "@/components/lead/LeadForm";
 import { Button } from "@/components/ui/button";
 import { PriceBlock } from "@/components/PriceBlock";
-import { OFFERS, priceSentence, type OfferId } from "@/data/offers";
-import { PRODUCT_PAGES } from "@/data/product-pages";
+import { OFFERS, localizeOffer, priceSentence, type OfferId } from "@/data/offers";
+import { getProductPage } from "@/data/product-pages";
 import { GOOGLE_REVIEWS_URL } from "@/data/reviews";
-import { HORARIOS_DEMO } from "@/lib/constants";
+import { useLang, useLocalePath, useT } from "@/i18n";
 import { useDocumentHead } from "@/lib/useDocumentHead";
+
+const STEP_ICONS = [CalendarCheck, Eye, Rocket];
 
 /**
  * Modelo único das páginas de produto (campanha): promessa e preço no topo,
@@ -18,18 +20,22 @@ import { useDocumentHead } from "@/lib/useDocumentHead";
  * Os textos vêm de src/data/product-pages.ts.
  */
 export function ProductPage({ id }: { id: OfferId }) {
-  const offer = OFFERS[id];
-  const page = PRODUCT_PAGES[id];
+  const t = useT();
+  const lang = useLang();
+  const lp = useLocalePath();
+  const offer = localizeOffer(OFFERS[id], lang);
+  const page = getProductPage(id, lang);
+  const tp = t.productPage;
   const ctaHref = page.acao === "assinar" && page.checkoutUrl ? page.checkoutUrl : "#agendar";
 
   useDocumentHead({
     title: `${page.title} | Caetus Systems`,
     description: page.description,
-    canonical: offer.path,
+    canonical: lp(offer.path),
     og: {
       "og:title": page.title,
       "og:description": page.description,
-      "og:url": offer.path,
+      "og:url": lp(offer.path),
       "og:type": "website",
       "og:image": `https://caetussystems.com.br${offer.image}`,
     },
@@ -50,7 +56,7 @@ export function ProductPage({ id }: { id: OfferId }) {
             "@type": "Offer",
             priceCurrency: "BRL",
             price: page.schemaPrice,
-            description: priceSentence(offer),
+            description: priceSentence(offer, lang),
           },
         },
         {
@@ -63,6 +69,8 @@ export function ProductPage({ id }: { id: OfferId }) {
         },
       ],
     },
+    lang,
+    alternatesOf: OFFERS[id].path,
   });
 
   return (
@@ -90,9 +98,7 @@ export function ProductPage({ id }: { id: OfferId }) {
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Sem compromisso. Você escolhe o horário.
-              </p>
+              <p className="mt-3 text-sm text-muted-foreground">{tp.noCommitment}</p>
             </div>
             <div className="mx-auto w-full max-w-[340px]">
               <div className="anim-float overflow-hidden rounded-[2.2rem] border border-border bg-brand-night p-2.5 shadow-2xl shadow-brand-blue/20">
@@ -113,7 +119,7 @@ export function ProductPage({ id }: { id: OfferId }) {
         <section className="border-t border-border bg-tint">
           <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:py-20">
             <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-              O que está incluso
+              {tp.includes}
             </h2>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {page.includes.map((item) => (
@@ -135,10 +141,12 @@ export function ProductPage({ id }: { id: OfferId }) {
         <section className="border-t border-border">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 md:py-20">
             <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-              O que dizem os clientes
+              {tp.clients}
             </h2>
             <figure className="mt-8 rounded-3xl border border-border bg-card p-6">
-              <blockquote className="text-base leading-relaxed">“{page.realCase.text}”</blockquote>
+              <blockquote lang="pt-BR" className="text-base leading-relaxed">
+                “{page.realCase.text}”
+              </blockquote>
               <figcaption className="mt-5 flex items-center gap-3">
                 <img
                   src={page.realCase.photo}
@@ -151,7 +159,7 @@ export function ProductPage({ id }: { id: OfferId }) {
                 <span>
                   <span className="block font-medium">{page.realCase.name}</span>
                   <span className="block text-sm text-muted-foreground">
-                    Avaliação no Google, {page.realCase.when}
+                    {tp.source} {t.reviews.when[page.realCase.name] ?? page.realCase.when}
                   </span>
                 </span>
               </figcaption>
@@ -162,7 +170,7 @@ export function ProductPage({ id }: { id: OfferId }) {
               rel="noopener noreferrer"
               className="mt-4 inline-block text-sm font-medium text-brand-blue"
             >
-              Ver no Google
+              {tp.seeGoogle}
             </a>
           </div>
         </section>
@@ -171,15 +179,23 @@ export function ProductPage({ id }: { id: OfferId }) {
         <section className="border-t border-border bg-brand-night text-white">
           <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:py-20">
             <h2 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-              Como funciona
+              {tp.how}
             </h2>
             <ol className="mt-8 grid gap-4 md:grid-cols-3">
               {page.steps.map((s, i) => (
                 <li key={s.title} className="rounded-3xl border border-white/10 bg-white/5 p-6">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue font-semibold">
-                    {i + 1}
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue shadow-lg shadow-brand-blue/40">
+                    {(() => {
+                      const Icon = STEP_ICONS[i];
+                      return <Icon className="h-6 w-6" aria-hidden="true" />;
+                    })()}
                   </span>
-                  <h3 className="mt-4 text-lg font-semibold tracking-tight">{s.title}</h3>
+                  <h3 className="mt-4 text-lg font-semibold tracking-tight">
+                    <span className="sr-only">
+                      {tp.step} {i + 1}:{" "}
+                    </span>
+                    {s.title}
+                  </h3>
                   <p className="mt-2 text-white/70">{s.text}</p>
                 </li>
               ))}
@@ -191,7 +207,7 @@ export function ProductPage({ id }: { id: OfferId }) {
         <section className="border-t border-border">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 md:py-20">
             <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-              Perguntas frequentes
+              {tp.faq}
             </h2>
             <div className="mt-8 divide-y divide-border rounded-3xl border border-border bg-card">
               {page.faq.map((item) => (
@@ -217,13 +233,11 @@ export function ProductPage({ id }: { id: OfferId }) {
           <div className="mx-auto grid max-w-5xl items-center gap-10 px-5 py-14 sm:px-6 md:grid-cols-2 md:py-20">
             <div>
               <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-                Veja funcionando no seu negócio.
+                {tp.formTitle}
               </h2>
-              <p className="mt-4 text-lg text-white/70">
-                Conte rápido o que você faz e marque a demonstração no horário que preferir.
-              </p>
+              <p className="mt-4 text-lg text-white/70">{tp.formText}</p>
               <ul className="mt-6 space-y-1 text-sm text-white/60">
-                {HORARIOS_DEMO.map((h) => (
+                {t.hours.map((h) => (
                   <li key={h}>{h}</li>
                 ))}
               </ul>
@@ -238,15 +252,15 @@ export function ProductPage({ id }: { id: OfferId }) {
         <section className="border-t border-border bg-tint">
           <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:py-20">
             <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-              Combine com
+              {tp.combine}
             </h2>
             <div className="mt-8 grid gap-4 md:grid-cols-2">
               {page.combine.map((other) => {
-                const o = OFFERS[other];
+                const o = localizeOffer(OFFERS[other], lang);
                 return (
                   <Link
                     key={other}
-                    to={o.path}
+                    to={lp(o.path)}
                     className="group flex gap-4 rounded-3xl border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-brand-blue/40 hover:shadow-lg"
                   >
                     <img
@@ -263,7 +277,7 @@ export function ProductPage({ id }: { id: OfferId }) {
                         {page.combineText[other]}
                       </span>
                       <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-brand-blue">
-                        {priceSentence(o)}
+                        {priceSentence(o, lang)}
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </span>
                     </span>

@@ -1,10 +1,7 @@
 import { Baby, PartyPopper, Scissors, Store, type LucideIcon } from "lucide-react";
 
 export type TemplateCategory =
-  | "eventos-festas"
-  | "varejo-personalizados"
-  | "recreativo-infantil"
-  | "beleza-barbearia";
+  "eventos-festas" | "varejo-personalizados" | "recreativo-infantil" | "beleza-barbearia";
 
 export const TEMPLATE_CATEGORIES: { id: TemplateCategory; label: string; icon: LucideIcon }[] = [
   { id: "eventos-festas", label: "Eventos & festas", icon: PartyPopper },

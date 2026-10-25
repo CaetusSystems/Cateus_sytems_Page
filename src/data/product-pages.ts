@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import type { OfferId } from "@/data/offers";
 import { REAL_REVIEWS, type RealReview } from "@/data/reviews";
+import { MESSAGES, type Lang } from "@/i18n";
 import type { ProductId } from "@/lib/lead-schema";
 
 export type ProductPageData = {
@@ -227,3 +228,22 @@ export const PRODUCT_PAGES: Record<OfferId, ProductPageData> = {
     },
   },
 };
+
+/** Página de produto com os textos do idioma pedido (ícones, caso real e rotas não mudam). */
+export function getProductPage(id: OfferId, lang: Lang): ProductPageData {
+  const base = PRODUCT_PAGES[id];
+  if (lang === "pt") return base;
+  const m = MESSAGES[lang].products[id];
+  return {
+    ...base,
+    title: m.title,
+    description: m.description,
+    promise: m.promise,
+    support: m.support,
+    ctaLabel: m.ctaLabel,
+    includes: base.includes.map((item, i) => ({ ...item, text: m.includes[i] ?? item.text })),
+    steps: base.steps.map((step, i) => m.steps[i] ?? step) as ProductPageData["steps"],
+    faq: m.faq,
+    combineText: m.combineText,
+  };
+}

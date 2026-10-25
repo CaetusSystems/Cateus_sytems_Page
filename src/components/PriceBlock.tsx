@@ -1,4 +1,5 @@
 import type { Offer } from "@/data/offers";
+import { useT } from "@/i18n";
 import { cn } from "@/lib/utils";
 
 /**
@@ -14,10 +15,13 @@ export function PriceBlock({
   size?: "md" | "lg";
   className?: string;
 }) {
+  const t = useT();
   return (
     <div className={className}>
       {offer.from && (
-        <span className="mr-1.5 text-sm font-medium text-muted-foreground">a partir de</span>
+        <span className="mr-1.5 text-sm font-medium text-muted-foreground">
+          {t.cards.fromLabel}
+        </span>
       )}
       <span
         className={cn(

@@ -2,29 +2,25 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CalendarCheck } from "lucide-react";
 import { PriceBlock } from "@/components/PriceBlock";
 import { Button } from "@/components/ui/button";
-import { HOME_CARDS } from "@/data/offers";
-
-const MORE_LABEL: Record<string, string> = {
-  sites: "Saiba mais sobre sites",
-  atendente: "Saiba mais sobre o atendente",
-  matricula: "Exemplo: sistema de matrícula para escolas",
-};
+import { getHomeCards } from "@/data/offers";
+import { useLang, useLocalePath, useT } from "@/i18n";
 
 export function ProductCards() {
+  const t = useT();
+  const lang = useLang();
+  const lp = useLocalePath();
   return (
     <section id="solucoes" className="border-t border-border bg-tint">
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-6 md:py-24">
         <div className="max-w-2xl">
           <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-            Três soluções, preço claro.
+            {t.cards.title}
           </h2>
-          <p className="mt-3 text-lg text-muted-foreground">
-            Comece pela que mais resolve hoje. As outras entram quando fizer sentido.
-          </p>
+          <p className="mt-3 text-lg text-muted-foreground">{t.cards.subtitle}</p>
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {HOME_CARDS.map((offer) => (
+          {getHomeCards(lang).map((offer) => (
             <article
               key={offer.name}
               className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-xl hover:shadow-brand-blue/10"
@@ -47,16 +43,16 @@ export function ProductCards() {
                   asChild
                   className="btn-shine mt-5 h-12 rounded-full bg-brand-blue text-base text-white hover:bg-brand-blue/90"
                 >
-                  <Link to={`/agendar?produto=${offer.id}`}>
+                  <Link to={lp(`/agendar?produto=${offer.id}`)}>
                     <CalendarCheck className="h-5 w-5" aria-hidden="true" />
-                    Agendar demonstração
+                    {t.cards.cta}
                   </Link>
                 </Button>
                 <Link
-                  to={offer.path}
+                  to={lp(offer.path)}
                   className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-brand-blue"
                 >
-                  {MORE_LABEL[offer.id]}
+                  {t.cards.more[offer.id]}
                   <ArrowRight
                     className="h-4 w-4 transition-transform group-hover:translate-x-1"
                     aria-hidden="true"

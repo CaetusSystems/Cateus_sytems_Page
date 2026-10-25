@@ -1,3 +1,4 @@
+import { MESSAGES, type Lang } from "@/i18n";
 import type { ProductId } from "@/lib/lead-schema";
 
 export type OfferId = Exclude<ProductId, "nao-sei">;
@@ -58,9 +59,23 @@ export const OFFERS: Record<OfferId, Offer> = {
 
 export const OFFER_LIST: Offer[] = [OFFERS.sites, OFFERS.atendente, OFFERS.matricula];
 
+/** Aplica os textos do idioma a uma oferta (preço e caminho não mudam). */
+export function localizeOffer(o: Offer, lang: Lang): Offer {
+  if (lang === "pt") return o;
+  const m = MESSAGES[lang].offers[o.id];
+  return {
+    ...o,
+    name: m.name,
+    promise: m.promise,
+    priceLabel: m.priceLabel,
+    monthly: m.monthly || undefined,
+    imageAlt: m.imageAlt,
+  };
+}
+
 /** Texto de preço em uma linha (JSON-LD e descrições). */
-export function priceSentence(o: Offer): string {
-  return [o.from ? "a partir de" : "", o.price, o.priceLabel, o.monthly ?? ""]
+export function priceSentence(o: Offer, lang: Lang = "pt"): string {
+  return [o.from ? MESSAGES[lang].cards.fromLabel : "", o.price, o.priceLabel, o.monthly ?? ""]
     .filter(Boolean)
     .join(" ");
 }
@@ -69,14 +84,18 @@ export function priceSentence(o: Offer): string {
  * Cartões da home. O terceiro é o sistema sob medida: a matrícula para escolas
  * fica na página própria dela e aparece aqui só como exemplo.
  */
-export const HOME_CARDS: Offer[] = [
-  OFFERS.sites,
-  OFFERS.atendente,
-  {
-    ...OFFERS.matricula,
-    name: "Sistema sob medida",
-    promise:
-      "Cadastros, matrículas, cobranças e o que a sua operação precisar, num sistema feito para o seu jeito de trabalhar.",
-    from: true,
-  },
-];
+export function getHomeCards(lang: Lang): Offer[] {
+  const custom = MESSAGES[lang].offers.custom;
+  return [
+    localizeOffer(OFFERS.sites, lang),
+    localizeOffer(OFFERS.atendente, lang),
+    {
+      ...localizeOffer(OFFERS.matricula, lang),
+      name: custom.name,
+      promise: custom.promise,
+      from: true,
+    },
+  ];
+}
+
+export const HOME_CARDS: Offer[] = getHomeCards("pt");

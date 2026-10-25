@@ -74,6 +74,19 @@ describe("handleLead", () => {
     expect(sent.text).toContain("utm_source: instagram");
   });
 
+  it("mostra o idioma do site em que a pessoa preencheu, quando não é o português", async () => {
+    const f = fakeFetch();
+    const res = await handleLead(post({ ...lead, lang: "en" }), env, f.impl);
+    expect(res.status).toBe(200);
+    const sent = JSON.parse(f.calls[0].init.body as string);
+    expect(sent.text).toContain("Idioma do site: English");
+  });
+
+  it("recusa um idioma desconhecido", async () => {
+    const res = await handleLead(post({ ...lead, lang: "fr" }), env, fakeFetch().impl);
+    expect(res.status).toBe(400);
+  });
+
   it("escapes html in name and business and keeps accents and emoji in text", async () => {
     const f = fakeFetch();
     await handleLead(

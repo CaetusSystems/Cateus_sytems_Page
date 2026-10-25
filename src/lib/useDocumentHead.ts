@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { alternates, type Lang } from "@/i18n/locale";
 
 const SITE_URL = "https://caetussystems.com.br";
 
@@ -10,6 +11,10 @@ interface HeadOptions {
   jsonLd?: object;
   /** ex.: "noindex, nofollow" para páginas que não devem aparecer no Google */
   robots?: string;
+  /** idioma da página: ajusta <html lang> */
+  lang?: Lang;
+  /** caminho em português da página, para listar as versões em outros idiomas (hreflang) */
+  alternatesOf?: string;
 }
 
 /** Garante URL absoluta — Google recomenda canonical absoluto, não relativo. */
@@ -21,7 +26,18 @@ function toAbsoluteUrl(url: string): string {
 // (title, description, canonical, JSON-LD) are applied on mount instead of
 // being rendered server-side. The homepage doesn't need this — its tags are
 // already static in index.html, which crawlers see immediately.
-export function useDocumentHead({ title, description, canonical, og, jsonLd, robots }: HeadOptions) {
+const HTML_LANG: Record<Lang, string> = { pt: "pt-BR", en: "en", es: "es" };
+
+export function useDocumentHead({
+  title,
+  description,
+  canonical,
+  og,
+  jsonLd,
+  robots,
+  lang,
+  alternatesOf,
+}: HeadOptions) {
   useEffect(() => {
     const previousTitle = document.title;
     document.title = title;
@@ -62,9 +78,26 @@ export function useDocumentHead({ title, description, canonical, og, jsonLd, rob
       document.head.appendChild(jsonLdEl);
     }
 
+    const previousLang = document.documentElement.lang;
+    if (lang) document.documentElement.lang = HTML_LANG[lang];
+
+    const alternateEls: HTMLLinkElement[] = [];
+    if (alternatesOf) {
+      for (const alt of alternates(alternatesOf)) {
+        const el = document.createElement("link");
+        el.setAttribute("rel", "alternate");
+        el.setAttribute("hreflang", alt.hreflang);
+        el.setAttribute("href", toAbsoluteUrl(alt.href));
+        document.head.appendChild(el);
+        alternateEls.push(el);
+      }
+    }
+
     return () => {
       document.title = previousTitle;
+      if (lang) document.documentElement.lang = previousLang;
+      alternateEls.forEach((el) => el.remove());
       if (jsonLdEl) document.head.removeChild(jsonLdEl);
     };
-  }, [title, description, canonical, og, jsonLd, robots]);
+  }, [title, description, canonical, og, jsonLd, robots, lang, alternatesOf]);
 }

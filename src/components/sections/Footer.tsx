@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { latestPosts } from "@/data/blog";
 import { useCampaignMode } from "@/hooks/use-campaign-mode";
-import { WHATSAPP_DISPLAY, WHATSAPP_URL } from "@/lib/constants";
+import { useLang, useT } from "@/i18n";
+import { WHATSAPP_DISPLAY, waUrl } from "@/lib/constants";
 
 export function Footer() {
   const campaign = useCampaignMode();
-  const posts = latestPosts(3);
+  const lang = useLang();
+  const t = useT();
+  // Os artigos só existem em português: nas outras línguas o rodapé não os lista.
+  const posts = lang === "pt" ? latestPosts(3) : [];
 
   // Visita de campanha: rodapé mínimo, sem links que tirem a pessoa da página.
   if (campaign) {
@@ -15,12 +19,12 @@ export function Footer() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row">
           <span>© {new Date().getFullYear()} Caetus Systems</span>
           <a
-            href={WHATSAPP_URL}
+            href={waUrl(t.whatsapp.message)}
             target="_blank"
             rel="noopener noreferrer"
             className="underline-offset-4 hover:underline"
           >
-            Dúvidas? WhatsApp {WHATSAPP_DISPLAY}
+            {t.footer.questions} {WHATSAPP_DISPLAY}
           </a>
         </div>
       </footer>
@@ -30,17 +34,17 @@ export function Footer() {
   return (
     <footer className="border-t border-border">
       {posts.length > 0 && (
-        <div className="border-b border-border bg-muted/30">
+        <div className="border-b border-border bg-tint">
           <div className="mx-auto max-w-6xl px-6 py-14">
             <div className="flex items-center justify-between gap-4">
-              <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                Do nosso blog
+              <h2 className="text-sm font-semibold text-muted-foreground">
+                {t.footer.blogHeading}
               </h2>
               <Link
                 to="/blog"
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
               >
-                Ver tudo
+                {t.footer.seeAll}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
@@ -49,18 +53,26 @@ export function Footer() {
                 <Link
                   key={post.slug}
                   to={post.slug}
-                  className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/40"
                 >
-                  <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                    {post.tag}
-                  </p>
-                  <h3 className="mt-2 text-balance text-base font-semibold leading-snug tracking-tight">
-                    {post.title}
-                  </h3>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-foreground/70 transition-colors group-hover:text-primary">
-                    Ler artigo
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
+                  <img
+                    src={post.image}
+                    alt={post.imageAlt}
+                    width={1200}
+                    height={675}
+                    loading="lazy"
+                    className="aspect-video w-full object-cover"
+                  />
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="text-xs font-semibold text-primary">{post.tag}</p>
+                    <h3 className="mt-2 text-balance text-base font-semibold leading-snug tracking-tight">
+                      {post.title}
+                    </h3>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-foreground/70 transition-colors group-hover:text-primary">
+                      {t.footer.readArticle}
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -77,9 +89,7 @@ export function Footer() {
             © {new Date().getFullYear()} Caetus Systems
           </span>
         </div>
-        <p className="text-xs text-muted-foreground">
-          Sua operação digital funcionando todos os dias.
-        </p>
+        <p className="text-xs text-muted-foreground">{t.footer.tagline}</p>
       </div>
     </footer>
   );

@@ -4,6 +4,7 @@
 // pré-renderizado, sem editar nada aqui.
 
 import { BLOG_POSTS } from "../src/data/blog.ts";
+import { TRANSLATED_PATHS, localePath } from "../src/i18n/locale.ts";
 
 const STATIC_ROUTES = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
@@ -25,4 +26,13 @@ const BLOG_ROUTES = BLOG_POSTS.map((post) => ({
   lastmod: post.date,
 }));
 
-export const ROUTES = [...STATIC_ROUTES, ...BLOG_ROUTES];
+// Versões em inglês e espanhol das páginas de venda (mesmos dados, prefixo /en e /es).
+const TRANSLATED_ROUTES = ["en", "es"].flatMap((lang) =>
+  STATIC_ROUTES.filter((r) => TRANSLATED_PATHS.includes(r.path)).map((r) => ({
+    ...r,
+    path: localePath(r.path, lang),
+    priority: String(Math.max(0.1, Number(r.priority) - 0.1).toFixed(1)),
+  })),
+);
+
+export const ROUTES = [...STATIC_ROUTES, ...TRANSLATED_ROUTES, ...BLOG_ROUTES];

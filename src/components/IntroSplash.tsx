@@ -1,8 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useT } from "@/i18n";
 import { markIntroSeen, shouldShowIntro } from "@/lib/intro";
-
-const NOUNS = ["mais tempo.", "mais clientes.", "mais presença.", "mais resultados."];
 
 type Phase = "logo" | "nouns" | "final" | "done";
 
@@ -11,6 +10,8 @@ interface IntroSplashProps {
 }
 
 export function IntroSplash({ onFinish }: IntroSplashProps) {
+  const t = useT();
+  const NOUNS = t.splash.words;
   const [phase, setPhase] = useState<Phase>("logo");
   const [wordIdx, setWordIdx] = useState(0);
 
@@ -100,7 +101,7 @@ export function IntroSplash({ onFinish }: IntroSplashProps) {
               transition={{ duration: 0.8, delay: 0.9 }}
               className="text-center text-lg text-muted-foreground sm:text-xl"
             >
-              Sua empresa merece…
+              {t.splash.prelude}
             </motion.p>
           )}
           {currentWord && (
@@ -124,7 +125,7 @@ export function IntroSplash({ onFinish }: IntroSplashProps) {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="max-w-3xl text-center text-2xl font-semibold tracking-tight text-foreground sm:text-4xl"
             >
-              Tecnologia que trabalha pela sua empresa.
+              {t.splash.final}
             </motion.h2>
           )}
         </AnimatePresence>
@@ -139,7 +140,7 @@ export function IntroSplash({ onFinish }: IntroSplashProps) {
         transition={{ delay: 0.6, duration: 0.5 }}
         className="absolute bottom-6 right-6 z-20 text-xs text-muted-foreground transition-colors hover:text-foreground"
       >
-        Pular animação
+        {t.splash.skip}
       </motion.button>
     </motion.div>
   );

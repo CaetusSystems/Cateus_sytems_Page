@@ -10,6 +10,8 @@ export type Env = {
   LEAD_FROM?: string;
 };
 
+const LANG_NAMES = { pt: "Português", en: "English", es: "Español" } as const;
+
 const DEFAULT_FROM = "Site Caetus <onboarding@resend.dev>";
 
 const json = (status: number, body: unknown) =>
@@ -34,6 +36,7 @@ export function buildLeadEmail(lead: LeadInput) {
     ["Nome", lead.name],
     ["WhatsApp", `${lead.phone} (https://wa.me/${lead.phone})`],
   ];
+  if (lead.lang && lead.lang !== "pt") rows.push(["Idioma do site", LANG_NAMES[lead.lang]]);
   if (lead.email) rows.push(["E-mail", lead.email]);
   if (lead.link) rows.push(["Instagram ou Google", lead.link]);
   for (const [key, value] of Object.entries(lead.attribution ?? {})) {

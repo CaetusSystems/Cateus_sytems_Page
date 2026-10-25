@@ -9,22 +9,9 @@ import { IntroSplash, useIntroSplash } from "@/components/IntroSplash";
 import { HowItWorksSimple } from "@/components/home/HowItWorksSimple";
 import { FaqHome } from "@/components/home/FaqHome";
 import { FinalCtaForm } from "@/components/home/FinalCtaForm";
-import { FAQ_HOME } from "@/data/faq-home";
+import { useLang, useLocalePath, useT } from "@/i18n";
 import { useDocumentHead } from "@/lib/useDocumentHead";
 
-const TITLE = "Caetus Systems: site, atendente no WhatsApp e sistema de matrícula";
-const DESCRIPTION =
-  "Site a partir de R$ 247, atendente no WhatsApp por R$ 87 por mês e sistema de matrícula para escolas. Agende uma demonstração e veja funcionando no seu negócio.";
-
-const JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: FAQ_HOME.map((item) => ({
-    "@type": "Question",
-    name: item.q,
-    acceptedAnswer: { "@type": "Answer", text: item.a },
-  })),
-};
 
 /**
  * Página inicial pensada para quem chega de campanha: promessa e botão no topo,
@@ -32,17 +19,30 @@ const JSON_LD = {
  */
 export default function Home() {
   const intro = useIntroSplash();
+  const t = useT();
+  const lang = useLang();
+  const lp = useLocalePath();
   useDocumentHead({
-    title: TITLE,
-    description: DESCRIPTION,
-    canonical: "/",
+    title: t.homeHead.title,
+    description: t.homeHead.description,
+    canonical: lp("/"),
     og: {
-      "og:title": TITLE,
-      "og:description": DESCRIPTION,
-      "og:url": "/",
+      "og:title": t.homeHead.title,
+      "og:description": t.homeHead.description,
+      "og:url": lp("/"),
       "og:type": "website",
     },
-    jsonLd: JSON_LD,
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: t.faq.items.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    },
+    lang,
+    alternatesOf: "/",
   });
 
   return (
@@ -52,7 +52,7 @@ export default function Home() {
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
       >
-        Pular para o conteúdo
+        {t.skipToContent}
       </a>
       <Nav />
       <main id="conteudo">

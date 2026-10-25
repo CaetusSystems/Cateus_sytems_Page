@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { LANGS } from "../i18n/locale";
 
 export const PRODUCT_IDS = ["sites", "atendente", "matricula", "nao-sei"] as const;
 export type ProductId = (typeof PRODUCT_IDS)[number];
@@ -42,6 +43,8 @@ export const leadSchema = z.object({
   email: z.union([z.literal(""), z.string().trim().email("E-mail inválido")]).optional(),
   /** Instagram ou página do Google do negócio (opcional). */
   link: z.string().trim().max(200).optional(),
+  /** Idioma do site em que a pessoa preencheu (para o dono saber como responder). */
+  lang: z.enum(LANGS).optional(),
   /** Isca para robôs: pessoas nunca preenchem. */
   website: z.string().max(200).optional(),
   attribution: attributionSchema.optional(),

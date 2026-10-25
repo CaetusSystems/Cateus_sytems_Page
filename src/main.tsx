@@ -35,26 +35,44 @@ createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* Páginas de venda: português na raiz, inglês em /en e espanhol em /es. */}
+          {(["", "/en", "/es"] as const).map((prefix) => [
+            <Route key={`${prefix}/`} path={prefix || "/"} element={<Home />} />,
+            <Route
+              key={`${prefix}/sites`}
+              path={`${prefix}/criacao-de-sites`}
+              element={<ProductPage id="sites" />}
+            />,
+            <Route
+              key={`${prefix}/atendente`}
+              path={`${prefix}/atendente-whatsapp`}
+              element={<ProductPage id="atendente" />}
+            />,
+            <Route
+              key={`${prefix}/matricula`}
+              path={`${prefix}/sistema-de-matricula`}
+              element={<ProductPage id="matricula" />}
+            />,
+            <Route key={`${prefix}/agendar`} path={`${prefix}/agendar`} element={<Agendar />} />,
+            <Route key={`${prefix}/obrigado`} path={`${prefix}/obrigado`} element={<Obrigado />} />,
+          ])}
           <Route path="/sobre" element={<Sobre />} />
-          <Route path="/criacao-de-sites" element={<ProductPage id="sites" />} />
-          <Route path="/atendente-whatsapp" element={<ProductPage id="atendente" />} />
-          <Route path="/sistema-de-matricula" element={<ProductPage id="matricula" />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/futuro-do-seo-com-ia" element={<BlogFuturoSeoComIA />} />
           <Route
             path="/blog/aparece-no-instagram-mas-nao-no-google"
             element={<BlogInstagramNaoEGoogle />}
           />
-          <Route path="/blog/perfil-google-nao-substitui-site" element={<BlogPerfilGoogleNaoSubstituiSite />} />
+          <Route
+            path="/blog/perfil-google-nao-substitui-site"
+            element={<BlogPerfilGoogleNaoSubstituiSite />}
+          />
           <Route path="/blog/site-nao-converte-em-contato" element={<BlogSiteNaoConverte />} />
           <Route
             path="/blog/chatbot-para-whatsapp-atendimento-humano"
             element={<BlogChatbotWhatsAppAtendimentoHumano />}
           />
           <Route path="/blog/ia-whatsapp-business-2026" element={<BlogIaWhatsAppBusiness2026 />} />
-          <Route path="/agendar" element={<Agendar />} />
-          <Route path="/obrigado" element={<Obrigado />} />
           <Route path="/templates" element={<Templates />} />
           <Route path="/formulario_criacao_sites" element={<FormularioCriacaoSite />} />
           <Route path="/presentation" element={<Presentation />} />

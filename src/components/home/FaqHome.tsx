@@ -1,15 +1,16 @@
 import { Plus } from "lucide-react";
-import { FAQ_HOME } from "@/data/faq-home";
+import { useT } from "@/i18n";
 
 export function FaqHome() {
+  const t = useT();
   return (
     <section id="faq" className="border-t border-border bg-gradient-to-b from-background to-tint">
       <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 md:py-24">
         <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-          Perguntas frequentes
+          {t.faq.title}
         </h2>
         <div className="mt-8 divide-y divide-border rounded-3xl border border-border bg-card">
-          {FAQ_HOME.map((item) => (
+          {t.faq.items.map((item) => (
             <details key={item.q} className="group p-5 open:bg-muted/30">
               <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4">
                 <h3 className="text-base font-semibold">{item.q}</h3>

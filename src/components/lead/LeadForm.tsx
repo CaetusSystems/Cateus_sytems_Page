@@ -4,17 +4,14 @@ import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { OFFER_LIST } from "@/data/offers";
+import { fill, useLang, useLocalePath, useT } from "@/i18n";
 import { readAttribution } from "@/lib/attribution";
 import { buildLeadWhatsAppUrl } from "@/lib/lead-message";
 import { leadSchema, type LeadInput, type ProductId } from "@/lib/lead-schema";
 import { submitLead } from "@/lib/submit-lead";
 import { cn } from "@/lib/utils";
 
-const CHOICES: { id: ProductId; label: string }[] = [
-  ...OFFER_LIST.map((o) => ({ id: o.id as ProductId, label: o.name })),
-  { id: "nao-sei", label: "Ainda não sei" },
-];
+const CHOICE_IDS: ProductId[] = ["sites", "atendente", "matricula", "nao-sei"];
 
 type Errors = Partial<Record<string, string>>;
 
@@ -30,6 +27,9 @@ const primaryButton =
  */
 export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
   const navigate = useNavigate();
+  const t = useT();
+  const lang = useLang();
+  const lp = useLocalePath();
   const [step, setStep] = useState<1 | 2>(1);
   const [product, setProduct] = useState<ProductId | undefined>(defaultProduct);
   const [business, setBusiness] = useState("");
@@ -47,8 +47,8 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
   function goToStep2(e: FormEvent) {
     e.preventDefault();
     const next: Errors = {};
-    if (!product) next.product = "Escolha o que você quer ver";
-    if (!business.trim()) next.business = "Conte o nome ou o tipo do negócio";
+    if (!product) next.product = t.form.errors.product;
+    if (!business.trim()) next.business = t.form.errors.business;
     setErrors(next);
     if (Object.keys(next).length === 0) setStep(2);
   }
@@ -65,10 +65,14 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
       link,
       website,
       attribution: readAttribution(),
+      lang,
     });
     if (!parsed.success) {
       const next: Errors = {};
-      for (const issue of parsed.error.issues) next[String(issue.path[0])] ??= issue.message;
+      for (const issue of parsed.error.issues) {
+        const field = String(issue.path[0]);
+        next[field] ??= t.form.errors[field] ?? issue.message;
+      }
       setErrors(next);
       return;
     }
@@ -77,36 +81,36 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
     setSending(true);
     const result = await submitLead(parsed.data);
     setSending(false);
-    if (result.ok) navigate("/obrigado");
+    if (result.ok) navigate(lp("/obrigado"));
     else setFailed(true);
   }
 
   return (
     <div className="rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-7">
       <p className="text-sm font-medium text-muted-foreground" aria-live="polite">
-        Passo {step} de 2
+        {fill(t.form.stepOf, { n: step })}
       </p>
 
       {step === 1 ? (
         <form onSubmit={goToStep2} noValidate className="mt-4 space-y-5">
           <fieldset>
-            <legend className="text-lg font-semibold tracking-tight">O que você quer ver?</legend>
+            <legend className="text-lg font-semibold tracking-tight">{t.form.whatToSee}</legend>
             <div className="mt-3 grid gap-2">
-              {CHOICES.map((c) => (
+              {CHOICE_IDS.map((id) => (
                 <button
-                  key={c.id}
+                  key={id}
                   type="button"
-                  onClick={() => setProduct(c.id)}
-                  aria-pressed={product === c.id}
+                  onClick={() => setProduct(id)}
+                  aria-pressed={product === id}
                   className={cn(
                     "flex min-h-12 items-center justify-between rounded-2xl border px-4 text-left text-base font-medium transition-colors",
-                    product === c.id
+                    product === id
                       ? "border-brand-blue bg-brand-blue/5 text-foreground"
                       : "border-border hover:border-brand-blue/50",
                   )}
                 >
-                  {c.label}
-                  {product === c.id && <Check className="h-4 w-4 text-brand-blue" />}
+                  {t.form.choices[id]}
+                  {product === id && <Check className="h-4 w-4 text-brand-blue" />}
                 </button>
               ))}
             </div>
@@ -115,13 +119,13 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
 
           <div>
             <label htmlFor="lead-business" className="text-sm font-medium">
-              Qual é o seu negócio?
+              {t.form.businessLabel}
             </label>
             <Input
               id="lead-business"
               value={business}
               onChange={(e) => setBusiness(e.target.value)}
-              placeholder="Ex.: barbearia, escola infantil, loja"
+              placeholder={t.form.businessPlaceholder}
               maxLength={80}
               className={fieldClass}
             />
@@ -129,17 +133,17 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
           </div>
 
           <Button type="submit" size="lg" className={primaryButton}>
-            Continuar
+            {t.form.next}
             <ArrowRight className="h-4 w-4" />
           </Button>
         </form>
       ) : (
         <form onSubmit={send} noValidate className="relative mt-4 space-y-4">
-          <h3 className="text-lg font-semibold tracking-tight">Para onde enviamos o horário?</h3>
+          <h3 className="text-lg font-semibold tracking-tight">{t.form.whereToSend}</h3>
 
           <div>
             <label htmlFor="lead-name" className="text-sm font-medium">
-              Seu nome
+              {t.form.nameLabel}
             </label>
             <Input
               id="lead-name"
@@ -154,7 +158,7 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
 
           <div>
             <label htmlFor="lead-phone" className="text-sm font-medium">
-              WhatsApp com DDD
+              {t.form.phoneLabel}
             </label>
             <Input
               id="lead-phone"
@@ -162,7 +166,7 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
               onChange={(e) => setPhone(e.target.value)}
               inputMode="tel"
               autoComplete="tel"
-              placeholder="(31) 99999-9999"
+              placeholder={t.form.phonePlaceholder}
               maxLength={20}
               className={fieldClass}
             />
@@ -171,14 +175,14 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
 
           <div>
             <label htmlFor="lead-link" className="text-sm font-medium">
-              Instagram ou página do Google do negócio{" "}
-              <span className="font-normal text-muted-foreground">(opcional)</span>
+              {t.form.linkLabel}{" "}
+              <span className="font-normal text-muted-foreground">{t.form.optional}</span>
             </label>
             <Input
               id="lead-link"
               value={link}
               onChange={(e) => setLink(e.target.value)}
-              placeholder="@seunegocio ou link"
+              placeholder={t.form.linkPlaceholder}
               maxLength={200}
               className={fieldClass}
             />
@@ -186,7 +190,8 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
 
           <div>
             <label htmlFor="lead-email" className="text-sm font-medium">
-              E-mail <span className="font-normal text-muted-foreground">(opcional)</span>
+              {t.form.emailLabel}{" "}
+              <span className="font-normal text-muted-foreground">{t.form.optional}</span>
             </label>
             <Input
               id="lead-email"
@@ -201,7 +206,7 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
 
           {/* Isca para robôs: fica fora da tela e fora da navegação por teclado. */}
           <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-            <label htmlFor="lead-website">Não preencha</label>
+            <label htmlFor="lead-website">{t.form.honeypot}</label>
             <input
               id="lead-website"
               tabIndex={-1}
@@ -216,16 +221,14 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
               role="alert"
               className="rounded-2xl border border-destructive/30 bg-destructive/5 p-4 text-sm"
             >
-              <p className="font-medium">
-                Não conseguimos enviar agora. Seus dados não se perderam.
-              </p>
+              <p className="font-medium">{t.form.failed}</p>
               <Button
                 asChild
                 className="mt-3 h-11 w-full rounded-full bg-brand-green text-white hover:bg-brand-green/90"
               >
                 <a href={buildLeadWhatsAppUrl(draft)} target="_blank" rel="noopener noreferrer">
                   <WhatsAppIcon className="h-4 w-4" />
-                  Falar no WhatsApp com tudo preenchido
+                  {t.form.failedWhatsApp}
                 </a>
               </Button>
             </div>
@@ -233,14 +236,14 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
 
           <Button type="submit" size="lg" disabled={sending} className={primaryButton}>
             {sending && <Loader2 className="h-4 w-4 animate-spin" />}
-            {sending ? "Enviando" : "Agendar demonstração"}
+            {sending ? t.form.sending : t.form.submit}
           </Button>
           <button
             type="button"
             onClick={() => setStep(1)}
             className="w-full text-center text-sm text-muted-foreground underline-offset-4 hover:underline"
           >
-            Voltar
+            {t.form.back}
           </button>
         </form>
       )}
