@@ -8,6 +8,8 @@ interface HeadOptions {
   canonical?: string;
   og?: Record<string, string>;
   jsonLd?: object;
+  /** ex.: "noindex, nofollow" para páginas que não devem aparecer no Google */
+  robots?: string;
 }
 
 /** Garante URL absoluta — Google recomenda canonical absoluto, não relativo. */
@@ -19,7 +21,7 @@ function toAbsoluteUrl(url: string): string {
 // (title, description, canonical, JSON-LD) are applied on mount instead of
 // being rendered server-side. The homepage doesn't need this — its tags are
 // already static in index.html, which crawlers see immediately.
-export function useDocumentHead({ title, description, canonical, og, jsonLd }: HeadOptions) {
+export function useDocumentHead({ title, description, canonical, og, jsonLd, robots }: HeadOptions) {
   useEffect(() => {
     const previousTitle = document.title;
     document.title = title;
@@ -35,6 +37,7 @@ export function useDocumentHead({ title, description, canonical, og, jsonLd }: H
     };
 
     if (description) upsertMeta("name", "description", description);
+    if (robots) upsertMeta("name", "robots", robots);
     if (og)
       Object.entries(og).forEach(([key, content]) =>
         upsertMeta("property", key, key === "og:url" ? toAbsoluteUrl(content) : content),
@@ -63,5 +66,5 @@ export function useDocumentHead({ title, description, canonical, og, jsonLd }: H
       document.title = previousTitle;
       if (jsonLdEl) document.head.removeChild(jsonLdEl);
     };
-  }, [title, description, canonical, og, jsonLd]);
+  }, [title, description, canonical, og, jsonLd, robots]);
 }

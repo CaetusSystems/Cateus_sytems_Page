@@ -1,14 +1,15 @@
+type Fbq = ((...args: unknown[]) => void) & { queue: unknown[]; loaded: boolean };
+
 /** Carrega o Pixel da Meta só quando o ID existe (VITE_META_PIXEL_ID). Sem ID, não injeta nada. */
 export function initPixel(id: string | undefined): void {
   if (!id || typeof document === "undefined") return;
-  const w = window as unknown as Record<string, unknown> & {
-    fbq?: ((...a: unknown[]) => void) & { q?: unknown[]; queue?: unknown[]; loaded?: boolean };
-  };
+  const w = window as unknown as { fbq?: Fbq };
   if (w.fbq) return;
   const queue: unknown[] = [];
-  const fbq = ((...args: unknown[]) => void queue.push(args)) as NonNullable<typeof w.fbq>;
-  fbq.queue = queue;
-  fbq.loaded = true;
+  const fbq = Object.assign((...args: unknown[]) => void queue.push(args), {
+    queue,
+    loaded: true,
+  }) as Fbq;
   w.fbq = fbq;
   const script = document.createElement("script");
   script.async = true;

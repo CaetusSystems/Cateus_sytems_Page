@@ -20,6 +20,13 @@ import Presentation from "./pages/Presentation";
 import ProdutoAtendenteVirtual from "./pages/ProdutoAtendenteVirtual";
 import Templates from "./pages/Templates";
 import FormularioCriacaoSite from "./pages/FormularioCriacaoSite";
+import Agendar from "./pages/Agendar";
+import Obrigado from "./pages/Obrigado";
+import { captureAttribution } from "./lib/attribution";
+import { initPixel } from "./lib/pixel";
+
+captureAttribution(window.location.search, window.location.pathname);
+initPixel(import.meta.env.VITE_META_PIXEL_ID);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -42,6 +49,8 @@ createRoot(document.getElementById("root")!).render(
             path="/blog/chatbot-para-whatsapp-atendimento-humano"
             element={<BlogChatbotWhatsAppAtendimentoHumano />}
           />
+          <Route path="/agendar" element={<Agendar />} />
+          <Route path="/obrigado" element={<Obrigado />} />
           <Route path="/templates" element={<Templates />} />
           <Route path="/formulario_criacao_sites" element={<FormularioCriacaoSite />} />
           <Route path="/presentation" element={<Presentation />} />
