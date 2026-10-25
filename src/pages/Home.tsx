@@ -1,115 +1,66 @@
-import { useEffect, useRef } from "react";
-import { AnimatePresence } from "framer-motion";
-import { IntroSplash, useIntroSplash } from "@/components/IntroSplash";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Nav } from "@/components/sections/Nav";
-import { BrazilCoverage } from "@/components/sections/BrazilCoverage";
-import { Hero } from "@/components/sections/Hero";
-import { HelpSection } from "@/components/sections/HelpSection";
-import { Products } from "@/components/sections/Products";
-import { StartPaths } from "@/components/sections/StartPaths";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Demo } from "@/components/sections/Demo";
-import { Benefits } from "@/components/sections/Benefits";
-import { BeforeAfter } from "@/components/sections/BeforeAfter";
-import { ForWho } from "@/components/sections/ForWho";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { AboutCompact } from "@/components/sections/AboutCompact";
-import { Faq } from "@/components/sections/Faq";
-import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { HeroHome } from "@/components/home/HeroHome";
+import { ProductCards } from "@/components/home/ProductCards";
+import { ProofStrip } from "@/components/home/ProofStrip";
+import { HowItWorksSimple } from "@/components/home/HowItWorksSimple";
+import { FaqHome } from "@/components/home/FaqHome";
+import { FinalCtaForm } from "@/components/home/FinalCtaForm";
+import { FAQ_HOME } from "@/data/faq-home";
+import { useDocumentHead } from "@/lib/useDocumentHead";
+
+const TITLE = "Caetus Systems: site, atendente no WhatsApp e sistema de matrícula";
+const DESCRIPTION =
+  "Site a partir de R$ 247, atendente no WhatsApp por R$ 87 por mês e sistema de matrícula para escolas. Agende uma demonstração e veja funcionando no seu negócio.";
+
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ_HOME.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
 
 /**
- * Landing page da Caetus Systems.
- * Cada seção responde uma pergunta do empresário, nesta ordem:
- * o que é → é pra mim? → o que vocês vendem? → por onde começo? →
- * como funciona? → cadê funcionando? → o que eu ganho? → o que muda? →
- * serve pro meu negócio? → quem confia? → quem são vocês? → objeções → contato.
+ * Página inicial pensada para quem chega de campanha: promessa e botão no topo,
+ * preço claro, prova real, como funciona, dúvidas e o formulário no fim.
  */
-function Index() {
-  const { show, ready, finish } = useIntroSplash();
-  const rootRef = useRef<HTMLDivElement | null>(null);
-
-  // Reveal único (fade-up) ao entrar na viewport. Seções com animação
-  // própria ficam de fora para não competir.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const root = rootRef.current;
-    if (!root) return;
-
-    const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    const skipIds = new Set(["top", "demonstracao", "antes-depois", "contato"]);
-
-    const sections = Array.from(root.querySelectorAll<HTMLElement>("section")).filter(
-      (el) => !skipIds.has(el.id),
-    );
-    sections.forEach((el) => {
-      el.classList.add("section-reveal", "section-reveal--fade-up");
-      if (prefersReduced) el.classList.add("is-visible");
-    });
-
-    const grids = Array.from(root.querySelectorAll<HTMLElement>("[data-reveal-stagger] > *"));
-    grids.forEach((child, i) => {
-      child.classList.add("stagger-item");
-      child.style.setProperty("--stagger-i", String(i % 12));
-      if (prefersReduced) child.classList.add("is-visible");
-    });
-
-    if (prefersReduced || !("IntersectionObserver" in window)) {
-      sections.forEach((el) => el.classList.add("is-visible"));
-      grids.forEach((el) => el.classList.add("is-visible"));
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-visible");
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
-    );
-    sections.forEach((el) => io.observe(el));
-    grids.forEach((el) => io.observe(el));
-
-    return () => io.disconnect();
-  }, []);
+export default function Home() {
+  useDocumentHead({
+    title: TITLE,
+    description: DESCRIPTION,
+    canonical: "/",
+    og: {
+      "og:title": TITLE,
+      "og:description": DESCRIPTION,
+      "og:url": "/",
+      "og:type": "website",
+    },
+    jsonLd: JSON_LD,
+  });
 
   return (
-    <div ref={rootRef} className="min-h-screen bg-background text-foreground antialiased">
+    <div className="min-h-screen bg-background text-foreground antialiased">
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
       >
         Pular para o conteúdo
       </a>
-      <AnimatePresence>
-        {ready && show && <IntroSplash key="intro" onFinish={finish} />}
-      </AnimatePresence>
       <Nav />
       <main id="conteudo">
-        <BrazilCoverage />
-        <Hero />
-        <HelpSection />
-        <Products />
-        <StartPaths />
-        <HowItWorks />
-        <Demo />
-        <Benefits />
-        <BeforeAfter />
-        <ForWho />
-        <Testimonials />
-        <AboutCompact />
-        <Faq />
-        <FinalCta />
+        <HeroHome />
+        <ProductCards />
+        <ProofStrip />
+        <HowItWorksSimple />
+        <FaqHome />
+        <FinalCtaForm />
       </main>
       <Footer />
       <FloatingWhatsApp />
     </div>
   );
 }
-
-export default Index;

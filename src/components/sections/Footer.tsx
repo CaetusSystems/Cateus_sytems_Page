@@ -1,9 +1,26 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { latestPosts } from "@/data/blog";
+import { useCampaignMode } from "@/hooks/use-campaign-mode";
+import { WHATSAPP_DISPLAY, WHATSAPP_URL } from "@/lib/constants";
 
 export function Footer() {
+  const campaign = useCampaignMode();
   const posts = latestPosts(3);
+
+  // Visita de campanha: rodapé mínimo, sem links que tirem a pessoa da página.
+  if (campaign) {
+    return (
+      <footer className="border-t border-border">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row">
+          <span>© {new Date().getFullYear()} Caetus Systems</span>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">
+            Dúvidas? WhatsApp {WHATSAPP_DISPLAY}
+          </a>
+        </div>
+      </footer>
+    );
+  }
 
   return (
     <footer className="border-t border-border">
