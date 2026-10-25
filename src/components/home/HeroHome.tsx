@@ -5,8 +5,16 @@ import { OFFER_LIST } from "@/data/offers";
 
 const CHIPS = [
   { icon: Search, text: "Achado no Google", className: "left-[-4%] top-[14%] anim-float" },
-  { icon: MessageCircle, text: "Cliente chamou no WhatsApp", className: "right-[-6%] top-[46%] anim-float-slow" },
-  { icon: CalendarCheck, text: "Matrícula recebida", className: "left-[2%] bottom-[8%] anim-float" },
+  {
+    icon: MessageCircle,
+    text: "Cliente chamou no WhatsApp",
+    className: "right-[-6%] top-[46%] anim-float-slow",
+  },
+  {
+    icon: CalendarCheck,
+    text: "Matrícula recebida",
+    className: "left-[2%] bottom-[8%] anim-float",
+  },
 ];
 
 export function HeroHome() {
@@ -33,7 +41,12 @@ export function HeroHome() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="h-13 rounded-full px-7 text-base">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="h-13 rounded-full px-7 text-base"
+            >
               <a href="#solucoes">Ver soluções</a>
             </Button>
           </div>

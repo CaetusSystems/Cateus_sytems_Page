@@ -339,7 +339,7 @@ export default function ArticlePage() {
             "@type": "Person",
             name: AUTHOR_NAME,
             jobTitle: AUTHOR_ROLE,
-            image: "/Henrique Caetano perfil.jpeg",
+            image: "/caetus-logo.png",
             worksFor: { "@type": "Organization", name: "Caetus Systems" },
           },
           publisher: {
@@ -428,7 +428,7 @@ export default function ArticlePage() {
             <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <img
-                  src="/Henrique Caetano perfil.jpeg"
+                  src="/caetus-logo.png"
                   alt={AUTHOR_NAME}
                   referrerPolicy="no-referrer"
                   className="h-9 w-9 rounded-full object-cover"

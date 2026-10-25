@@ -71,7 +71,7 @@ export function BlogArticleLayout({
   modified,
   authorName = "Henrique Caetano",
   authorRole = "Fundador da Caetus Systems",
-  authorImage = "/Henrique Caetano perfil.jpeg",
+  authorImage = "/caetus-logo.png",
   eyebrow,
   lead,
   tags,

@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, LayoutGrid, Maximize2, X } from "lucide-react";
 import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
-import { FinalCta } from "@/components/sections/FinalCta";
+import { FinalCtaForm } from "@/components/home/FinalCtaForm";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/button";
@@ -14,12 +14,12 @@ import { TEMPLATES, TEMPLATE_CATEGORIES, type TemplateCategory } from "@/data/te
 
 export default function Templates() {
   useDocumentHead({
-    title: "Catálogo de sites, Caetus Systems",
+    title: "Modelos de site, Caetus Systems",
     description:
       "Modelos de sites já entregues pela Caetus Systems para negócios locais: festas, varejo, recreativo infantil e serviços. Veja os prints e peça o seu.",
     canonical: "/templates",
     og: {
-      "og:title": "Catálogo de sites, Caetus Systems",
+      "og:title": "Modelos de site, Caetus Systems",
       "og:description":
         "Modelos de sites já entregues pela Caetus Systems para negócios locais. Veja os prints e peça o seu.",
       "og:url": "/templates",
@@ -63,7 +63,7 @@ export default function Templates() {
             <div className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">
                 <LayoutGrid className="h-4 w-4" />
-                Catálogo de sites
+                Modelos de site
               </span>
               <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
                 Modelos de site que já <span className="text-primary">colocamos no ar</span>.
@@ -179,7 +179,7 @@ export default function Templates() {
               são só um ponto de partida do nível de acabamento.
             </p>
             <Button asChild size="lg" className="rounded-full">
-              <a href={waUrl("Olá! Vi o catálogo de sites da Caetus Systems e quero um orçamento.")} target="_blank" rel="noopener noreferrer">
+              <a href={waUrl("Olá! Vi os modelos de site da Caetus Systems e quero um orçamento.")} target="_blank" rel="noopener noreferrer">
                 Pedir um orçamento
                 <ArrowRight className="ml-1 h-4 w-4" />
               </a>
@@ -187,7 +187,7 @@ export default function Templates() {
           </div>
         </Section>
 
-        <FinalCta />
+        <FinalCtaForm />
       </main>
       <Footer />
       <FloatingWhatsApp />

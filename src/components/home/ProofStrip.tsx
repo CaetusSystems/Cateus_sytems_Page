@@ -18,7 +18,10 @@ export function ProofStrip() {
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {REAL_REVIEWS.map((r) => (
-            <figure key={r.name} className="flex flex-col rounded-3xl border border-border bg-card p-6">
+            <figure
+              key={r.name}
+              className="flex flex-col rounded-3xl border border-border bg-card p-6"
+            >
               <blockquote className="flex-1 text-base leading-relaxed">“{r.text}”</blockquote>
               <figcaption className="mt-5 flex items-center gap-3">
                 <img

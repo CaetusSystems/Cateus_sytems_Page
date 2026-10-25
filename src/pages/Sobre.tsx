@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Check, MapPin, Video } from "lucide-react";
 import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
-import { FinalCta } from "@/components/sections/FinalCta";
+import { FinalCtaForm } from "@/components/home/FinalCtaForm";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { useDocumentHead } from "@/lib/useDocumentHead";
 
@@ -62,18 +62,17 @@ export default function Sobre() {
         <section className="relative bg-background">
           <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
             <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:gap-16">
-              {/* Foto */}
+              {/* Marca (sem foto pessoal) */}
               <div className="lg:sticky lg:top-24 lg:self-start">
-                <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-border/70 bg-gradient-to-br from-muted/60 via-card to-muted/40 shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--primary)_35%,transparent)]">
+                <div className="relative mx-auto flex aspect-[4/5] w-full max-w-md items-center justify-center overflow-hidden rounded-3xl bg-brand-night">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,color-mix(in_oklab,var(--brand-blue)_55%,transparent)_0%,transparent_65%)]" />
                   <img
-                    src="/Henrique Caetano.jpeg"
-                    alt="Henrique Caetano"
-                    className="absolute inset-0 h-full w-full object-cover"
-                    referrerPolicy="no-referrer"
+                    src="/caetus-logo.png"
+                    alt="Caetus Systems"
+                    width={160}
+                    height={160}
+                    className="anim-float relative h-40 w-40 rounded-3xl object-contain"
                   />
-                  <div className="absolute bottom-4 left-4 rounded-full border border-border/60 bg-background/80 px-3 py-1 text-[11px] font-medium text-foreground/80 backdrop-blur">
-                    Henrique Caetano · Fundador
-                  </div>
                 </div>
               </div>
 
@@ -223,7 +222,7 @@ export default function Sobre() {
             </div>
           </div>
         </section>
-        <FinalCta />
+        <FinalCtaForm />
       </main>
       <Footer />
       <FloatingWhatsApp />

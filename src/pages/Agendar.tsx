@@ -22,7 +22,8 @@ export default function Agendar() {
     canonical: "/agendar",
     og: {
       "og:title": "Agendar demonstração | Caetus Systems",
-      "og:description": "Marque uma demonstração de site, atendente no WhatsApp ou sistema de matrícula.",
+      "og:description":
+        "Marque uma demonstração de site, atendente no WhatsApp ou sistema de matrícula.",
       "og:url": "/agendar",
       "og:type": "website",
     },

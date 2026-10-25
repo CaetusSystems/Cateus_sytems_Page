@@ -216,7 +216,9 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
               role="alert"
               className="rounded-2xl border border-destructive/30 bg-destructive/5 p-4 text-sm"
             >
-              <p className="font-medium">Não conseguimos enviar agora. Seus dados não se perderam.</p>
+              <p className="font-medium">
+                Não conseguimos enviar agora. Seus dados não se perderam.
+              </p>
               <Button
                 asChild
                 className="mt-3 h-11 w-full rounded-full bg-brand-green text-white hover:bg-brand-green/90"
