@@ -11,6 +11,9 @@ const STATIC_ROUTES = [
   { path: "/produtos/bot-whatsapp", changefreq: "monthly", priority: "0.8" },
   { path: "/templates", changefreq: "monthly", priority: "0.7" },
   { path: "/blog", changefreq: "weekly", priority: "0.6" },
+  { path: "/agendar", changefreq: "monthly", priority: "0.8" },
+  // Pré-renderizada, mas fora do sitemap (noindex): só quem acabou de enviar o formulário vê.
+  { path: "/obrigado", changefreq: "yearly", priority: "0.1", noSitemap: true },
 ];
 
 const BLOG_ROUTES = BLOG_POSTS.map((post) => ({

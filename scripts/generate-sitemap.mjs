@@ -12,7 +12,9 @@ const SITE_URL = "https://caetussystems.com.br";
 const OUT_PATH = path.resolve(dirname, "../public/sitemap.xml");
 const today = new Date().toISOString().slice(0, 10);
 
-const urlEntries = ROUTES.map((route) => {
+const sitemapRoutes = ROUTES.filter((route) => !route.noSitemap);
+
+const urlEntries = sitemapRoutes.map((route) => {
   const loc = `${SITE_URL}${route.path === "/" ? "/" : route.path}`;
   const lastmod = route.lastmod ?? today;
   return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${route.changefreq}</changefreq>\n    <priority>${route.priority}</priority>\n  </url>`;
@@ -21,4 +23,4 @@ const urlEntries = ROUTES.map((route) => {
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;
 
 await writeFile(OUT_PATH, xml, "utf-8");
-console.log(`sitemap.xml gerado com ${ROUTES.length} rotas em ${OUT_PATH}`);
+console.log(`sitemap.xml gerado com ${sitemapRoutes.length} rotas em ${OUT_PATH}`);
