@@ -60,19 +60,29 @@ export default function Blog() {
           <Link
             key={post.slug}
             to={post.slug}
-            className="group block rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md md:p-8"
+            className="group block rounded-2xl border border-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md md:p-5"
           >
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              {post.tag}
-            </p>
-            <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight md:text-3xl">
-              {post.title}
-            </h2>
-            <p className="mt-3 text-muted-foreground">{post.excerpt}</p>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-              Ler artigo
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </span>
+            <div className="grid gap-5 md:grid-cols-[260px_1fr] md:items-center">
+              <img
+                src={post.image}
+                alt={post.imageAlt}
+                width={1200}
+                height={675}
+                loading="lazy"
+                className="aspect-video w-full rounded-xl object-cover"
+              />
+              <div>
+                <p className="text-xs font-semibold text-primary">{post.tag}</p>
+                <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight md:text-3xl">
+                  {post.title}
+                </h2>
+                <p className="mt-3 text-muted-foreground">{post.excerpt}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                  Ler artigo
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </div>
           </Link>
         ))}
       </section>

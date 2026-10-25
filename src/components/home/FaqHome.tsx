@@ -3,7 +3,7 @@ import { FAQ_HOME } from "@/data/faq-home";
 
 export function FaqHome() {
   return (
-    <section id="faq" className="border-t border-border">
+    <section id="faq" className="border-t border-border bg-gradient-to-b from-background to-tint">
       <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 md:py-24">
         <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           Perguntas frequentes

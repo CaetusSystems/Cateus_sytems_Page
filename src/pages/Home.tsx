@@ -3,7 +3,9 @@ import { Footer } from "@/components/sections/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { HeroHome } from "@/components/home/HeroHome";
 import { ProductCards } from "@/components/home/ProductCards";
-import { ProofStrip } from "@/components/home/ProofStrip";
+import { ReviewsSpotlight } from "@/components/home/ReviewsSpotlight";
+import { DeliveredSites } from "@/components/home/DeliveredSites";
+import { IntroSplash, useIntroSplash } from "@/components/IntroSplash";
 import { HowItWorksSimple } from "@/components/home/HowItWorksSimple";
 import { FaqHome } from "@/components/home/FaqHome";
 import { FinalCtaForm } from "@/components/home/FinalCtaForm";
@@ -29,6 +31,7 @@ const JSON_LD = {
  * preço claro, prova real, como funciona, dúvidas e o formulário no fim.
  */
 export default function Home() {
+  const intro = useIntroSplash();
   useDocumentHead({
     title: TITLE,
     description: DESCRIPTION,
@@ -44,6 +47,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
+      {intro.show && <IntroSplash onFinish={intro.finish} />}
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
@@ -53,8 +57,9 @@ export default function Home() {
       <Nav />
       <main id="conteudo">
         <HeroHome />
+        <ReviewsSpotlight />
         <ProductCards />
-        <ProofStrip />
+        <DeliveredSites />
         <HowItWorksSimple />
         <FaqHome />
         <FinalCtaForm />

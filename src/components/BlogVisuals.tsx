@@ -113,7 +113,8 @@ type ComparisonItem = { icon: LucideIcon; title: string; subtitle?: string; desc
 
 /** Grid de 2-4 cards com ícone — para comparar conceitos (ex: SEO x AEO x GEO). */
 export function ComparisonGrid({ items }: { items: ComparisonItem[] }) {
-  const cols = items.length >= 4 ? "md:grid-cols-4" : items.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2";
+  const cols =
+    items.length >= 4 ? "md:grid-cols-4" : items.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2";
   return (
     <div className={`grid gap-4 ${cols}`}>
       {items.map((c, i) => {

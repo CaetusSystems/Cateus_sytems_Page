@@ -11,6 +11,9 @@ export type BlogPost = {
   tag: string;
   title: string;
   excerpt: string;
+  /** capa do artigo (public/img/blog) */
+  image: string;
+  imageAlt: string;
   /** data de publicação, formato ISO (YYYY-MM-DD) — usada para ordenar "últimos posts" */
   date: string;
 };
@@ -18,6 +21,8 @@ export type BlogPost = {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "/blog/futuro-do-seo-com-ia",
+    image: "/img/blog/futuro-do-seo-com-ia.webp",
+    imageAlt: "Esferas digitais ligadas por linhas luminosas em azul",
     tag: "SEO • AEO • GEO",
     title: "SEO está mudando: seu próximo cliente talvez nunca entre no Google",
     excerpt:
@@ -26,6 +31,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "/blog/aparece-no-instagram-mas-nao-no-google",
+    image: "/img/blog/aparece-no-instagram-mas-nao-no-google.webp",
+    imageAlt: "Mãos usando um aplicativo de mapa no celular",
     tag: "Presença digital • Google vs. redes sociais",
     title: "Sua empresa some no Google, mas aparece no Instagram",
     excerpt:
@@ -34,6 +41,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "/blog/perfil-google-nao-substitui-site",
+    image: "/img/blog/perfil-google-nao-substitui-site.webp",
+    imageAlt: "Rua com lojas de bairro e toldos coloridos",
     tag: "Presença digital • Google Maps e site",
     title: "Seu Perfil do Google não substitui um site",
     excerpt:
@@ -42,6 +51,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "/blog/site-nao-converte-em-contato",
+    image: "/img/blog/site-nao-converte-em-contato.webp",
+    imageAlt: "Pessoa digitando em um notebook no escritório",
     tag: "Presença digital • Conversão do site",
     title: "Seu site recebe visitas, mas não gera contato",
     excerpt:
@@ -50,6 +61,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "/blog/chatbot-para-whatsapp-atendimento-humano",
+    image: "/img/blog/chatbot-para-whatsapp-atendimento-humano.webp",
+    imageAlt: "Mão segurando um celular com aplicativo de mensagens aberto",
     tag: "Atendimento digital • WhatsApp com IA",
     title: "Chatbot para WhatsApp: quando ele ajuda de verdade",
     excerpt:
@@ -58,6 +71,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "/blog/ia-whatsapp-business-2026",
+    image: "/img/blog/ia-whatsapp-business-2026.webp",
+    imageAlt: "Vendedor conversando com um cliente no balcão",
     tag: "Atendimento digital • IA no WhatsApp Business",
     title: "IA do WhatsApp Business: o que faz e quando não basta",
     excerpt:
@@ -69,4 +84,9 @@ export const BLOG_POSTS: BlogPost[] = [
 /** Posts mais recentes primeiro, limitados a `limit` — usado pelo Footer. */
 export function latestPosts(limit: number): BlogPost[] {
   return [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date)).slice(0, limit);
+}
+
+/** Capa de um artigo pelo caminho dele (ex.: "/blog/futuro-do-seo-com-ia"). */
+export function postBySlug(slug: string): BlogPost | undefined {
+  return BLOG_POSTS.find((p) => p.slug === slug);
 }

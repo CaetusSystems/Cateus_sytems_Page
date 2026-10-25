@@ -9,6 +9,7 @@ import {
   MessageCircle,
   Sparkles,
 } from "lucide-react";
+import { postBySlug } from "@/data/blog";
 import { useDocumentHead } from "@/lib/useDocumentHead";
 import { WHATSAPP_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -94,6 +95,7 @@ export function BlogArticleLayout({
       "og:type": "article",
       "og:url": url,
       "og:locale": "pt_BR",
+      ...(postBySlug(url) ? { "og:image": `https://caetussystems.com.br${postBySlug(url)!.image}` } : {}),
       "article:author": authorName,
       "article:published_time": published,
       "article:modified_time": modifiedDate,
@@ -226,6 +228,18 @@ export function BlogArticleLayout({
               </div>
             </Reveal>
           </div>
+          {postBySlug(url) && (
+            <div className="mx-auto max-w-4xl px-6 pb-12">
+              <img
+                src={postBySlug(url)!.image}
+                alt={postBySlug(url)!.imageAlt}
+                width={1200}
+                height={675}
+                fetchPriority="high"
+                className="aspect-video w-full rounded-3xl object-cover shadow-xl"
+              />
+            </div>
+          )}
         </section>
 
         {children}
@@ -236,8 +250,8 @@ export function BlogArticleLayout({
               Quer resolver isso na sua empresa?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-balance text-primary-foreground/70">
-              A Caetus Systems cuida da presença digital de pequenas empresas de Lagoa Santa,
-              Belo Horizonte e região, do site ao WhatsApp com IA.
+              A Caetus Systems cuida da presença digital de pequenas empresas de Lagoa Santa, Belo
+              Horizonte e região, do site ao WhatsApp com IA.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a
@@ -352,7 +366,12 @@ export function BlogSection({
                 </div>
               )}
               {title && (
-                <h2 className={cn("text-3xl font-semibold tracking-tight md:text-4xl", eyebrow && "mt-2")}>
+                <h2
+                  className={cn(
+                    "text-3xl font-semibold tracking-tight md:text-4xl",
+                    eyebrow && "mt-2",
+                  )}
+                >
                   {title}
                 </h2>
               )}
@@ -371,5 +390,10 @@ export function BlogSection({
 function formatDatePtBr(iso: string): string {
   const [year, month, day] = iso.split("-").map(Number);
   const date = new Date(Date.UTC(year, month - 1, day));
-  return date.toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric", timeZone: "UTC" });
+  return date.toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
 }

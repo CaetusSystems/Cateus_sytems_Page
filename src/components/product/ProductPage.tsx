@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Plus } from "lucide-react";
+import { ArrowRight, CalendarCheck, Eye, Plus, Rocket, type LucideIcon } from "lucide-react";
 import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { LeadForm } from "@/components/lead/LeadForm";
 import { Button } from "@/components/ui/button";
-import { OFFERS, type OfferId } from "@/data/offers";
+import { PriceBlock } from "@/components/PriceBlock";
+import { OFFERS, priceSentence, type OfferId } from "@/data/offers";
 import { PRODUCT_PAGES } from "@/data/product-pages";
 import { GOOGLE_REVIEWS_URL } from "@/data/reviews";
 import { HORARIOS_DEMO } from "@/lib/constants";
@@ -49,7 +50,7 @@ export function ProductPage({ id }: { id: OfferId }) {
             "@type": "Offer",
             priceCurrency: "BRL",
             price: page.schemaPrice,
-            description: `${offer.price} ${offer.priceNote}`,
+            description: priceSentence(offer),
           },
         },
         {
@@ -78,12 +79,7 @@ export function ProductPage({ id }: { id: OfferId }) {
                 {page.promise}
               </h1>
               <p className="mt-5 max-w-xl text-lg text-muted-foreground">{page.support}</p>
-              <p className="mt-6">
-                <span className="text-4xl font-semibold tracking-tight text-brand-blue">
-                  {offer.price}
-                </span>{" "}
-                <span className="text-muted-foreground">{offer.priceNote}</span>
-              </p>
+              <PriceBlock offer={offer} size="lg" className="mt-6" />
               <Button
                 asChild
                 size="lg"
@@ -114,7 +110,7 @@ export function ProductPage({ id }: { id: OfferId }) {
         </section>
 
         {/* 2. O que está incluso */}
-        <section className="border-t border-border bg-muted/30">
+        <section className="border-t border-border bg-tint">
           <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:py-20">
             <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
               O que está incluso
@@ -239,7 +235,7 @@ export function ProductPage({ id }: { id: OfferId }) {
         </section>
 
         {/* 7. Combine com */}
-        <section className="border-t border-border bg-muted/30">
+        <section className="border-t border-border bg-tint">
           <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:py-20">
             <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
               Combine com
@@ -267,7 +263,7 @@ export function ProductPage({ id }: { id: OfferId }) {
                         {page.combineText[other]}
                       </span>
                       <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-brand-blue">
-                        {o.price} {o.priceNote}
+                        {priceSentence(o)}
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </span>
                     </span>
