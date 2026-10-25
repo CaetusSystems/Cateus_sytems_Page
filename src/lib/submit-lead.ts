@@ -45,6 +45,13 @@ async function send(lead: LeadInput, deps: Deps): Promise<SubmitResult> {
   }
   if (res.status === 400) return { ok: false, reason: "invalid" };
   if (!res.ok) return { ok: false, reason: "server" };
+  // Um host estático que devolve a página em vez da API também responde 200: só conta com o ok do Worker.
+  try {
+    const body = (await res.json()) as { ok?: boolean };
+    if (body.ok !== true) return { ok: false, reason: "server" };
+  } catch {
+    return { ok: false, reason: "server" };
+  }
 
   try {
     storage?.setItem(LEAD_KEY, JSON.stringify(lead));

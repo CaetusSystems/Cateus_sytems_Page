@@ -17,8 +17,8 @@ function memoryStorage() {
   };
 }
 
-const reply = (status: number) =>
-  (async () => new Response("{}", { status })) as unknown as typeof fetch;
+const reply = (status: number, body = '{"ok":true}') =>
+  (async () => new Response(body, { status })) as unknown as typeof fetch;
 
 describe("submitLead", () => {
   it("returns ok, tracks once and stores the lead on 200", async () => {
@@ -45,6 +45,17 @@ describe("submitLead", () => {
     expect(track).not.toHaveBeenCalled();
   });
 
+  it("does not track when a 200 does not carry ok:true (e.g. html from a static host)", async () => {
+    const track = vi.fn();
+    const r = await submitLead(lead, {
+      fetchImpl: reply(200, "<!doctype html><html></html>"),
+      track,
+      storage: memoryStorage(),
+    });
+    expect(r).toEqual({ ok: false, reason: "server" });
+    expect(track).not.toHaveBeenCalled();
+  });
+
   it("does not track on network error", async () => {
     const track = vi.fn();
     const fetchImpl = (async () => {
@@ -61,7 +72,7 @@ describe("submitLead", () => {
     const gate = new Promise<void>((r) => (release = r));
     const fetchImpl = vi.fn(async () => {
       await gate;
-      return new Response("{}", { status: 200 });
+      return new Response('{"ok":true}', { status: 200 });
     }) as unknown as typeof fetch;
     const deps = { fetchImpl, track, storage: memoryStorage() };
     const first = submitLead(lead, deps);

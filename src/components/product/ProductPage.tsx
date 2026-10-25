@@ -139,7 +139,7 @@ export function ProductPage({ id }: { id: OfferId }) {
         <section className="border-t border-border">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 md:py-20">
             <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-              Cliente que já usou
+              O que dizem os clientes
             </h2>
             <figure className="mt-8 rounded-3xl border border-border bg-card p-6">
               <blockquote className="text-base leading-relaxed">“{page.realCase.text}”</blockquote>
@@ -233,7 +233,7 @@ export function ProductPage({ id }: { id: OfferId }) {
               </ul>
             </div>
             <div className="text-foreground">
-              <LeadForm defaultProduct={page.product} />
+              <LeadForm key={page.product} defaultProduct={page.product} />
             </div>
           </div>
         </section>

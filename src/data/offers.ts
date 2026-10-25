@@ -23,7 +23,7 @@ export const OFFERS: Record<OfferId, Offer> = {
     price: "R$ 247",
     priceNote: "para criar, e R$ 24,90 por mês",
     image: "/img/caetus-card-site.webp",
-    imageAlt: "Barbearia com o site da Caetus aberto no celular",
+    imageAlt: "Site de uma escola infantil aberto em um notebook",
     path: "/criacao-de-sites",
   },
   atendente: {
@@ -34,7 +34,7 @@ export const OFFERS: Record<OfferId, Offer> = {
     price: "R$ 87",
     priceNote: "por mês",
     image: "/img/caetus-card-atendente.webp",
-    imageAlt: "Atendente virtual respondendo clientes no WhatsApp",
+    imageAlt: "Atendente virtual de uma barbearia respondendo um cliente no WhatsApp",
     path: "/atendente-whatsapp",
   },
   matricula: {
@@ -44,7 +44,7 @@ export const OFFERS: Record<OfferId, Offer> = {
     price: "R$ 297",
     priceNote: "para implantar, e R$ 96 por mês",
     image: "/img/caetus-card-sistemas.webp",
-    imageAlt: "Sistema de gestão e matrícula de escola em uso",
+    imageAlt: "Painel de gestão no notebook e avisos no celular, sobre uma mesa de cafeteria",
     path: "/sistema-de-matricula",
   },
 };

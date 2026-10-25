@@ -66,6 +66,11 @@ async function fileExists(filePath) {
   }
 }
 
+// O shell original (dist/index.html do build) fica em memória: cada rota grava o
+// próprio HTML em dist/, e a rota "/" sobrescreve o index.html. Sem isto, as rotas
+// seguintes partiriam do HTML da home, herdando o JSON-LD e os metadados dela.
+let SHELL_HTML;
+
 function startStaticServer() {
   const server = createServer(async (req, res) => {
     const urlPath = decodeURIComponent(req.url.split("?")[0]);
@@ -79,7 +84,8 @@ function startStaticServer() {
     }
 
     try {
-      const content = await readFile(filePath);
+      const isShell = filePath === path.join(DIST_DIR, "index.html");
+      const content = isShell ? SHELL_HTML : await readFile(filePath);
       const ext = path.extname(filePath);
       res.writeHead(200, { "Content-Type": MIME_TYPES[ext] ?? "application/octet-stream" });
       res.end(content);
@@ -137,6 +143,7 @@ async function main() {
     process.exit(1);
   }
 
+  SHELL_HTML = await readFile(distIndex);
   const server = await startStaticServer();
   const baseUrl = `http://localhost:${PORT}`;
   const browser = await launchBrowser();
