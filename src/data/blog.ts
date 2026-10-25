@@ -56,6 +56,14 @@ export const BLOG_POSTS: BlogPost[] = [
       "Entenda como um atendente digital pode responder dúvidas, organizar a triagem e passar a conversa para uma pessoa na hora certa.",
     date: "2026-09-08",
   },
+  {
+    slug: "/blog/ia-whatsapp-business-2026",
+    tag: "Atendimento digital • IA no WhatsApp Business",
+    title: "IA do WhatsApp Business: o que faz e quando não basta",
+    excerpt:
+      "A Meta liberou a IA do WhatsApp Business no Brasil. Veja como ela funciona, o que mudou nas regras para chatbots e quando vale ter um atendente próprio.",
+    date: "2026-10-25",
+  },
 ];
 
 /** Posts mais recentes primeiro, limitados a `limit` — usado pelo Footer. */

@@ -16,6 +16,7 @@ import BlogInstagramNaoEGoogle from "./pages/BlogInstagramNaoEGoogle";
 import BlogPerfilGoogleNaoSubstituiSite from "./pages/BlogPerfilGoogleNaoSubstituiSite";
 import BlogSiteNaoConverte from "./pages/BlogSiteNaoConverte";
 import BlogChatbotWhatsAppAtendimentoHumano from "./pages/BlogChatbotWhatsAppAtendimentoHumano";
+import BlogIaWhatsAppBusiness2026 from "./pages/BlogIaWhatsAppBusiness2026";
 import Presentation from "./pages/Presentation";
 import ProdutoAtendenteVirtual from "./pages/ProdutoAtendenteVirtual";
 import Templates from "./pages/Templates";
@@ -49,6 +50,7 @@ createRoot(document.getElementById("root")!).render(
             path="/blog/chatbot-para-whatsapp-atendimento-humano"
             element={<BlogChatbotWhatsAppAtendimentoHumano />}
           />
+          <Route path="/blog/ia-whatsapp-business-2026" element={<BlogIaWhatsAppBusiness2026 />} />
           <Route path="/agendar" element={<Agendar />} />
           <Route path="/obrigado" element={<Obrigado />} />
           <Route path="/templates" element={<Templates />} />
