@@ -1,11 +1,18 @@
 {
-  // Site da Caetus na conta Cloudflare producao.caetus (Workers com arquivos estáticos).
+  // Site da Caetus na conta Cloudflare producao.caetus (Worker + arquivos estáticos).
   // Publicar: npm run build && CLOUDFLARE_ACCOUNT_ID=e5401426d32f1245597574a8a6b2cd7b npx wrangler deploy
+  // Secrets (digitados pelo dono, nunca em arquivo): RESEND_API_KEY e LEAD_TO
+  //   npx wrangler secret put RESEND_API_KEY
+  //   npx wrangler secret put LEAD_TO
+  // Opcional (var, remetente verificado no Resend): LEAD_FROM
   "name": "caetus-site",
+  "main": "worker/index.ts",
   "account_id": "e5401426d32f1245597574a8a6b2cd7b",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
   }
 }
