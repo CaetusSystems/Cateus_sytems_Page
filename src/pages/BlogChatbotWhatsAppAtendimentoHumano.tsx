@@ -78,7 +78,7 @@ export default function BlogChatbotWhatsAppAtendimentoHumano() {
           href: "https://atendize.com/blog/estudo-100-mil-mensagens-whatsapp.html",
         },
       ]}
-      ctaHref="/produtos/bot-whatsapp"
+      ctaHref="/atendente-whatsapp"
       ctaLabel="Conhecer o atendente virtual"
     >
       <BlogSection
@@ -192,7 +192,7 @@ export default function BlogChatbotWhatsAppAtendimentoHumano() {
             title="Quer organizar o atendimento do seu WhatsApp?"
             description="A gente pode mapear as perguntas repetidas e montar um fluxo que respeita os limites da sua equipe."
             whatsappMessage="Olá! Quero entender como um atendente digital pode organizar o WhatsApp da minha empresa."
-            productHref="/produtos/bot-whatsapp"
+            productHref="/atendente-whatsapp"
             productLabel="Ver solução"
           />
         </div>

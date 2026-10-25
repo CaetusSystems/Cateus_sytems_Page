@@ -18,7 +18,7 @@ import BlogSiteNaoConverte from "./pages/BlogSiteNaoConverte";
 import BlogChatbotWhatsAppAtendimentoHumano from "./pages/BlogChatbotWhatsAppAtendimentoHumano";
 import BlogIaWhatsAppBusiness2026 from "./pages/BlogIaWhatsAppBusiness2026";
 import Presentation from "./pages/Presentation";
-import ProdutoAtendenteVirtual from "./pages/ProdutoAtendenteVirtual";
+import { ProductPage } from "./components/product/ProductPage";
 import Templates from "./pages/Templates";
 import FormularioCriacaoSite from "./pages/FormularioCriacaoSite";
 import Agendar from "./pages/Agendar";
@@ -37,7 +37,9 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
-          <Route path="/produtos/bot-whatsapp" element={<ProdutoAtendenteVirtual />} />
+          <Route path="/criacao-de-sites" element={<ProductPage id="sites" />} />
+          <Route path="/atendente-whatsapp" element={<ProductPage id="atendente" />} />
+          <Route path="/sistema-de-matricula" element={<ProductPage id="matricula" />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/futuro-do-seo-com-ia" element={<BlogFuturoSeoComIA />} />
           <Route

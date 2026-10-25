@@ -308,7 +308,7 @@ export function InlineCta({
   description?: string;
   /** mensagem pré-preenchida do WhatsApp, específica pro contexto da seção */
   whatsappMessage?: string;
-  /** link interno opcional pra um produto relacionado (ex: "/produtos/bot-whatsapp") */
+  /** link interno opcional pra um produto relacionado (ex: "/atendente-whatsapp") */
   productHref?: string;
   productLabel?: string;
 }) {

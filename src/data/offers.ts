@@ -11,7 +11,7 @@ export type Offer = {
   priceNote: string;
   image: string;
   imageAlt: string;
-  /** página do produto; até ela existir, o cartão leva ao formulário com o produto marcado */
+  /** página própria do produto */
   path: string;
 };
 
@@ -24,7 +24,7 @@ export const OFFERS: Record<OfferId, Offer> = {
     priceNote: "para criar, e R$ 24,90 por mês",
     image: "/img/caetus-card-site.webp",
     imageAlt: "Barbearia com o site da Caetus aberto no celular",
-    path: "/agendar?produto=sites",
+    path: "/criacao-de-sites",
   },
   atendente: {
     id: "atendente",
@@ -35,7 +35,7 @@ export const OFFERS: Record<OfferId, Offer> = {
     priceNote: "por mês",
     image: "/img/caetus-card-atendente.webp",
     imageAlt: "Atendente virtual respondendo clientes no WhatsApp",
-    path: "/agendar?produto=atendente",
+    path: "/atendente-whatsapp",
   },
   matricula: {
     id: "matricula",
@@ -45,7 +45,7 @@ export const OFFERS: Record<OfferId, Offer> = {
     priceNote: "para implantar, e R$ 96 por mês",
     image: "/img/caetus-card-sistemas.webp",
     imageAlt: "Sistema de gestão e matrícula de escola em uso",
-    path: "/agendar?produto=matricula",
+    path: "/sistema-de-matricula",
   },
 };
 
