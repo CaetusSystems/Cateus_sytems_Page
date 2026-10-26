@@ -17,6 +17,8 @@
     { "pattern": "caetussystems.com.br/*", "zone_name": "caetussystems.com.br" },
     { "pattern": "www.caetussystems.com.br/*", "zone_name": "caetussystems.com.br" }
   ],
+  // Remetente do e-mail de contato: domínio verificado no Resend (registros resend._domainkey/send no DNS).
+  "vars": { "LEAD_FROM": "Site Caetus <site@caetussystems.com.br>" },
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
