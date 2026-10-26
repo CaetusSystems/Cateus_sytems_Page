@@ -10,12 +10,13 @@
   "account_id": "e5401426d32f1245597574a8a6b2cd7b",
   "compatibility_date": "2026-10-01",
   // Endereços do site: o domínio sem www é o principal; o www redireciona (worker/index.ts).
-  // Ativar SÓ depois de apagar, no DNS da zona, os registros A antigos (Vercel) do apex e do www,
-  // senão o deploy recusa (erro 100117):
-  // "routes": [
-  //   { "pattern": "caetussystems.com.br", "custom_domain": true },
-  //   { "pattern": "www.caetussystems.com.br", "custom_domain": true }
-  // ],
+  // Rotas na zona caetussystems.com.br (conta producao.caetus). Os registros A antigos da Vercel
+  // seguem no DNS com proxy da Cloudflare, mas a rota assume o tráfego antes de chegar neles.
+  // (Custom Domain recusa o deploy enquanto esses registros existirem: erro 100117.)
+  "routes": [
+    { "pattern": "caetussystems.com.br/*", "zone_name": "caetussystems.com.br" },
+    { "pattern": "www.caetussystems.com.br/*", "zone_name": "caetussystems.com.br" }
+  ],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
