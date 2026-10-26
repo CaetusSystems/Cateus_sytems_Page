@@ -17,21 +17,15 @@ const CHIPS = [
   { icon: CalendarCheck, pos: "bottom-[1%] left-[4%] sm:bottom-[6%]", delay: "5.2s" },
 ];
 
-const GOOGLE_COLORS = ["#4285F4", "#EA4335", "#F2A900", "#4285F4", "#34A853", "#EA4335"];
-
-/** Pinta "Google" com as cores do Google e "WhatsApp" de verde, em qualquer idioma. */
+/** Pinta "Google" de azul e "WhatsApp" de verde, em qualquer idioma. */
 function BrandedTitle({ text }: { text: string }) {
   return (
     <>
       {text.split(/(Google|WhatsApp)/).map((part, i) => {
         if (part === "Google") {
           return (
-            <span key={i}>
-              {[...part].map((ch, j) => (
-                <span key={j} style={{ color: GOOGLE_COLORS[j] }}>
-                  {ch}
-                </span>
-              ))}
+            <span key={i} style={{ color: "#4285F4" }}>
+              {part}
             </span>
           );
         }
@@ -69,8 +63,9 @@ export function HeroHome() {
           <div className="mt-5 rounded-2xl border border-brand-blue/25 bg-card/90 p-4 shadow-md shadow-brand-blue/10 backdrop-blur-sm sm:inline-block sm:pr-8 md:mt-6">
             <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
               {t.hero.priceCaption}
+              <span className="text-brand-blue"> · {t.cards.offerBadge}</span>
             </p>
-            <PriceBlock offer={localizeOffer(OFFERS.sites, lang)} size="lg" className="mt-1" />
+            <PriceBlock offer={localizeOffer(OFFERS.sites, lang)} size="lg" quiet className="mt-1" />
           </div>
 
           <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center md:mt-6">

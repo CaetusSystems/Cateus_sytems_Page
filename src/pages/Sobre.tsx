@@ -36,7 +36,7 @@ const REASONS = [
 
 export default function Sobre() {
   useDocumentHead({
-    title: "Quem somos, Caetus Systems",
+    title: "Quem somos | Caetus Systems, Lagoa Santa e BH",
     description:
       "A Caetus Systems nasceu em Lagoa Santa para ajudar pequenas empresas a competir em igualdade por meio da tecnologia. Conheça nossa história e onde atendemos.",
     canonical: "/sobre",

@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { alternates, type Lang } from "@/i18n/locale";
-
-const SITE_URL = "https://caetussystems.com.br";
+import { absolutizeJsonLd, SITE_URL } from "@/lib/json-ld";
 
 interface HeadOptions {
   title: string;
@@ -74,7 +73,7 @@ export function useDocumentHead({
     if (jsonLd) {
       jsonLdEl = document.createElement("script");
       jsonLdEl.type = "application/ld+json";
-      jsonLdEl.textContent = JSON.stringify(jsonLd);
+      jsonLdEl.textContent = JSON.stringify(absolutizeJsonLd(jsonLd));
       document.head.appendChild(jsonLdEl);
     }
 

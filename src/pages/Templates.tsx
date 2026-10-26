@@ -14,7 +14,7 @@ import { TEMPLATES, TEMPLATE_CATEGORIES, type TemplateCategory } from "@/data/te
 
 export default function Templates() {
   useDocumentHead({
-    title: "Modelos de site, Caetus Systems",
+    title: "Modelos de site para pequenos negócios | Caetus Systems",
     description:
       "Modelos de sites já entregues pela Caetus Systems para negócios locais: festas, varejo, recreativo infantil e serviços. Veja os prints e peça o seu.",
     canonical: "/templates",

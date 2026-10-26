@@ -1,8 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import "./styles.css";
 import { ErrorBoundary } from "./components/ErrorBoundary";
@@ -80,8 +78,6 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/presentation" element={<Presentation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Analytics />
-        <SpeedInsights />
       </BrowserRouter>
     </ErrorBoundary>
   </StrictMode>,

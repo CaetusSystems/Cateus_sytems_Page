@@ -192,7 +192,7 @@ export const pt = {
     hoursTitle: "Horários das demonstrações online",
     onlineTitle: "Demonstração 100% online",
     onlineText: "Você participa pelo celular ou pelo computador, de onde estiver.",
-    headTitle: "Agendar demonstração | Caetus Systems",
+    headTitle: "Agendar demonstração online | Caetus Systems",
     headDescription:
       "Escolha o que você quer ver, deixe seu WhatsApp e marque uma demonstração de site, atendente no WhatsApp ou sistema de matrícula.",
   },

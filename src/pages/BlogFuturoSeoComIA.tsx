@@ -345,7 +345,7 @@ export default function ArticlePage() {
           publisher: {
             "@type": "Organization",
             name: "Caetus Systems",
-            logo: { "@type": "ImageObject", url: "/favicon.ico" },
+            logo: { "@type": "ImageObject", url: "/caetus-logo.png" },
           },
           about: [
             "SEO",

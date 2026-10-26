@@ -227,8 +227,8 @@ function initField(canvas: HTMLCanvasElement, onCenter: (center: FieldCenter) =>
     mouse.ty = -9999;
   }
 
-  // Toque ou clique: espalha as bolinhas com mais força ao redor do ponto e,
-  // ao soltar, elas voltam sozinhas. O celular não tem "passar o mouse", então
+  // Toque ou clique: afasta as bolinhas ao redor do ponto e, ao soltar, elas
+  // voltam sozinhas. O celular não tem "passar o mouse", então
   // é o único jeito de brincar com o mapa lá.
   const BASE_RADIUS = config.radius;
   const BASE_FORCE = config.force;
@@ -238,8 +238,9 @@ function initField(canvas: HTMLCanvasElement, onCenter: (center: FieldCenter) =>
     const rect = canvas.getBoundingClientRect();
     mouse.x = mouse.tx = e.clientX - rect.left;
     mouse.y = mouse.ty = e.clientY - rect.top;
-    config.radius = BASE_RADIUS * 1.5;
-    config.force = BASE_FORCE * 3;
+    // ponto de toque pequeno: as bolinhas se afastam só um pouco
+    config.radius = BASE_RADIUS * 0.6;
+    config.force = BASE_FORCE * 1.5;
   }
   function onPointerUp() {
     // segura um instante para um toque rápido ainda render o efeito

@@ -5,20 +5,26 @@ import { cn } from "@/lib/utils";
 /**
  * Preço da oferta: valor grande com "pagamento único" (ou "por mês") ao lado
  * e a mensalidade de manutenção pequena embaixo.
+ *
+ * `quiet` (topo da home): só o preço em azul; a palavra "oferta" fica no rótulo do cartão.
+ * O preço cheio riscado em vermelho e o selo ficam nos cartões e na página do produto.
  */
 export function PriceBlock({
   offer,
   size = "md",
+  quiet = false,
   className,
 }: {
   offer: Offer;
   size?: "md" | "lg";
+  quiet?: boolean;
   className?: string;
 }) {
   const t = useT();
+  const promo = Boolean(offer.listPrice) && !quiet;
   return (
     <div className={className}>
-      {offer.listPrice && (
+      {promo && (
         <p className="mb-0.5 flex items-center gap-2">
           <del
             className={cn(
@@ -41,7 +47,7 @@ export function PriceBlock({
       <span
         className={cn(
           "font-semibold tracking-tight",
-          offer.listPrice ? "text-brand-green" : "text-brand-blue",
+          promo ? "text-brand-green" : "text-brand-blue",
           size === "lg" ? "text-5xl" : "text-3xl",
         )}
       >

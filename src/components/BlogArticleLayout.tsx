@@ -121,7 +121,7 @@ export function BlogArticleLayout({
           publisher: {
             "@type": "Organization",
             name: "Caetus Systems",
-            logo: { "@type": "ImageObject", url: "/favicon.ico" },
+            logo: { "@type": "ImageObject", url: "/caetus-logo.png" },
           },
           about: tags,
           keywords: tags.join(", "),
