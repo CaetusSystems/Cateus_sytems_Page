@@ -17,31 +17,6 @@ const CHIPS = [
   { icon: CalendarCheck, pos: "bottom-[1%] left-[4%] sm:bottom-[6%]", delay: "5.2s" },
 ];
 
-/** Pinta "Google" de azul e "WhatsApp" de verde, em qualquer idioma. */
-function BrandedTitle({ text }: { text: string }) {
-  return (
-    <>
-      {text.split(/(Google|WhatsApp)/).map((part, i) => {
-        if (part === "Google") {
-          return (
-            <span key={i} style={{ color: "#4285F4" }}>
-              {part}
-            </span>
-          );
-        }
-        if (part === "WhatsApp") {
-          return (
-            <span key={i} style={{ color: "#1DA851" }}>
-              {part}
-            </span>
-          );
-        }
-        return part;
-      })}
-    </>
-  );
-}
-
 export function HeroHome() {
   const t = useT();
   const lang = useLang();
@@ -54,7 +29,7 @@ export function HeroHome() {
       <div className="relative mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] items-center gap-4 px-5 pb-10 pt-6 sm:px-6 md:grid-cols-2 md:gap-8 md:pb-20 md:pt-14">
         <div>
           <h1 className="text-balance text-[2rem] font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.4rem]">
-            <BrandedTitle text={t.hero.title} />
+            {t.hero.title}
           </h1>
           <p className="mt-4 max-w-xl text-base text-muted-foreground sm:text-lg md:mt-5 md:text-xl">
             {t.hero.subtitle}
