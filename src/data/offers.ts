@@ -9,6 +9,8 @@ export type Offer = {
   /** frase curta do que a pessoa ganha */
   promise: string;
   price: string;
+  /** preço cheio, mostrado riscado em vermelho acima do preço da oferta */
+  listPrice?: string;
   /** "pagamento único" ou "por mês" */
   priceLabel: string;
   /** mensalidade de manutenção, mostrada pequena abaixo do preço */
@@ -29,6 +31,7 @@ export const OFFERS: Record<OfferId, Offer> = {
     name: "Criação de sites",
     promise: "Seu negócio encontrado no Google, com um site pronto para receber clientes.",
     price: "R$ 247",
+    listPrice: "R$ 500",
     priceLabel: "pagamento único",
     monthly: "+ R$ 24,90 por mês de manutenção",
     image: "/img/caetus-card-site.webp",

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, LayoutGrid, Maximize2, X } from "lucide-react";
+import { ArrowRight, LayoutGrid, Maximize2, Star, X } from "lucide-react";
 import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
 import { FinalCtaForm } from "@/components/home/FinalCtaForm";
@@ -140,6 +140,12 @@ export default function Templates() {
                         Ampliar print
                       </span>
                     </div>
+                    {t.featured && !t.badge && (
+                      <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-brand-green px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">
+                        <Star className="h-3 w-3" fill="currentColor" aria-hidden="true" />
+                        Destaque
+                      </span>
+                    )}
                     {t.badge && (
                       <span className="absolute left-3 top-3 rounded-full bg-brand-green px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">
                         {t.badge}

@@ -64,12 +64,14 @@ export const es: Messages = {
       matricula: "Ejemplo: sistema de matrícula para escuelas",
     },
     fromLabel: "desde",
+    offerBadge: "Oferta",
   },
   delivered: {
     badge: "Sitios en línea",
     title: "Sitios que ya entregamos.",
     subtitle:
-      "Negocios reales, cada uno con la cara de su propia marca. El tuyo puede ser el próximo.",
+      "Los sitios que salieron al aire y dieron resultado. El tuyo puede ser el próximo.",
+    featured: "Destacado",
     seeAll: "Ver todos",
     segments: {
       "mls-festa": "Alquiler de mobiliario y decoración",
@@ -77,6 +79,8 @@ export const es: Messages = {
       "espaco-prata-inlove": "Espacio para eventos",
       "hotelzinho-tia-ju": "Recreación infantil",
       "espaco-de-festa-joa": "Salón de fiestas",
+      celd: "Escuela de educación infantil",
+      "escola-passo-a-passo": "Educación infantil",
       "personalize-ls": "Imprenta y personalizados",
     },
     altPrefix: "Sitio de",

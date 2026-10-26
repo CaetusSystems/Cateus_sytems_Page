@@ -66,11 +66,13 @@ export const pt = {
       matricula: "Exemplo: sistema de matrícula para escolas",
     } as Record<string, string>,
     fromLabel: "a partir de",
+    offerBadge: "Oferta",
   },
   delivered: {
     badge: "Sites no ar",
     title: "Sites que já entregamos.",
-    subtitle: "Negócios de verdade, cada um com a cara da própria marca. O seu pode ser o próximo.",
+    subtitle: "Os sites que foram ao ar e deram resultado. O seu pode ser o próximo.",
+    featured: "Destaque",
     seeAll: "Ver todos",
     segments: {
       "mls-festa": "Locação de mobiliário e decoração",
@@ -78,6 +80,8 @@ export const pt = {
       "espaco-prata-inlove": "Espaço de eventos",
       "hotelzinho-tia-ju": "Recreativo infantil",
       "espaco-de-festa-joa": "Espaço de festas",
+      celd: "Escola de educação infantil",
+      "escola-passo-a-passo": "Educação infantil",
       "personalize-ls": "Gráfica e personalizados",
     } as Record<string, string>,
     altPrefix: "Site de",

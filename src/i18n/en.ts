@@ -64,11 +64,13 @@ export const en: Messages = {
       matricula: "Example: enrollment system for schools",
     },
     fromLabel: "from",
+    offerBadge: "Offer",
   },
   delivered: {
     badge: "Live websites",
     title: "Websites we already delivered.",
-    subtitle: "Real businesses, each with the look of its own brand. Yours can be next.",
+    subtitle: "The sites that went live and delivered results. Yours can be next.",
+    featured: "Featured",
     seeAll: "See all",
     segments: {
       "mls-festa": "Furniture and decor rental",
@@ -76,6 +78,8 @@ export const en: Messages = {
       "espaco-prata-inlove": "Event venue",
       "hotelzinho-tia-ju": "Children's recreation",
       "espaco-de-festa-joa": "Party venue",
+      celd: "Early childhood school",
+      "escola-passo-a-passo": "Early childhood education",
       "personalize-ls": "Print shop and personalized items",
     },
     altPrefix: "Website of",

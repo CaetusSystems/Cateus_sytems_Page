@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { HOME_CARDS, OFFERS } from "./offers";
+import { HOME_CARDS, OFFERS, priceSentence } from "./offers";
 
 describe("preços das ofertas", () => {
   it("site: R$ 247 em pagamento único e manutenção de R$ 24,90 por mês", () => {
@@ -18,6 +18,18 @@ describe("preços das ofertas", () => {
     expect(OFFERS.matricula.price).toBe("R$ 297");
     expect(OFFERS.matricula.priceLabel).toBe("pagamento único");
     expect(OFFERS.matricula.monthly).toBe("+ R$ 96 por mês de manutenção");
+  });
+});
+
+describe("preço cheio riscado", () => {
+  it("só o site mostra R$ 500 riscado acima do R$ 247", () => {
+    expect(OFFERS.sites.listPrice).toBe("R$ 500");
+    expect(OFFERS.atendente.listPrice).toBeUndefined();
+    expect(OFFERS.matricula.listPrice).toBeUndefined();
+  });
+
+  it("o preço cheio não entra no texto de preço dos dados estruturados", () => {
+    expect(priceSentence(OFFERS.sites)).not.toContain("500");
   });
 });
 

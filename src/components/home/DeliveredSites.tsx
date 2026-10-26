@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Globe } from "lucide-react";
+import { ArrowRight, Globe, Star } from "lucide-react";
 import { TEMPLATES } from "@/data/templates";
 import { useT } from "@/i18n";
 
-/** Navalha de Ouro é um modelo novo, ainda não entregue a um cliente. */
-const DELIVERED = TEMPLATES.filter((t) => t.slug !== "barbearia-navalha-de-ouro");
+/** Só os destaques: sites que foram ao ar e deram resultado, na ordem definida em templates.ts. */
+const DELIVERED = TEMPLATES.filter((t) => t.featured);
 
 export function DeliveredSites() {
   const t = useT();
@@ -46,7 +46,11 @@ export function DeliveredSites() {
                     {tpl.name}
                   </span>
                 </div>
-                <div className="aspect-[16/10] overflow-hidden bg-muted">
+                <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                  <span className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-brand-green px-2.5 py-1 text-[11px] font-semibold text-white shadow-sm">
+                    <Star className="h-3 w-3" fill="currentColor" aria-hidden="true" />
+                    {t.delivered.featured}
+                  </span>
                   <img
                     src={tpl.image}
                     alt={`Site de ${tpl.name}, ${t.delivered.segments[tpl.slug] ?? tpl.segment}`}

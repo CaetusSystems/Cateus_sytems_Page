@@ -25,7 +25,12 @@ export function ProductCards() {
               key={offer.name}
               className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-xl hover:shadow-brand-blue/10"
             >
-              <div className="aspect-[4/3] overflow-hidden bg-muted">
+              <Link
+                to={lp(offer.path)}
+                tabIndex={-1}
+                aria-hidden="true"
+                className="block aspect-[4/3] overflow-hidden bg-muted"
+              >
                 <img
                   src={offer.image}
                   alt={offer.imageAlt}
@@ -34,9 +39,13 @@ export function ProductCards() {
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />
-              </div>
+              </Link>
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-xl font-semibold tracking-tight">{offer.name}</h3>
+                <h3 className="text-xl font-semibold tracking-tight">
+                  <Link to={lp(offer.path)} className="hover:text-brand-blue">
+                    {offer.name}
+                  </Link>
+                </h3>
                 <p className="mt-2 flex-1 text-muted-foreground">{offer.promise}</p>
                 <PriceBlock offer={offer} className="mt-5" />
                 <Button

@@ -18,6 +18,21 @@ export function PriceBlock({
   const t = useT();
   return (
     <div className={className}>
+      {offer.listPrice && (
+        <p className="mb-0.5 flex items-center gap-2">
+          <del
+            className={cn(
+              "font-semibold text-red-600 decoration-2 dark:text-red-400",
+              size === "lg" ? "text-2xl" : "text-lg",
+            )}
+          >
+            {offer.listPrice}
+          </del>
+          <span className="rounded-full bg-red-600 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white">
+            {t.cards.offerBadge}
+          </span>
+        </p>
+      )}
       {offer.from && (
         <span className="mr-1.5 text-sm font-medium text-muted-foreground">
           {t.cards.fromLabel}
