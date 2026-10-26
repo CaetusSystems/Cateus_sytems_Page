@@ -1,11 +1,12 @@
 import { ExternalLink, Quote } from "lucide-react";
 import { GoogleG } from "@/components/GoogleG";
+import { FiveStars } from "@/components/home/FiveStars";
 import { GOOGLE_REVIEWS_URL, REAL_REVIEWS } from "@/data/reviews";
 import { useLang, useT } from "@/i18n";
 
 /**
  * Avaliações reais do Google em destaque, logo depois do topo.
- * Só texto, nome e data como foram publicados: nunca nota ou número inventado.
+ * Texto, nome e data como foram publicados. As 5 estrelas são a nota dada nas duas avaliações; nenhum número é inventado.
  */
 export function ReviewsSpotlight() {
   const t = useT();
@@ -29,6 +30,12 @@ export function ReviewsSpotlight() {
         <h2 className="mt-4 max-w-3xl text-balance text-3xl font-semibold tracking-tight md:text-5xl">
           {t.reviews.title}
         </h2>
+        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <FiveStars label={t.reviews.fiveStars} className="h-9 w-9 sm:h-11 sm:w-11" />
+          <span className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            {t.reviews.fiveStars}
+          </span>
+        </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {REAL_REVIEWS.map((r) => (
@@ -40,7 +47,16 @@ export function ReviewsSpotlight() {
                 className="absolute right-6 top-6 h-10 w-10 text-brand-blue/15"
                 aria-hidden="true"
               />
-              <blockquote lang="pt-BR" className="flex-1 text-lg leading-relaxed md:text-xl">
+              <FiveStars
+                label={t.reviews.fiveStars}
+                className="h-5 w-5"
+                step={0.12}
+                delay={0.9}
+              />
+              <blockquote
+                lang="pt-BR"
+                className="mt-4 flex-1 text-lg leading-relaxed md:text-xl"
+              >
                 “{r.text}”
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-4 border-t border-border pt-5">

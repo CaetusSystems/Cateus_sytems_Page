@@ -49,6 +49,7 @@ export const pt = {
     badge: "Avaliações de clientes no Google",
     title: "Quem já trabalhou com a gente conta como foi.",
     source: "Avaliação no Google,",
+    fiveStars: "5 estrelas",
     seeAll: "Ver todas no Google",
     languageNote: "",
     when: {

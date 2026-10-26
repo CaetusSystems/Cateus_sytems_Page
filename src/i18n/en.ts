@@ -47,6 +47,7 @@ export const en: Messages = {
     badge: "Customer reviews on Google",
     title: "People who already worked with us tell how it went.",
     source: "Google review,",
+    fiveStars: "5 stars",
     seeAll: "See all on Google",
     languageNote: "Reviews are shown in the original language (Portuguese).",
     when: {

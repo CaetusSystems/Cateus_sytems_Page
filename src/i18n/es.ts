@@ -47,6 +47,7 @@ export const es: Messages = {
     badge: "Reseñas de clientes en Google",
     title: "Quienes ya trabajaron con nosotros cuentan cómo fue.",
     source: "Reseña en Google,",
+    fiveStars: "5 estrellas",
     seeAll: "Ver todas en Google",
     languageNote: "Las reseñas se muestran en su idioma original (portugués).",
     when: {
