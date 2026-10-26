@@ -9,6 +9,13 @@
   "main": "worker/index.ts",
   "account_id": "e5401426d32f1245597574a8a6b2cd7b",
   "compatibility_date": "2026-10-01",
+  // Endereços do site: o domínio sem www é o principal; o www redireciona (worker/index.ts).
+  // Ativar SÓ depois de apagar, no DNS da zona, os registros A antigos (Vercel) do apex e do www,
+  // senão o deploy recusa (erro 100117):
+  // "routes": [
+  //   { "pattern": "caetussystems.com.br", "custom_domain": true },
+  //   { "pattern": "www.caetussystems.com.br", "custom_domain": true }
+  // ],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
