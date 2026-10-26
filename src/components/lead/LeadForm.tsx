@@ -1,6 +1,17 @@
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Check, Loader2 } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  GraduationCap,
+  Globe,
+  HelpCircle,
+  Loader2,
+  MessageCircle,
+  SlidersHorizontal,
+  Video,
+  type LucideIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
@@ -11,7 +22,13 @@ import { leadSchema, type LeadInput, type ProductId } from "@/lib/lead-schema";
 import { submitLead } from "@/lib/submit-lead";
 import { cn } from "@/lib/utils";
 
-const CHOICE_IDS: ProductId[] = ["sites", "atendente", "matricula", "nao-sei"];
+const CHOICES: { id: ProductId; icon: LucideIcon }[] = [
+  { id: "sites", icon: Globe },
+  { id: "atendente", icon: MessageCircle },
+  { id: "sob-medida", icon: SlidersHorizontal },
+  { id: "matricula", icon: GraduationCap },
+  { id: "nao-sei", icon: HelpCircle },
+];
 
 type Errors = Partial<Record<string, string>>;
 
@@ -96,21 +113,33 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
           <fieldset>
             <legend className="text-lg font-semibold tracking-tight">{t.form.whatToSee}</legend>
             <div className="mt-3 grid gap-2">
-              {CHOICE_IDS.map((id) => (
+              {CHOICES.map(({ id, icon: Icon }) => (
                 <button
                   key={id}
                   type="button"
                   onClick={() => setProduct(id)}
                   aria-pressed={product === id}
                   className={cn(
-                    "flex min-h-12 items-center justify-between rounded-2xl border px-4 text-left text-base font-medium transition-colors",
+                    "flex min-h-14 items-center gap-3 rounded-2xl border px-3.5 text-left text-base font-medium transition-colors active:scale-[0.99]",
                     product === id
                       ? "border-brand-blue bg-brand-blue/5 text-foreground"
                       : "border-border hover:border-brand-blue/50",
                   )}
                 >
-                  {t.form.choices[id]}
-                  {product === id && <Check className="h-4 w-4 text-brand-blue" />}
+                  <span
+                    className={cn(
+                      "flex h-9 w-9 shrink-0 items-center justify-center rounded-xl",
+                      product === id
+                        ? "bg-brand-blue text-white"
+                        : "bg-brand-blue/10 text-brand-blue",
+                    )}
+                  >
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span className="flex-1">{t.form.choices[id]}</span>
+                  {product === id && (
+                    <Check className="h-4 w-4 text-brand-blue" aria-hidden="true" />
+                  )}
                 </button>
               ))}
             </div>
@@ -127,6 +156,7 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
               onChange={(e) => setBusiness(e.target.value)}
               placeholder={t.form.businessPlaceholder}
               maxLength={80}
+              autoComplete="organization"
               className={fieldClass}
             />
             {errors.business && <p className={errorClass}>{errors.business}</p>}
@@ -175,17 +205,19 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
 
           <div>
             <label htmlFor="lead-link" className="text-sm font-medium">
-              {t.form.linkLabel}{" "}
-              <span className="font-normal text-muted-foreground">{t.form.optional}</span>
+              {t.form.linkLabel}
             </label>
             <Input
               id="lead-link"
               value={link}
               onChange={(e) => setLink(e.target.value)}
               placeholder={t.form.linkPlaceholder}
+              autoCapitalize="none"
+              autoCorrect="off"
               maxLength={200}
               className={fieldClass}
             />
+            {errors.link && <p className={errorClass}>{errors.link}</p>}
           </div>
 
           <div>
@@ -238,6 +270,10 @@ export function LeadForm({ defaultProduct }: { defaultProduct?: ProductId }) {
             {sending && <Loader2 className="h-4 w-4 animate-spin" />}
             {sending ? t.form.sending : t.form.submit}
           </Button>
+          <p className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <Video className="h-4 w-4 text-brand-blue" aria-hidden="true" />
+            {t.form.onlineNote}
+          </p>
           <button
             type="button"
             onClick={() => setStep(1)}

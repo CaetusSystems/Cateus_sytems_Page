@@ -12,6 +12,7 @@ const lead = {
   business: "Barbearia Silva",
   name: "João Silva",
   phone: "(31) 97213-1824",
+  link: "@barbeariasilva",
   attribution: { utm_source: "instagram", utm_campaign: "lancamento" },
 };
 

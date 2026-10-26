@@ -26,6 +26,7 @@ describe("cartões da home", () => {
     expect(HOME_CARDS.map((c) => c.id)).toEqual(["sites", "atendente", "matricula"]);
     const custom = HOME_CARDS[2];
     expect(custom.name).toBe("Sistema sob medida");
+    expect(custom.leadProduct).toBe("sob-medida");
     expect(custom.from).toBe(true);
     expect(custom.price).toBe("R$ 297");
     expect(custom.monthly).toContain("R$ 96");

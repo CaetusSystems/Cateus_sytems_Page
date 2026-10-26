@@ -27,3 +27,16 @@ export function markIntroSeen(storage: Store | undefined = defaultStore()): void
     /* sem armazenamento: a abertura simplesmente não volta a ser marcada */
   }
 }
+
+/**
+ * Solta a rolagem do body. A abertura trava a rolagem enquanto roda; se um HTML
+ * pré-renderizado (ou uma montagem anterior) deixou `overflow: hidden` gravado,
+ * quem já viu a abertura ficaria sem rolar a página.
+ */
+export function releaseScrollLock(
+  body: { style: { overflow: string } } | undefined = typeof document === "undefined"
+    ? undefined
+    : document.body,
+): void {
+  if (body) body.style.overflow = "";
+}

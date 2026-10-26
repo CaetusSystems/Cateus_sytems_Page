@@ -32,7 +32,7 @@ export function PriceBlock({
         {offer.price}
       </span>{" "}
       <span className="text-sm font-medium text-foreground/70">{offer.priceLabel}</span>
-      {offer.monthly && <p className="mt-0.5 text-xs text-muted-foreground">{offer.monthly}</p>}
+      {offer.monthly && <p className="mt-0.5 text-[13px] text-muted-foreground">{offer.monthly}</p>}
     </div>
   );
 }

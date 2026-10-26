@@ -43,7 +43,7 @@ export function ProductCards() {
                   asChild
                   className="btn-shine mt-5 h-12 rounded-full bg-brand-blue text-base text-white hover:bg-brand-blue/90"
                 >
-                  <Link to={lp(`/agendar?produto=${offer.id}`)}>
+                  <Link to={lp(`/agendar?produto=${offer.leadProduct ?? offer.id}`)}>
                     <CalendarCheck className="h-5 w-5" aria-hidden="true" />
                     {t.cards.cta}
                   </Link>

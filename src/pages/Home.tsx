@@ -5,6 +5,7 @@ import { HeroHome } from "@/components/home/HeroHome";
 import { ProductCards } from "@/components/home/ProductCards";
 import { ReviewsSpotlight } from "@/components/home/ReviewsSpotlight";
 import { DeliveredSites } from "@/components/home/DeliveredSites";
+import { AssistantDemoSection } from "@/components/product/AssistantDemoSection";
 import { IntroSplash, useIntroSplash } from "@/components/IntroSplash";
 import { HowItWorksSimple } from "@/components/home/HowItWorksSimple";
 import { FaqHome } from "@/components/home/FaqHome";
@@ -59,6 +60,7 @@ export default function Home() {
         <HeroHome />
         <ReviewsSpotlight />
         <ProductCards />
+        <AssistantDemoSection />
         <DeliveredSites />
         <HowItWorksSimple />
         <FaqHome />

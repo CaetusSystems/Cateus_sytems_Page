@@ -1,7 +1,7 @@
 import { MESSAGES, type Lang } from "@/i18n";
 import type { ProductId } from "@/lib/lead-schema";
 
-export type OfferId = Exclude<ProductId, "nao-sei">;
+export type OfferId = Exclude<ProductId, "nao-sei" | "sob-medida">;
 
 export type Offer = {
   id: OfferId;
@@ -15,6 +15,8 @@ export type Offer = {
   monthly?: string;
   /** mostra "a partir de" antes do preço */
   from?: boolean;
+  /** produto do formulário quando difere do id (cartão do sistema sob medida) */
+  leadProduct?: ProductId;
   image: string;
   imageAlt: string;
   /** página própria do produto */
@@ -94,6 +96,7 @@ export function getHomeCards(lang: Lang): Offer[] {
       name: custom.name,
       promise: custom.promise,
       from: true,
+      leadProduct: "sob-medida",
     },
   ];
 }

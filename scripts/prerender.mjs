@@ -16,6 +16,7 @@ import { readFile, writeFile, mkdir, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROUTES } from "./routes.mjs";
+import { INTRO_KEY } from "../src/lib/intro.ts";
 
 // No build da Vercel não dá para usar o Chromium baixado pelo `puppeteer`
 // normal — falta biblioteca de sistema (libnspr4.so e afins) que o
@@ -103,19 +104,19 @@ function startStaticServer() {
 async function prerenderRoute(browser, baseUrl, route) {
   const page = await browser.newPage();
 
-  // A Home mostra uma splash de abertura (~13s) que trava o scroll do
+  // A Home mostra uma splash de abertura (~5s) que trava o scroll do
   // <body> enquanto roda (IntroSplash.tsx). Sem isto, o Puppeteer captura o
   // HTML nesse meio-tempo e o `overflow: hidden` fica gravado para sempre
   // no HTML estático publicado — travando o scroll de todo mundo, mesmo
   // depois do React montar. Marcar a splash como "já vista" antes de
   // navegar garante que ela nunca apareça durante a captura.
-  await page.evaluateOnNewDocument(() => {
+  await page.evaluateOnNewDocument((introKey) => {
     try {
-      localStorage.setItem("caetus_intro_seen_v1", "1");
+      localStorage.setItem(introKey, "1");
     } catch {
       /* localStorage indisponível — sem problema, só afeta a splash */
     }
-  });
+  }, INTRO_KEY);
 
   const url = `${baseUrl}${route.path}`;
   await page.goto(url, { waitUntil: "networkidle0", timeout: 30000 });
@@ -127,7 +128,12 @@ async function prerenderRoute(browser, baseUrl, route) {
   });
   await new Promise((r) => setTimeout(r, 200));
 
-  const html = await page.evaluate(() => "<!doctype html>\n" + document.documentElement.outerHTML);
+  // Rede de segurança: nunca gravar trava de rolagem no HTML publicado.
+  const html = await page.evaluate(() => {
+    document.body.style.overflow = "";
+    if (!document.body.getAttribute("style")) document.body.removeAttribute("style");
+    return "<!doctype html>\n" + document.documentElement.outerHTML;
+  });
   await page.close();
 
   const outDir = route.path === "/" ? DIST_DIR : path.join(DIST_DIR, route.path);

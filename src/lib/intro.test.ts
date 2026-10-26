@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { INTRO_KEY, markIntroSeen, shouldShowIntro } from "./intro";
+import { INTRO_KEY, markIntroSeen, releaseScrollLock, shouldShowIntro } from "./intro";
 
 function fakeStorage(initial: Record<string, string> = {}) {
   const data = { ...initial };
@@ -34,5 +34,17 @@ describe("animação de abertura", () => {
     };
     expect(shouldShowIntro(broken)).toBe(false);
     expect(() => markIntroSeen(broken)).not.toThrow();
+  });
+});
+
+describe("trava de rolagem da abertura", () => {
+  it("solta a rolagem que ficou gravada no body (ex.: HTML pré-renderizado)", () => {
+    const body = { style: { overflow: "hidden" } };
+    releaseScrollLock(body);
+    expect(body.style.overflow).toBe("");
+  });
+
+  it("não falha sem body", () => {
+    expect(() => releaseScrollLock(undefined)).not.toThrow();
   });
 });

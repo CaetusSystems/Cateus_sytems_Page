@@ -26,19 +26,34 @@ type Particle = {
   fade: number;
 };
 
-export function BrazilParticleField({ className }: { className?: string }) {
+export type FieldCenter = { x: number; y: number };
+
+/**
+ * `onCenter` recebe o centro de massa do mapa já posicionado no canvas, em
+ * fração da largura e da altura (0 a 1). Quem põe a logo por cima usa isso para
+ * centralizar no desenho do Brasil, não no meio do retângulo.
+ */
+export function BrazilParticleField({
+  className,
+  onCenter,
+}: {
+  className?: string;
+  onCenter?: (center: FieldCenter) => void;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const centerRef = useRef(onCenter);
+  centerRef.current = onCenter;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    return initField(canvas);
+    return initField(canvas, (c) => centerRef.current?.(c));
   }, []);
 
   return <canvas ref={canvasRef} className={className} aria-hidden="true" />;
 }
 
-function initField(canvas: HTMLCanvasElement) {
+function initField(canvas: HTMLCanvasElement, onCenter: (center: FieldCenter) => void) {
   const ctx2d = canvas.getContext("2d");
   if (!ctx2d) return () => {};
   const ctx = ctx2d;
@@ -163,6 +178,11 @@ function initField(canvas: HTMLCanvasElement) {
     }
     particles = next;
     renderBase();
+    const inside = next.filter((p) => p.ox >= 0 && p.ox <= width && p.oy >= 0 && p.oy <= height);
+    if (inside.length > 0) {
+      const sum = inside.reduce((a, p) => ({ x: a.x + p.ox, y: a.y + p.oy }), { x: 0, y: 0 });
+      onCenter({ x: sum.x / inside.length / width, y: sum.y / inside.length / height });
+    }
   }
 
   function renderBase() {

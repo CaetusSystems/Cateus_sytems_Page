@@ -42,7 +42,7 @@ export function Footer() {
               </h2>
               <Link
                 to="/blog"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
               >
                 {t.footer.seeAll}
                 <ArrowRight className="h-3.5 w-3.5" />

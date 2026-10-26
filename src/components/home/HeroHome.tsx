@@ -1,52 +1,52 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  CalendarCheck,
-  ChevronDown,
-  MessageCircle,
-  Search,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowRight, CalendarCheck, ChevronDown, MessageCircle, Search, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PriceBlock } from "@/components/PriceBlock";
-import { BrazilParticleField } from "@/components/home/BrazilParticleField";
+import { BrazilParticleField, type FieldCenter } from "@/components/home/BrazilParticleField";
 import { OFFERS, localizeOffer } from "@/data/offers";
 import { useLang, useLocalePath, useT } from "@/i18n";
 
+/**
+ * Avisos que aparecem um depois do outro, como notificações chegando.
+ * Ficam nas bordas do mapa; o centro é só da logo.
+ */
 const CHIPS = [
-  { icon: Search, className: "left-[2%] top-[10%] anim-float" },
-  { icon: MessageCircle, className: "right-[0%] top-[46%] anim-float-slow" },
-  { icon: CalendarCheck, className: "left-[4%] bottom-[8%] anim-float" },
+  { icon: Search, pos: "left-0 top-[6%]", delay: "0s" },
+  { icon: MessageCircle, pos: "right-0 top-[15%]", delay: "2.6s" },
+  { icon: CalendarCheck, pos: "bottom-[6%] left-[4%]", delay: "5.2s" },
 ];
 
 export function HeroHome() {
   const t = useT();
   const lang = useLang();
   const lp = useLocalePath();
+  const [center, setCenter] = useState<FieldCenter>({ x: 0.5, y: 0.5 });
+
   return (
     <section id="top" className="relative overflow-hidden bg-gradient-to-b from-tint to-background">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-0 h-[640px] bg-[radial-gradient(ellipse_at_75%_0%,color-mix(in_oklab,var(--brand-blue)_20%,transparent)_0%,transparent_62%)]" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-6 px-5 pb-12 pt-8 sm:px-6 md:grid-cols-[1fr_1fr] md:gap-8 md:pb-20 md:pt-14">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[640px] bg-[radial-gradient(ellipse_at_75%_0%,color-mix(in_oklab,var(--brand-blue)_20%,transparent)_0%,transparent_62%)]" />
+      <div className="relative mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] items-center gap-4 px-5 pb-10 pt-6 sm:px-6 md:grid-cols-2 md:gap-8 md:pb-20 md:pt-14">
         <div>
-          <h1 className="text-balance text-4xl font-semibold leading-[1.08] tracking-tight md:text-6xl">
+          <h1 className="text-balance text-[2rem] font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.4rem]">
             {t.hero.title}
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-muted-foreground md:text-xl">
+          <p className="mt-4 max-w-xl text-base text-muted-foreground sm:text-lg md:mt-5 md:text-xl">
             {t.hero.subtitle}
           </p>
 
-          <div className="mt-6 flex items-end gap-4 rounded-2xl border border-brand-blue/20 bg-card/80 p-4 shadow-sm backdrop-blur-sm sm:inline-flex">
-            <div>
-              <p className="text-xs font-medium text-muted-foreground">{t.hero.priceCaption}</p>
-              <PriceBlock offer={localizeOffer(OFFERS.sites, lang)} className="mt-1" />
-            </div>
+          <div className="mt-5 rounded-2xl border border-brand-blue/25 bg-card/90 p-4 shadow-md shadow-brand-blue/10 backdrop-blur-sm sm:inline-block sm:pr-8 md:mt-6">
+            <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+              {t.hero.priceCaption}
+            </p>
+            <PriceBlock offer={localizeOffer(OFFERS.sites, lang)} size="lg" className="mt-1" />
           </div>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center md:mt-6">
             <Button
               asChild
               size="lg"
-              className="btn-shine anim-pulse-cta h-14 rounded-full bg-brand-blue px-8 text-base font-semibold text-white hover:bg-brand-blue/90"
+              className="btn-shine anim-pulse-cta h-14 w-full rounded-full bg-brand-blue px-8 text-base font-semibold text-white hover:bg-brand-blue/90 sm:w-auto"
             >
               <Link to={lp("/agendar")}>
                 <CalendarCheck className="h-5 w-5" aria-hidden="true" />
@@ -58,7 +58,7 @@ export function HeroHome() {
               asChild
               size="lg"
               variant="ghost"
-              className="h-14 rounded-full px-6 text-base font-medium text-brand-blue hover:bg-brand-blue/10"
+              className="h-12 w-full rounded-full px-6 text-base font-medium text-brand-blue hover:bg-brand-blue/10 sm:w-auto"
             >
               <a href="#solucoes">
                 {t.hero.seePrices}
@@ -66,39 +66,56 @@ export function HeroHome() {
               </a>
             </Button>
           </div>
-          <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-            <ShieldCheck className="h-4 w-4 text-brand-blue" aria-hidden="true" />
-            {t.hero.noCommitment}
+          <p className="mt-3 flex items-start gap-2 text-sm text-muted-foreground">
+            <Video className="mt-0.5 h-4 w-4 shrink-0 text-brand-blue" aria-hidden="true" />
+            <span>{t.hero.noCommitment}</span>
           </p>
         </div>
 
-        <div className="relative mx-auto h-[300px] w-full max-w-[560px] md:h-[520px]">
-          <BrazilParticleField className="absolute inset-0 h-full w-full" />
+        <div className="relative mx-auto h-[330px] w-full max-w-[560px] sm:h-[420px] md:h-[540px]">
+          <BrazilParticleField className="absolute inset-0 h-full w-full" onCenter={setCenter} />
+
+          {/* Logo no centro de massa do mapa, com anéis de alcance saindo dela. */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center"
+            className="pointer-events-none absolute"
+            style={{ left: `${center.x * 100}%`, top: `${center.y * 100}%` }}
           >
-            <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-card/90 shadow-xl shadow-brand-blue/20 ring-1 ring-brand-blue/20 backdrop-blur md:h-20 md:w-20">
-              <img
-                src="/caetus-logo.png"
-                alt=""
-                width={56}
-                height={56}
-                className="h-10 w-10 object-contain md:h-14 md:w-14"
-              />
-            </span>
-            <span className="mt-2 rounded-full bg-card/90 px-4 py-1.5 text-lg font-semibold tracking-tight shadow-lg ring-1 ring-brand-blue/20 backdrop-blur md:text-2xl">
-              Caetus Systems
-            </span>
+            <span className="hero-ring h-44 w-44" />
+            <span className="hero-ring h-44 w-44" style={{ animationDelay: "1.8s" }} />
+            <div className="absolute left-0 top-0 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center">
+              <span className="flex h-[72px] w-[72px] items-center justify-center rounded-2xl bg-card shadow-xl shadow-brand-blue/25 ring-1 ring-brand-blue/20 md:h-24 md:w-24">
+                <img
+                  src="/caetus-logo.png"
+                  alt=""
+                  width={64}
+                  height={64}
+                  className="h-12 w-12 object-contain md:h-16 md:w-16"
+                />
+              </span>
+              <span className="mt-2 whitespace-nowrap rounded-full bg-card px-4 py-1.5 text-lg font-semibold tracking-tight shadow-lg ring-1 ring-brand-blue/20 md:text-2xl">
+                Caetus Systems
+              </span>
+            </div>
           </div>
+
           {CHIPS.map((c, i) => (
             <span
               key={t.hero.chips[i]}
               aria-hidden="true"
-              className={`pointer-events-none absolute hidden items-center gap-2 rounded-full border border-border bg-card px-3.5 py-2 text-sm font-medium shadow-lg sm:flex ${c.className}`}
+              style={{ animationDelay: c.delay }}
+              className={`hero-chip pointer-events-none absolute ${c.pos}`}
             >
-              <c.icon className="h-4 w-4 text-brand-blue" />
-              {t.hero.chips[i]}
+              <span
+                className={`flex items-center gap-2 whitespace-nowrap rounded-full border border-border bg-card px-3 py-2 text-xs font-medium shadow-lg sm:px-3.5 sm:text-sm ${
+                  i === 1 ? "anim-float-slow" : "anim-float"
+                }`}
+              >
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+                  <c.icon className="h-3.5 w-3.5" />
+                </span>
+                {t.hero.chips[i]}
+              </span>
             </span>
           ))}
         </div>

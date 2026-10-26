@@ -25,7 +25,9 @@ import Agendar from "./pages/Agendar";
 import Obrigado from "./pages/Obrigado";
 import { captureAttribution } from "./lib/attribution";
 import { initPixel } from "./lib/pixel";
+import { releaseScrollLock } from "./lib/intro";
 
+releaseScrollLock();
 captureAttribution(window.location.search, window.location.pathname);
 initPixel(import.meta.env.VITE_META_PIXEL_ID);
 

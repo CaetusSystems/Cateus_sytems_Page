@@ -6,6 +6,7 @@ const valid = {
   business: "Barbearia Silva",
   name: "João Silva",
   phone: "(31) 97213-1824",
+  link: "@barbeariasilva",
 };
 
 describe("normalizePhone", () => {
@@ -40,9 +41,19 @@ describe("leadSchema", () => {
     expect(leadSchema.safeParse({ ...valid, email: "x" }).success).toBe(false);
   });
 
-  it("accepts the optional instagram or google link", () => {
-    const r = leadSchema.safeParse({ ...valid, link: "@barbeariasilva" });
+  it("requires the instagram or google business page", () => {
+    expect(leadSchema.safeParse({ ...valid, link: "" }).success).toBe(false);
+    expect(leadSchema.safeParse({ ...valid, link: undefined }).success).toBe(false);
+    const r = leadSchema.safeParse({ ...valid, link: "https://g.page/barbearia-silva" });
     expect(r.success).toBe(true);
+  });
+
+  it("requires the business name", () => {
+    expect(leadSchema.safeParse({ ...valid, business: "  " }).success).toBe(false);
+  });
+
+  it("accepts the custom system as a product", () => {
+    expect(leadSchema.safeParse({ ...valid, product: "sob-medida" }).success).toBe(true);
   });
 
   it("rejects an unknown product", () => {

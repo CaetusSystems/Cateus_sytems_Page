@@ -1,12 +1,13 @@
 import { z } from "zod";
 import { LANGS } from "../i18n/locale";
 
-export const PRODUCT_IDS = ["sites", "atendente", "matricula", "nao-sei"] as const;
+export const PRODUCT_IDS = ["sites", "atendente", "sob-medida", "matricula", "nao-sei"] as const;
 export type ProductId = (typeof PRODUCT_IDS)[number];
 
 export const PRODUCT_LABELS: Record<ProductId, string> = {
   sites: "Criação de sites",
   atendente: "Atendente no WhatsApp",
+  "sob-medida": "Sistema sob medida",
   matricula: "Sistema de matrícula",
   "nao-sei": "Ainda não sei",
 };
@@ -34,15 +35,15 @@ const attributionSchema = z
 
 export const leadSchema = z.object({
   product: z.enum(PRODUCT_IDS),
-  business: z.string().trim().min(1, "Conte o nome ou o tipo do negócio").max(80),
+  business: z.string().trim().min(1, "Informe o nome do negócio").max(80),
   name: z.string().trim().min(2, "Informe seu nome").max(80),
   phone: z
     .string()
     .transform(normalizePhone)
     .refine((p) => p.length > 0, "Informe um WhatsApp com DDD"),
   email: z.union([z.literal(""), z.string().trim().email("E-mail inválido")]).optional(),
-  /** Instagram ou página do Google do negócio (opcional). */
-  link: z.string().trim().max(200).optional(),
+  /** Instagram ou página do Google do negócio. */
+  link: z.string().trim().min(3, "Informe o Instagram ou a página do Google do negócio").max(200),
   /** Idioma do site em que a pessoa preencheu (para o dono saber como responder). */
   lang: z.enum(LANGS).optional(),
   /** Isca para robôs: pessoas nunca preenchem. */

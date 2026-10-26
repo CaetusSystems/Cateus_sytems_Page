@@ -458,3 +458,69 @@
     }
   }
 }
+
+/* Hero e botão do WhatsApp: movimento que chama atenção sem distrair. */
+@layer utilities {
+  @keyframes caetus-ring {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.45; }
+    100% { transform: translate(-50%, -50%) scale(2.1); opacity: 0; }
+  }
+  @keyframes caetus-chip {
+    0% { opacity: 0; transform: translateY(10px) scale(0.92); }
+    5%, 78% { opacity: 1; transform: none; }
+    90%, 100% { opacity: 0; transform: translateY(-6px) scale(0.96); }
+  }
+  @keyframes caetus-wa-ring {
+    0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--brand-green) 55%, transparent); }
+    70%, 100% { box-shadow: 0 0 0 16px color-mix(in oklab, var(--brand-green) 0%, transparent); }
+  }
+
+  .hero-ring {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 9999px;
+    border: 2px solid color-mix(in oklab, var(--brand-blue) 55%, transparent);
+    animation: caetus-ring 3.6s ease-out infinite;
+  }
+  .hero-chip { opacity: 0; animation: caetus-chip 9s ease-in-out infinite; }
+  .anim-pulse-wa { animation: caetus-wa-ring 2.6s ease-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-ring { display: none; }
+    .hero-chip { animation: none !important; opacity: 1; }
+    .anim-pulse-wa { animation: none !important; }
+  }
+}
+
+/* Agendar: os três passos carregam um a um na primeira visita. */
+@layer utilities {
+  @keyframes caetus-load { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes caetus-step-in { from { opacity: 0.4; } to { opacity: 1; } }
+  @keyframes caetus-bar-out { to { opacity: 0; } }
+  @keyframes caetus-check-in { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.15); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+
+  .load-step .load-bar, .load-step .load-check { opacity: 0; }
+  .load-steps[data-play="true"] .load-step {
+    opacity: 0.4;
+    animation: caetus-step-in 0.4s ease-out forwards;
+    animation-delay: calc(var(--i) * 1.3s + 1s);
+  }
+  .load-steps[data-play="true"] .load-bar {
+    opacity: 1;
+    transform-origin: left center;
+    transform: scaleX(0);
+    animation: caetus-load 1s ease-in-out forwards, caetus-bar-out 0.3s ease-out forwards;
+    animation-delay: calc(var(--i) * 1.3s), calc(var(--i) * 1.3s + 1s);
+  }
+  .load-steps[data-play="true"] .load-check {
+    transform: scale(0);
+    animation: caetus-check-in 0.4s ease-out forwards;
+    animation-delay: calc(var(--i) * 1.3s + 1s);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .load-steps[data-play="true"] .load-step { animation: none !important; opacity: 1 !important; }
+    .load-steps[data-play="true"] .load-bar, .load-steps[data-play="true"] .load-check { animation: none !important; opacity: 0 !important; }
+  }
+}

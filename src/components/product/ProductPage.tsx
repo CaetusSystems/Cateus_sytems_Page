@@ -6,6 +6,7 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { LeadForm } from "@/components/lead/LeadForm";
 import { Button } from "@/components/ui/button";
 import { PriceBlock } from "@/components/PriceBlock";
+import { AssistantDemoSection } from "@/components/product/AssistantDemoSection";
 import { OFFERS, localizeOffer, priceSentence, type OfferId } from "@/data/offers";
 import { getProductPage } from "@/data/product-pages";
 import { GOOGLE_REVIEWS_URL } from "@/data/reviews";
@@ -115,6 +116,8 @@ export function ProductPage({ id }: { id: OfferId }) {
           </div>
         </section>
 
+        {id === "atendente" && <AssistantDemoSection />}
+
         {/* 2. O que está incluso */}
         <section className="border-t border-border bg-tint">
           <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:py-20">
@@ -168,7 +171,7 @@ export function ProductPage({ id }: { id: OfferId }) {
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-sm font-medium text-brand-blue"
+              className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-brand-blue"
             >
               {tp.seeGoogle}
             </a>
