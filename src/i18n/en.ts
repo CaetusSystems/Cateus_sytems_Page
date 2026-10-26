@@ -109,7 +109,7 @@ export const en: Messages = {
     items: [
       {
         q: "How much does it cost?",
-        a: "Website: R$ 247 to build and R$ 24.90 per month. WhatsApp assistant: R$ 87 per month. Enrollment system: R$ 297 to set up and R$ 96 per month. Prices are in Brazilian reais.",
+        a: "Website: R$ 247 to build and R$ 24.90 per month, domain included. WhatsApp assistant: R$ 87 per month. Enrollment system: R$ 297 to set up and R$ 96 per month. Prices are in Brazilian reais.",
       },
       {
         q: "What is the demo like?",
@@ -311,7 +311,7 @@ export const en: Messages = {
       name: "Website creation",
       promise: "Your business found on Google, with a website ready to receive customers.",
       priceLabel: "one-time payment",
-      monthly: "+ R$ 24.90 per month for maintenance",
+      monthly: "+ R$ 24.90 per month for maintenance, domain included",
       imageAlt: "A kindergarten website open on a laptop",
     },
     atendente: {
@@ -360,7 +360,7 @@ export const en: Messages = {
       includes: [
         "A website that works well on mobile",
         "Visual identity based on what you already have",
-        "Publishing and hosting",
+        "Publishing, hosting and domain",
         "One small change per month included (text, price, hours or photo)",
       ],
       steps: [
@@ -384,7 +384,7 @@ export const en: Messages = {
         },
         {
           q: "What does the monthly fee include?",
-          a: "Keeping the website online and one small change per month, such as swapping a text, a price, an hour or a photo.",
+          a: "Keeping the website online, the domain included, and one small change per month, such as swapping a text, a price, an hour or a photo.",
         },
         {
           q: "I already have Instagram. Do I need a website?",

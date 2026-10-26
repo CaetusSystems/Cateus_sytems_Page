@@ -111,7 +111,7 @@ export const pt = {
     items: [
       {
         q: "Quanto custa?",
-        a: "Site: R$ 247 para criar e R$ 24,90 por mês. Atendente no WhatsApp: R$ 87 por mês. Sistema de matrícula: R$ 297 para implantar e R$ 96 por mês.",
+        a: "Site: R$ 247 para criar e R$ 24,90 por mês, com domínio incluso. Atendente no WhatsApp: R$ 87 por mês. Sistema de matrícula: R$ 297 para implantar e R$ 96 por mês.",
       },
       {
         q: "Como é a demonstração?",
@@ -313,7 +313,7 @@ export const pt = {
       name: "Criação de sites",
       promise: "Seu negócio encontrado no Google, com um site pronto para receber clientes.",
       priceLabel: "pagamento único",
-      monthly: "+ R$ 24,90 por mês de manutenção",
+      monthly: "+ R$ 24,90 por mês de manutenção, domínio incluso",
       imageAlt: "Site de uma escola infantil aberto em um notebook",
     },
     atendente: {
@@ -362,7 +362,7 @@ export const pt = {
       includes: [
         "Site que abre bem no celular",
         "Identidade visual a partir do que você já tem",
-        "Publicação e hospedagem",
+        "Publicação, hospedagem e domínio",
         "Um ajuste pequeno por mês incluso (texto, preço, horário ou foto)",
       ],
       steps: [
@@ -386,7 +386,7 @@ export const pt = {
         },
         {
           q: "O que a mensalidade inclui?",
-          a: "Manter o site no ar e um ajuste pequeno por mês, como trocar um texto, um preço, um horário ou uma foto.",
+          a: "Manter o site no ar, o domínio incluso e um ajuste pequeno por mês, como trocar um texto, um preço, um horário ou uma foto.",
         },
         {
           q: "Eu já tenho Instagram. Preciso de um site?",

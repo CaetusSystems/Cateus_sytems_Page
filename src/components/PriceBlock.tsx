@@ -40,14 +40,15 @@ export function PriceBlock({
       )}
       <span
         className={cn(
-          "font-semibold tracking-tight text-brand-blue",
+          "font-semibold tracking-tight",
+          offer.listPrice ? "text-brand-green" : "text-brand-blue",
           size === "lg" ? "text-5xl" : "text-3xl",
         )}
       >
         {offer.price}
       </span>{" "}
       <span className="text-sm font-medium text-foreground/70">{offer.priceLabel}</span>
-      {offer.monthly && <p className="mt-0.5 text-[13px] text-muted-foreground">{offer.monthly}</p>}
+      {offer.monthly && <p className="mt-0.5 text-balance text-[13px] text-muted-foreground">{offer.monthly}</p>}
     </div>
   );
 }

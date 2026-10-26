@@ -220,12 +220,42 @@ function initField(canvas: HTMLCanvasElement, onCenter: (center: FieldCenter) =>
     mouse.tx = e.clientX - rect.left;
     mouse.ty = e.clientY - rect.top;
   }
-  function onPointerLeave() {
+  function onPointerLeave(e: PointerEvent) {
+    // no toque, quem solta o efeito é o onPointerUp (com o atraso)
+    if (e.pointerType === "touch") return;
     mouse.tx = -9999;
     mouse.ty = -9999;
   }
 
+  // Toque ou clique: espalha as bolinhas com mais força ao redor do ponto e,
+  // ao soltar, elas voltam sozinhas. O celular não tem "passar o mouse", então
+  // é o único jeito de brincar com o mapa lá.
+  const BASE_RADIUS = config.radius;
+  const BASE_FORCE = config.force;
+  let releaseTimer = 0;
+  function onPointerDown(e: PointerEvent) {
+    window.clearTimeout(releaseTimer);
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = mouse.tx = e.clientX - rect.left;
+    mouse.y = mouse.ty = e.clientY - rect.top;
+    config.radius = BASE_RADIUS * 1.5;
+    config.force = BASE_FORCE * 3;
+  }
+  function onPointerUp() {
+    // segura um instante para um toque rápido ainda render o efeito
+    window.clearTimeout(releaseTimer);
+    releaseTimer = window.setTimeout(() => {
+      config.radius = BASE_RADIUS;
+      config.force = BASE_FORCE;
+      mouse.x = mouse.tx = -9999;
+      mouse.y = mouse.ty = -9999;
+    }, 220);
+  }
+
   window.addEventListener("pointermove", onPointerMove);
+  canvas.addEventListener("pointerdown", onPointerDown);
+  window.addEventListener("pointerup", onPointerUp);
+  window.addEventListener("pointercancel", onPointerUp);
   canvas.addEventListener("pointerleave", onPointerLeave);
   const resizeObserver = new ResizeObserver(resize);
   resizeObserver.observe(canvas);
@@ -302,7 +332,11 @@ function initField(canvas: HTMLCanvasElement, onCenter: (center: FieldCenter) =>
     cancelAnimationFrame(frameId);
     resizeObserver.disconnect();
     intersectionObserver.disconnect();
+    window.clearTimeout(releaseTimer);
     window.removeEventListener("pointermove", onPointerMove);
+    canvas.removeEventListener("pointerdown", onPointerDown);
+    window.removeEventListener("pointerup", onPointerUp);
+    window.removeEventListener("pointercancel", onPointerUp);
     canvas.removeEventListener("pointerleave", onPointerLeave);
   };
 }

@@ -2,7 +2,7 @@
 export const FAQ_HOME: { q: string; a: string }[] = [
   {
     q: "Quanto custa?",
-    a: "Site: R$ 247 para criar e R$ 24,90 por mês. Atendente no WhatsApp: R$ 87 por mês. Sistema de matrícula: R$ 297 para implantar e R$ 96 por mês.",
+    a: "Site: R$ 247 para criar e R$ 24,90 por mês, com domínio incluso. Atendente no WhatsApp: R$ 87 por mês. Sistema de matrícula: R$ 297 para implantar e R$ 96 por mês.",
   },
   {
     q: "Como é a demonstração?",

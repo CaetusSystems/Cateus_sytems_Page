@@ -67,7 +67,7 @@ export const PRODUCT_PAGES: Record<OfferId, ProductPageData> = {
     includes: [
       { icon: Smartphone, text: "Site que abre bem no celular" },
       { icon: Images, text: "Identidade visual a partir do que você já tem" },
-      { icon: Globe, text: "Publicação e hospedagem" },
+      { icon: Globe, text: "Publicação, hospedagem e domínio" },
       { icon: Pencil, text: "Um ajuste pequeno por mês incluso (texto, preço, horário ou foto)" },
     ],
     realCase: JOA,
@@ -86,7 +86,7 @@ export const PRODUCT_PAGES: Record<OfferId, ProductPageData> = {
       },
       {
         q: "O que a mensalidade inclui?",
-        a: "Manter o site no ar e um ajuste pequeno por mês, como trocar um texto, um preço, um horário ou uma foto.",
+        a: "Manter o site no ar, o domínio incluso e um ajuste pequeno por mês, como trocar um texto, um preço, um horário ou uma foto.",
       },
       {
         q: "Eu já tenho Instagram. Preciso de um site?",

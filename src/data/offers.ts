@@ -33,7 +33,7 @@ export const OFFERS: Record<OfferId, Offer> = {
     price: "R$ 247",
     listPrice: "R$ 500",
     priceLabel: "pagamento único",
-    monthly: "+ R$ 24,90 por mês de manutenção",
+    monthly: "+ R$ 24,90 por mês de manutenção, domínio incluso",
     image: "/img/caetus-card-site.webp",
     imageAlt: "Site de uma escola infantil aberto em um notebook",
     path: "/criacao-de-sites",

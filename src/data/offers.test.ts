@@ -5,7 +5,7 @@ describe("preços das ofertas", () => {
   it("site: R$ 247 em pagamento único e manutenção de R$ 24,90 por mês", () => {
     expect(OFFERS.sites.price).toBe("R$ 247");
     expect(OFFERS.sites.priceLabel).toBe("pagamento único");
-    expect(OFFERS.sites.monthly).toBe("+ R$ 24,90 por mês de manutenção");
+    expect(OFFERS.sites.monthly).toBe("+ R$ 24,90 por mês de manutenção, domínio incluso");
   });
 
   it("atendente: R$ 87 por mês, sem mensalidade extra", () => {

@@ -110,7 +110,7 @@ export const es: Messages = {
     items: [
       {
         q: "¿Cuánto cuesta?",
-        a: "Sitio web: R$ 247 para crearlo y R$ 24,90 por mes. Asistente de WhatsApp: R$ 87 por mes. Sistema de matrícula: R$ 297 de implementación y R$ 96 por mes. Los precios son en reales brasileños.",
+        a: "Sitio web: R$ 247 para crearlo y R$ 24,90 por mes, con dominio incluido. Asistente de WhatsApp: R$ 87 por mes. Sistema de matrícula: R$ 297 de implementación y R$ 96 por mes. Los precios son en reales brasileños.",
       },
       {
         q: "¿Cómo es la demostración?",
@@ -315,7 +315,7 @@ export const es: Messages = {
       name: "Creación de sitios web",
       promise: "Tu negocio encontrado en Google, con un sitio listo para recibir clientes.",
       priceLabel: "pago único",
-      monthly: "+ R$ 24,90 por mes de mantenimiento",
+      monthly: "+ R$ 24,90 por mes de mantenimiento, dominio incluido",
       imageAlt: "Sitio web de una escuela infantil abierto en un portátil",
     },
     atendente: {
@@ -366,7 +366,7 @@ export const es: Messages = {
       includes: [
         "Sitio que se ve bien en el móvil",
         "Identidad visual a partir de lo que ya tienes",
-        "Publicación y alojamiento",
+        "Publicación, alojamiento y dominio",
         "Un ajuste pequeño al mes incluido (texto, precio, horario o foto)",
       ],
       steps: [
@@ -390,7 +390,7 @@ export const es: Messages = {
         },
         {
           q: "¿Qué incluye la mensualidad?",
-          a: "Mantener el sitio en línea y un ajuste pequeño al mes, como cambiar un texto, un precio, un horario o una foto.",
+          a: "Mantener el sitio en línea, con el dominio incluido, y un ajuste pequeño al mes, como cambiar un texto, un precio, un horario o una foto.",
         },
         {
           q: "Ya tengo Instagram. ¿Necesito un sitio web?",
