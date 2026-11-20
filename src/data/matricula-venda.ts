@@ -16,7 +16,8 @@ export const PRECO_MENSAL = "R$ 94,90";
  * Checkout da Cakto (só a implantação). Enquanto o produto não existir na Cakto,
  * o botão abre o WhatsApp com a mensagem pronta.
  */
-export const CHECKOUT_MATRICULA_URL: string = import.meta.env.VITE_CHECKOUT_MATRICULA_URL || "";
+export const CHECKOUT_MATRICULA_URL: string = 
+  import.meta.env.VITE_CHECKOUT_MATRICULA_URL || "https://pay.cakto.com.br/5xg26so_1349210";
 
 export const WHATSAPP_MATRICULA = waUrl(
   "Olá! Vi a página do sistema de matrícula e quero na minha escola. Como funciona a implantação?",
@@ -162,11 +163,11 @@ export const DUVIDAS: { q: string; a: string }[] = [
   },
   {
     q: "E se eu me arrepender?",
-    a: "Você tem 7 dias depois da compra para desistir da implantação e receber o dinheiro de volta.",
+    a: "Você tem 7 dias, depois que o sistema ficar pronto, para desistir e receber de volta o valor da implantação.",
   },
   {
-    q: "Tem prazo mínimo de contrato?",
-    a: "Não. A mensalidade é mês a mês.",
+    q: "Como funciona o pagamento da mensalidade?",
+    a: "Você escolhe o dia do pagamento e paga todo mês. A cobrança só começa quando o sistema estiver funcionando.",
   },
   {
     q: "Já tem escola usando?",

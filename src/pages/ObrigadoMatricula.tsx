@@ -62,10 +62,22 @@ export default function ObrigadoMatricula() {
               </li>
             ))}
           </ol>
-          <p className="mt-6 border-t border-dashed border-[#c9d2ca] pt-5 text-[0.98rem] text-[var(--mv-tinta-suave)]">
-            A mensalidade de {PRECO_MENSAL} só começa quando o link for para as famílias. Você tem 7 dias para desistir
-            da implantação com o dinheiro de volta.
-          </p>
+          <div className="mt-6 space-y-3 border-t border-dashed border-[#c9d2ca] pt-5 text-[0.98rem] leading-relaxed text-[var(--mv-tinta-suave)]">
+            <p>
+              <strong className="text-[var(--mv-tinta)]">Prazo: até 15 dias</strong> para o sistema ficar pronto na sua
+              escola. Ele precisa ser configurado e instalado numa conta em nome da escola, e para isso você vai criar
+              algumas contas (Google, Cloudflare e outras que a gente indicar). Qualquer informação que chegar depois
+              do combinado atrasa o prazo.
+            </p>
+            <p>
+              Depois desses 15 dias, com o sistema pronto, você tem mais 7 dias para desistir e receber de volta o valor
+              da implantação.
+            </p>
+            <p>
+              A mensalidade de {PRECO_MENSAL} só começa quando o link for para as famílias, e você escolhe o dia do
+              pagamento.
+            </p>
+          </div>
         </div>
       </main>
       <Footer />

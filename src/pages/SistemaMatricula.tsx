@@ -369,7 +369,7 @@ export default function SistemaMatricula() {
             <div className="mt-9 flex flex-col gap-4">
               <BotaoComprar origem="preco" className="w-full" />
               <p className="text-center text-[0.95rem] text-[var(--mv-tinta-suave)]">
-                7 dias para desistir da implantação com o dinheiro de volta. Mensalidade sem prazo mínimo.
+                7 dias para desistir depois que o sistema ficar pronto, com o dinheiro de volta. Na mensalidade, você escolhe o dia do pagamento.
               </p>
             </div>
           </div>
