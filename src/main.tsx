@@ -29,7 +29,8 @@ import { releaseScrollLock } from "./lib/intro";
 
 releaseScrollLock();
 captureAttribution(window.location.search, window.location.pathname);
-initPixel(import.meta.env.VITE_META_PIXEL_ID);
+// ID do Pixel (conjunto de dados "Caetus Systems Site"); é público, aparece no código de qualquer site.
+initPixel(import.meta.env.VITE_META_PIXEL_ID || "998557766080060");
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

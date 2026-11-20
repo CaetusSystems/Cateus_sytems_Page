@@ -24,6 +24,23 @@ import "./sistema-matricula.css";
 const FONTES_URL =
   "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap";
 
+const IMG = "/img/matricula/";
+
+/** Prints reais do ambiente de teste da Passo a Passo (dados de exemplo). */
+const TELAS_CELULAR = [
+  { src: `${IMG}matricula-celular-1-responsavel.webp`, legenda: "Dados do responsável", alt: "Etapa 1 de 7 da matrícula no celular: dados do responsável (pré-visualização, dados de exemplo)" },
+  { src: `${IMG}matricula-celular-3-turma.webp`, legenda: "Escolha da turma", alt: "Etapa 3 de 7 da matrícula no celular: escolha da turma (pré-visualização, dados de exemplo)" },
+  { src: `${IMG}matricula-celular-4-documentos.webp`, legenda: "Envio dos documentos", alt: "Etapa 4 de 7 da matrícula no celular: envio dos documentos (pré-visualização, dados de exemplo)" },
+  { src: `${IMG}matricula-celular-5-aceite.webp`, legenda: "Aceite do contrato", alt: "Etapa 7 de 7 da matrícula no celular: aceite eletrônico do contrato (pré-visualização, dados de exemplo)" },
+];
+
+const TELAS_ESCOLA = [
+  { src: `${IMG}ficha-matricula.webp`, titulo: "Ficha da matrícula", legenda: "Situação, documentos que faltam e contrato de cada criança num lugar só.", alt: "Ficha de matrícula de um aluno no painel da escola, com situação, documentação pendente e contrato (dados de exemplo)" },
+  { src: `${IMG}financeiro.webp`, titulo: "Financeiro", legenda: "Ganhos, despesas e saldo da escola.", alt: "Painel financeiro da escola com ganhos, despesas e saldo (dados de exemplo)" },
+  { src: `${IMG}calendario.webp`, titulo: "Calendário escolar", legenda: "Datas e eventos que as famílias também enxergam.", alt: "Calendário escolar do mês com eventos de exemplo" },
+  { src: `${IMG}identidade-visual.webp`, titulo: "Identidade visual", legenda: "Nome, logo e cores da escola em todas as telas.", alt: "Tela de identidade visual da escola, com nome, cores e prévia (dados de exemplo)" },
+];
+
 const TITULO = "Sistema de matrícula online para escola infantil";
 const DESCRICAO = `A família faz a matrícula pelo celular, envia os documentos e assina o contrato. A escola recebe tudo num painel com a cara dela. Implantação ${PRECO_IMPLANTACAO} e ${PRECO_MENSAL} por mês.`;
 
@@ -243,6 +260,24 @@ export default function SistemaMatricula() {
                 </p>
               </div>
             </div>
+
+            <div className="mt-16 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 lg:grid-cols-4">
+              {TELAS_CELULAR.map((t) => (
+                <figure key={t.src}>
+                  <div className="mv-celular mx-auto max-w-[230px]">
+                    <div className="mv-tela">
+                      <img src={t.src} alt={t.alt} width={740} height={1640} loading="lazy" decoding="async" className="block h-auto w-full" />
+                    </div>
+                  </div>
+                  <figcaption className="mx-auto mt-3 max-w-[230px] text-center text-[0.92rem] font-bold text-[var(--mv-giz)]">
+                    {t.legenda}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="mt-8 text-center text-[0.9rem] text-[var(--mv-giz-suave)]">
+              Pré-visualização da matrícula na Escola Infantil Passo a Passo. Dados de exemplo.
+            </p>
           </div>
         </section>
 
@@ -265,6 +300,17 @@ export default function SistemaMatricula() {
             <p className="mt-3 text-[0.9rem] text-[var(--mv-tinta-suave)]">
               Painel da direção na Escola Infantil Passo a Passo. Dados de exemplo.
             </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-8 md:grid-cols-2">
+            {TELAS_ESCOLA.map((t) => (
+              <figure key={t.src}>
+                <Navegador src={t.src} alt={t.alt} largura={1440} altura={900} />
+                <figcaption className="mt-3 text-[0.95rem] text-[var(--mv-tinta-suave)]">
+                  <strong className="text-[var(--mv-tinta)]">{t.titulo}.</strong> {t.legenda}
+                </figcaption>
+              </figure>
+            ))}
           </div>
 
           <h3 className="mv-display mt-20 text-[clamp(1.6rem,3.4vw,2.3rem)] font-extrabold">Tudo o que vem no sistema</h3>
