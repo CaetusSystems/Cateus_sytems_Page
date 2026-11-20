@@ -17,6 +17,7 @@ const STATIC_ROUTES = [
   { path: "/agendar", changefreq: "monthly", priority: "0.8" },
   // Pré-renderizada, mas fora do sitemap (noindex): só quem acabou de enviar o formulário vê.
   { path: "/obrigado", changefreq: "yearly", priority: "0.1", noSitemap: true },
+  { path: "/sistema-de-matricula/obrigado", changefreq: "yearly", priority: "0.1", noSitemap: true },
 ];
 
 const BLOG_ROUTES = BLOG_POSTS.map((post) => ({

@@ -14,10 +14,10 @@ describe("preços das ofertas", () => {
     expect(OFFERS.atendente.monthly).toBeUndefined();
   });
 
-  it("matrícula: R$ 297 em pagamento único e R$ 96 por mês de manutenção", () => {
-    expect(OFFERS.matricula.price).toBe("R$ 297");
+  it("matrícula: R$ 317 de implantação e R$ 94,90 por mês a partir do funcionamento", () => {
+    expect(OFFERS.matricula.price).toBe("R$ 317");
     expect(OFFERS.matricula.priceLabel).toBe("pagamento único");
-    expect(OFFERS.matricula.monthly).toBe("+ R$ 96 por mês de manutenção");
+    expect(OFFERS.matricula.monthly).toBe("+ R$ 94,90 por mês, a partir do funcionamento");
   });
 });
 

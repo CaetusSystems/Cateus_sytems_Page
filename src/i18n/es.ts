@@ -111,7 +111,7 @@ export const es: Messages = {
     items: [
       {
         q: "¿Cuánto cuesta?",
-        a: "Sitio web: R$ 247 para crearlo y R$ 24,90 por mes, con dominio incluido. Asistente de WhatsApp: R$ 87 por mes. Sistema de matrícula: R$ 297 de implementación y R$ 96 por mes. Los precios son en reales brasileños.",
+        a: "Sitio web: R$ 247 para crearlo y R$ 24,90 por mes, con dominio incluido. Asistente de WhatsApp: R$ 87 por mes. Sistema de matrícula: R$ 317 de implementación y R$ 94,90 por mes. Los precios son en reales brasileños.",
       },
       {
         q: "¿Cómo es la demostración?",
@@ -331,11 +331,13 @@ export const es: Messages = {
       name: "Sistema de matrícula",
       promise: "Matrículas, familias y cobros de tu escuela organizados en un solo lugar.",
       priceLabel: "pago único",
-      monthly: "+ R$ 96 por mes de mantenimiento",
+      monthly: "+ R$ 94,90 por mes, desde que funcione",
       imageAlt: "Panel de gestión en el portátil y avisos en el móvil, sobre una mesa de cafetería",
     },
     custom: {
       name: "Sistema a medida",
+      price: "R$ 297",
+      monthly: "+ R$ 96 por mes de mantenimiento",
       promise:
         "Registros, matrículas, cobros y lo que tu operación necesite, en un sistema hecho a tu manera de trabajar.",
     },
@@ -472,7 +474,7 @@ export const es: Messages = {
     matricula: {
       title: "Sistema de matrícula y gestión para escuelas",
       description:
-        "Sistema para que la escuela organice matrículas, familias, contratos y cobros. Implementación de R$ 297 y R$ 96 al mes. Agenda una demostración.",
+        "Sistema para que la escuela organice matrículas, familias, contratos y cobros. Implementación de R$ 317 y R$ 94,90 al mes. Agenda una demostración.",
       promise: "Matrículas, familias y cobros de tu escuela organizados en un solo lugar.",
       support: "Implementación hecha por Caetus. Ves el sistema funcionando antes de decidir.",
       ctaLabel: "Agendar demostración",
@@ -498,7 +500,7 @@ export const es: Messages = {
         },
       ],
       faq: [
-        { q: "¿Cuánto cuesta?", a: "R$ 297 de implementación, pagados una vez, y R$ 96 al mes." },
+        { q: "¿Cuánto cuesta?", a: "R$ 317 de implementación, pagados una vez, y R$ 94,90 al mes." },
         {
           q: "¿Sirve para mi escuela?",
           a: "Mostramos el sistema en la demostración, con tu caso, para que decidas si tiene sentido. Sin compromiso.",

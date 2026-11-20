@@ -21,6 +21,8 @@ import Templates from "./pages/Templates";
 import FormularioCriacaoSite from "./pages/FormularioCriacaoSite";
 import Agendar from "./pages/Agendar";
 import Obrigado from "./pages/Obrigado";
+import SistemaMatricula from "./pages/SistemaMatricula";
+import ObrigadoMatricula from "./pages/ObrigadoMatricula";
 import { captureAttribution } from "./lib/attribution";
 import { initPixel } from "./lib/pixel";
 import { releaseScrollLock } from "./lib/intro";
@@ -51,11 +53,12 @@ createRoot(document.getElementById("root")!).render(
             <Route
               key={`${prefix}/matricula`}
               path={`${prefix}/sistema-de-matricula`}
-              element={<ProductPage id="matricula" />}
+              element={prefix ? <ProductPage id="matricula" /> : <SistemaMatricula />}
             />,
             <Route key={`${prefix}/agendar`} path={`${prefix}/agendar`} element={<Agendar />} />,
             <Route key={`${prefix}/obrigado`} path={`${prefix}/obrigado`} element={<Obrigado />} />,
           ])}
+          <Route path="/sistema-de-matricula/obrigado" element={<ObrigadoMatricula />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/futuro-do-seo-com-ia" element={<BlogFuturoSeoComIA />} />

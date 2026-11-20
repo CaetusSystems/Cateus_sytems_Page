@@ -176,12 +176,12 @@ export const PRODUCT_PAGES: Record<OfferId, ProductPageData> = {
     product: "matricula",
     title: "Sistema de matrícula e gestão para escolas",
     description:
-      "Sistema para a escola organizar matrículas, famílias, contratos e cobranças. Implantação de R$ 297 e R$ 96 por mês. Agende uma demonstração.",
+      "Sistema para a escola organizar matrículas, famílias, contratos e cobranças. Implantação de R$ 317 e R$ 94,90 por mês. Agende uma demonstração.",
     promise: "Matrículas, famílias e cobranças da sua escola organizadas num só lugar.",
     support: "Implantação feita pela Caetus. Você vê o sistema funcionando antes de decidir.",
     ctaLabel: "Agendar demonstração",
     acao: "agendar",
-    schemaPrice: "297.00",
+    schemaPrice: "317.00",
     includes: [
       { icon: Smartphone, text: "Matrícula online pelo celular da família" },
       { icon: UsersRound, text: "Cadastro organizado de famílias e alunos" },
@@ -202,7 +202,7 @@ export const PRODUCT_PAGES: Record<OfferId, ProductPageData> = {
       { title: "As famílias passam a usar", text: "A secretaria acompanha tudo em um só lugar." },
     ],
     faq: [
-      { q: "Quanto custa?", a: "R$ 297 de implantação, pagos uma vez, e R$ 96 por mês." },
+      { q: "Quanto custa?", a: "R$ 317 de implantação, pagos uma vez, e R$ 94,90 por mês." },
       {
         q: "Serve para a minha escola?",
         a: "Mostramos o sistema na demonstração, com o seu caso, para você decidir se faz sentido. Sem compromisso.",

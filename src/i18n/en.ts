@@ -110,7 +110,7 @@ export const en: Messages = {
     items: [
       {
         q: "How much does it cost?",
-        a: "Website: R$ 247 to build and R$ 24.90 per month, domain included. WhatsApp assistant: R$ 87 per month. Enrollment system: R$ 297 to set up and R$ 96 per month. Prices are in Brazilian reais.",
+        a: "Website: R$ 247 to build and R$ 24.90 per month, domain included. WhatsApp assistant: R$ 87 per month. Enrollment system: R$ 317 to set up and R$ 94.90 per month. Prices are in Brazilian reais.",
       },
       {
         q: "What is the demo like?",
@@ -327,11 +327,13 @@ export const en: Messages = {
       name: "Enrollment system",
       promise: "Your school's enrollments, families and billing organized in one place.",
       priceLabel: "one-time payment",
-      monthly: "+ R$ 96 per month for maintenance",
+      monthly: "+ R$ 94.90 per month, once it is running",
       imageAlt: "A management dashboard on a laptop and alerts on a phone, on a cafe table",
     },
     custom: {
       name: "Custom system",
+      price: "R$ 297",
+      monthly: "+ R$ 96 per month for maintenance",
       promise:
         "Records, enrollments, billing and whatever your operation needs, in a system built for the way you work.",
     },
@@ -466,7 +468,7 @@ export const en: Messages = {
     matricula: {
       title: "Enrollment and management system for schools",
       description:
-        "A system for schools to organize enrollments, families, contracts and billing. R$ 297 setup and R$ 96 per month. Book a demo.",
+        "A system for schools to organize enrollments, families, contracts and billing. R$ 317 setup and R$ 94.90 per month. Book a demo.",
       promise: "Your school's enrollments, families and billing organized in one place.",
       support: "Set up by Caetus. You see the system working before you decide.",
       ctaLabel: "Book a demo",
@@ -492,7 +494,7 @@ export const en: Messages = {
         },
       ],
       faq: [
-        { q: "How much does it cost?", a: "R$ 297 setup, paid once, and R$ 96 per month." },
+        { q: "How much does it cost?", a: "R$ 317 setup, paid once, and R$ 94.90 per month." },
         {
           q: "Is it right for my school?",
           a: "We show the system in the demo, with your case, so you can decide if it makes sense. No commitment.",

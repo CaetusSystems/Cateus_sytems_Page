@@ -112,7 +112,7 @@ export const pt = {
     items: [
       {
         q: "Quanto custa?",
-        a: "Site: R$ 247 para criar e R$ 24,90 por mês, com domínio incluso. Atendente no WhatsApp: R$ 87 por mês. Sistema de matrícula: R$ 297 para implantar e R$ 96 por mês.",
+        a: "Site: R$ 247 para criar e R$ 24,90 por mês, com domínio incluso. Atendente no WhatsApp: R$ 87 por mês. Sistema de matrícula: R$ 317 para implantar e R$ 94,90 por mês.",
       },
       {
         q: "Como é a demonstração?",
@@ -329,11 +329,13 @@ export const pt = {
       name: "Sistema de matrícula",
       promise: "Matrículas, famílias e cobranças da sua escola organizadas num só lugar.",
       priceLabel: "pagamento único",
-      monthly: "+ R$ 96 por mês de manutenção",
+      monthly: "+ R$ 94,90 por mês, a partir do funcionamento",
       imageAlt: "Painel de gestão no notebook e avisos no celular, sobre uma mesa de cafeteria",
     },
     custom: {
       name: "Sistema sob medida",
+      price: "R$ 297",
+      monthly: "+ R$ 96 por mês de manutenção",
       promise:
         "Cadastros, matrículas, cobranças e o que a sua operação precisar, num sistema feito para o seu jeito de trabalhar.",
     },
